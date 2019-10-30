@@ -11,6 +11,7 @@ namespace test.Repositorio
 
         public UsuarioRepositorio(UsuarioDbContext ctx)
         {
+            
             _contexto = ctx;
         }
         public void Add(Usuario usuario)
