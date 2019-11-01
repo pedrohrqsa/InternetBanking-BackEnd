@@ -5589,11 +5589,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pedrohsilva\\Desktop\\API-Cad\\test.csproj",
+      "projectUniqueName": "C:\\Users\\pedrohsilva\\Desktop\\API+JWT\\test.csproj",
       "projectName": "test",
-      "projectPath": "C:\\Users\\pedrohsilva\\Desktop\\API-Cad\\test.csproj",
+      "projectPath": "C:\\Users\\pedrohsilva\\Desktop\\API+JWT\\test.csproj",
       "packagesPath": "C:\\Users\\pedrohsilva\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pedrohsilva\\Desktop\\API-Cad\\obj\\",
+      "outputPath": "C:\\Users\\pedrohsilva\\Desktop\\API+JWT\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pedrohsilva\\AppData\\Roaming\\NuGet\\NuGet.Config"
