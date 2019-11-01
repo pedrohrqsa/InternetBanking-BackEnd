@@ -24,10 +24,10 @@ namespace test
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<UsuarioDbContext>(options =>
+            services.AddDbContext<ClienteDbContext>(options =>
            options.UseSqlServer(Configuration.GetConnectionString("ConnectionBD")));
 
-            services.AddTransient<IUsuarioRepositorio, UsuarioRepositorio>();
+            services.AddTransient<IClienteRepositorio, ClienteRepositorio>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
@@ -38,8 +38,8 @@ namespace test
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = "pedrohenrique.net",
-                    ValidAudience = "pedrohenrique.net",
+                    ValidIssuer = "InternetBanking.net",
+                    ValidAudience = "InternetBanking.net",
                     IssuerSigningKey = new SymmetricSecurityKey(
                         Encoding.UTF8.GetBytes(Configuration["SecurityKey"]))
                 };

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pedrohsilva\\Desktop\\API+JWT\\test.csproj": {}
+    "C:\\Users\\pedrohsilva\\Desktop\\Projeto\\InternetBanking-BackEnd\\test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pedrohsilva\\Desktop\\API+JWT\\test.csproj": {
+    "C:\\Users\\pedrohsilva\\Desktop\\Projeto\\InternetBanking-BackEnd\\test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pedrohsilva\\Desktop\\API+JWT\\test.csproj",
+        "projectUniqueName": "C:\\Users\\pedrohsilva\\Desktop\\Projeto\\InternetBanking-BackEnd\\test.csproj",
         "projectName": "test",
-        "projectPath": "C:\\Users\\pedrohsilva\\Desktop\\API+JWT\\test.csproj",
+        "projectPath": "C:\\Users\\pedrohsilva\\Desktop\\Projeto\\InternetBanking-BackEnd\\test.csproj",
         "packagesPath": "C:\\Users\\pedrohsilva\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pedrohsilva\\Desktop\\API+JWT\\obj\\",
+        "outputPath": "C:\\Users\\pedrohsilva\\Desktop\\Projeto\\InternetBanking-BackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pedrohsilva\\AppData\\Roaming\\NuGet\\NuGet.Config"
