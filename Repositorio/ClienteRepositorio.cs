@@ -12,6 +12,7 @@ namespace test.Repositorio
         {
             _contexto = ctx;
         }
+        
         public IEnumerable<Cliente> GetAll()
         {
             return _contexto.Clientes.ToList();
