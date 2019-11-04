@@ -1,6 +1,6 @@
 using System;
 using System.Text;
-using test.Models;
+using InternetBanking.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authorization;
@@ -8,25 +8,32 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.IdentityModel.Logging;
+using InternetBanking.Repositorio;
 
-namespace test.Controllers
+namespace InternetBanking.Controllers
 {
     [Route("api/[controller]")]
     [Authorize()]
     public class TokenController : Controller
     {
         private readonly IConfiguration _configuration;
-        public TokenController(IConfiguration configuration)
+         private readonly IClienteRepositorio _clienteRepositorio;
+        public TokenController(IConfiguration configuration,IClienteRepositorio clienteRepo)
         {
             _configuration = configuration;
+              _clienteRepositorio = clienteRepo;
         }
+         
+ 
 
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult RequestToken([FromBody] Cliente request)
+        public IActionResult RequestToken([FromBody] ClienteLogin request)
         {
-            if (request.CPF == "47958664818" && request.Senha == "TESTE")
+                  var cli = _clienteRepositorio.FindByCpf(request.CPF);
+            if (cli !=null && cli.Senha == request.Senha )
             {
+               
                 var claims = new[]
                 {
                     new Claim (ClaimTypes.Name, request.CPF)

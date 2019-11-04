@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using test.Models;
-using test.Repositorio;
-namespace test.Controllers
+using InternetBanking.Models;
+using InternetBanking.Repositorio;
+namespace InternetBanking.Controllers
 {
-
     [Route("api/[Controller]")]
     [Authorize()]
     public class ClienteController : Controller
@@ -17,7 +16,7 @@ namespace test.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Cliente> GetAll()
+        public IEnumerable<ClienteLogin> GetAll()
         {
             return _clienteRepositorio.GetAll();
         }
@@ -29,6 +28,15 @@ namespace test.Controllers
             if (cliente == null) return NotFound();
 
             return new ObjectResult(cliente);
+        }
+
+        [HttpPost]
+        public IActionResult Create([FromBody] ClienteCad clientes)
+        {
+            if (clientes == null) return BadRequest();
+
+            _clienteRepositorio.Add(clientes);
+            return CreatedAtRoute("GetCliente", new { id = clientes.ID_CLIENTE }, clientes);
         }
     }
 }

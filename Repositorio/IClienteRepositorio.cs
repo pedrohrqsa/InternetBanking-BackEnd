@@ -1,11 +1,13 @@
 using System.Collections.Generic;
-using test.Models;
+using InternetBanking.Models;
 
-namespace test.Repositorio
+namespace InternetBanking.Repositorio
 {
     public interface IClienteRepositorio
     {
-        IEnumerable<Cliente> GetAll();
-         Cliente Find (int id);
+        void Add(ClienteCad cliente);
+        IEnumerable<ClienteLogin> GetAll();
+        ClienteLogin Find(int id);
+       ClienteLogin FindByCpf(string cpf);
     }
 }

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using test.Models;
+using InternetBanking.Models;
 
-namespace test.Repositorio
+namespace InternetBanking.Repositorio
 {
     public class ClienteRepositorio : IClienteRepositorio
     {
@@ -12,14 +12,21 @@ namespace test.Repositorio
         {
             _contexto = ctx;
         }
-        
-        public IEnumerable<Cliente> GetAll()
+        public void Add(ClienteCad clientes)
         {
-            return _contexto.Clientes.ToList();
+            _contexto.ClientesCad.Add(clientes);
+            _contexto.SaveChanges();
         }
-        public Cliente Find(int id)
+        public IEnumerable<ClienteLogin> GetAll()
         {
-            return _contexto.Clientes.FirstOrDefault(
+            return _contexto.ClienteLogin.ToList();
+        }
+        public ClienteLogin FindByCpf(string cpf){
+            return _contexto.ClienteLogin.FirstOrDefault(c => c.CPF == cpf);
+        }
+        public ClienteLogin Find(int id)
+        {
+            return _contexto.ClienteLogin.FirstOrDefault(
                 u => u.Id_login == id
                 );
         }

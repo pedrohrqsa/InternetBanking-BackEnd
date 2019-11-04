@@ -1,12 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace test.Models
+namespace InternetBanking.Models
 {
     public class ClienteDbContext : DbContext
     {
-        public ClienteDbContext(DbContextOptions<ClienteDbContext> options)
-         : base(options)
-        { }
-        public DbSet<Cliente> Clientes { get; set; }
+        public ClienteDbContext(DbContextOptions<ClienteDbContext> options) : base(options) { }
+        public DbSet<ClienteLogin> ClienteLogin { get; set; }
+        public DbSet<ClienteCad> ClientesCad { get; set; }
     }
 }
