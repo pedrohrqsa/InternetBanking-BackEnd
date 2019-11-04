@@ -17,7 +17,7 @@ namespace test.Repositorio
         {
             return _contexto.Clientes.ToList();
         }
-        public Cliente Find(long id)
+        public Cliente Find(int id)
         {
             return _contexto.Clientes.FirstOrDefault(
                 u => u.Id_login == id

@@ -37,19 +37,18 @@ namespace test.Controllers
                 var key = new SymmetricSecurityKey(
                     Encoding.UTF8.GetBytes(_configuration["SecurityKey"]));
 
-                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
                 var token = new JwtSecurityToken(
                     issuer: "InternetBanking.net",
                     audience: "InternetBanking.net",
                     claims: claims,
-                    expires: DateTime.Now.AddMinutes(10),
+                    expires: DateTime.Now.AddMinutes(30),
                     signingCredentials: creds);
                 return Ok(new
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token)
                 });
-
             }
             return BadRequest("Credenciais Inválidas...");
         }

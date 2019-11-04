@@ -43,7 +43,6 @@ namespace test
                     IssuerSigningKey = new SymmetricSecurityKey(
                         Encoding.UTF8.GetBytes(Configuration["SecurityKey"]))
                 };
-
                 options.Events = new JwtBearerEvents
                 {
                     OnAuthenticationFailed = context =>

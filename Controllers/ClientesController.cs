@@ -22,8 +22,8 @@ namespace test.Controllers
             return _clienteRepositorio.GetAll();
         }
 
-        [HttpGet("{id}", Name = "GetCliente")]
-        public IActionResult GetById(long id)
+        [HttpGet("{id}", Name = "GetLogin")]
+        public IActionResult GetById(int id)
         {
             var cliente = _clienteRepositorio.Find(id);
             if (cliente == null) return NotFound();

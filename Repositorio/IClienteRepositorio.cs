@@ -6,7 +6,6 @@ namespace test.Repositorio
     public interface IClienteRepositorio
     {
         IEnumerable<Cliente> GetAll();
-
-         Cliente Find (long id);
+         Cliente Find (int id);
     }
 }
