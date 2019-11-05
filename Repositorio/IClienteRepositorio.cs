@@ -7,7 +7,6 @@ namespace InternetBanking.Repositorio
     {
         void Add(ClienteCad cliente);
         IEnumerable<ClienteLogin> GetAll();
-        ClienteLogin Find(int id);
        ClienteLogin FindByCpf(string cpf);
     }
 }

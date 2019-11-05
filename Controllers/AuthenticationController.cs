@@ -23,9 +23,7 @@ namespace InternetBanking.Controllers
             _configuration = configuration;
               _clienteRepositorio = clienteRepo;
         }
-         
- 
-
+        
         [AllowAnonymous]
         [HttpPost]
         public IActionResult RequestToken([FromBody] ClienteLogin request)

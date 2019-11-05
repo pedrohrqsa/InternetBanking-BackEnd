@@ -24,11 +24,5 @@ namespace InternetBanking.Repositorio
         public ClienteLogin FindByCpf(string cpf){
             return _contexto.ClienteLogin.FirstOrDefault(c => c.CPF == cpf);
         }
-        public ClienteLogin Find(int id)
-        {
-            return _contexto.ClienteLogin.FirstOrDefault(
-                u => u.Id_login == id
-                );
-        }
     }
 }

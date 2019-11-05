@@ -68,8 +68,6 @@ namespace test
 
             app.UseAuthentication();
             app.UseMvc();
-
-            // app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
 

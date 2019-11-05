@@ -21,12 +21,12 @@ namespace InternetBanking.Controllers
             return _clienteRepositorio.GetAll();
         }
 
-        [HttpGet("{id}", Name = "GetLogin")]
-        public IActionResult GetById(int id)
+        [HttpGet("{cpf}", Name = "GetLogin")]
+        public IActionResult GetById(string cpf)
         {
-            var cliente = _clienteRepositorio.Find(id);
+            var cliente = _clienteRepositorio.FindByCpf(cpf);
+            
             if (cliente == null) return NotFound();
-
             return new ObjectResult(cliente);
         }
 
