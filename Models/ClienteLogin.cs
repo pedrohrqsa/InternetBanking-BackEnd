@@ -9,6 +9,6 @@ namespace InternetBanking.Models
         [Key]
         public int Id_login { get; set; }
          public string CPF { get; set; }
-        public string Senha { get; set; }
+        public string Senha { get;  set; }
     }
 }

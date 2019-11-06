@@ -9,7 +9,6 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.IdentityModel.Logging;
 using InternetBanking.Repositorio;
-
 namespace InternetBanking.Controllers
 {
     [Route("api/[controller]")]
@@ -17,21 +16,19 @@ namespace InternetBanking.Controllers
     public class TokenController : Controller
     {
         private readonly IConfiguration _configuration;
-         private readonly IClienteRepositorio _clienteRepositorio;
-        public TokenController(IConfiguration configuration,IClienteRepositorio clienteRepo)
+        private readonly IClienteLoginRepositorio _clienteLoginRepositorio;
+        public TokenController(IConfiguration configuration, IClienteLoginRepositorio clienteRepo)
         {
             _configuration = configuration;
-              _clienteRepositorio = clienteRepo;
+            _clienteLoginRepositorio = clienteRepo;
         }
-        
         [AllowAnonymous]
         [HttpPost]
         public IActionResult RequestToken([FromBody] ClienteLogin request)
         {
-                  var cli = _clienteRepositorio.FindByCpf(request.CPF);
-            if (cli !=null && cli.Senha == request.Senha )
+            var cli = _clienteLoginRepositorio.FindByCpf(request.CPF);
+            if (cli != null && cli.Senha == request.Senha)
             {
-               
                 var claims = new[]
                 {
                     new Claim (ClaimTypes.Name, request.CPF)
@@ -42,7 +39,7 @@ namespace InternetBanking.Controllers
                 var key = new SymmetricSecurityKey(
                     Encoding.UTF8.GetBytes(_configuration["SecurityKey"]));
 
-                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
                 var token = new JwtSecurityToken(
                     issuer: "InternetBanking.net",

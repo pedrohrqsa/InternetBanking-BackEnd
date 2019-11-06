@@ -1,7 +1,8 @@
+using InternetBanking;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace test
+namespace InternetBanking
 {
     public class Program
     {
@@ -9,7 +10,6 @@ namespace test
         {
             CreateHostBuilder(args).Build().Run();
         }
-
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>

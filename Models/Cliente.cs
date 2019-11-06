@@ -1,10 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+using InternetBanking.Models;
+
 namespace InternetBanking.Models
 {
     [Table("CLIENTE")]
-    public class ClienteCad
+    public class Cliente
     {
         [Key]
         public int ID_CLIENTE{get;set;}
@@ -16,8 +18,8 @@ namespace InternetBanking.Models
         public string SOBRENOME { get; set; }
         public string NACIONALIDADE { get; set; }
         public string NATURALIDADE { get; set; }
-        public string ENDERECO { get; set; }
-        public string INFOFAMILIARES { get; set; }
-        public string CONTATO { get; set; }
+        public Endereco ENDERECO { get; set; }
+        public Familiares INFOFAMILIARES { get; set; }
+        public Contato CONTATO { get; set; }
     }
 }

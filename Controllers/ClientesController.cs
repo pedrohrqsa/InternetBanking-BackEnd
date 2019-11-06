@@ -9,8 +9,8 @@ namespace InternetBanking.Controllers
     [Authorize()]
     public class ClienteController : Controller
     {
-        private readonly IClienteRepositorio _clienteRepositorio;
-        public ClienteController(IClienteRepositorio clienteRepo)
+        private readonly IClienteLoginRepositorio _clienteRepositorio;
+        public ClienteController(IClienteLoginRepositorio clienteRepo)
         {
             _clienteRepositorio = clienteRepo;
         }
@@ -25,18 +25,18 @@ namespace InternetBanking.Controllers
         public IActionResult GetById(string cpf)
         {
             var cliente = _clienteRepositorio.FindByCpf(cpf);
-            
+
             if (cliente == null) return NotFound();
             return new ObjectResult(cliente);
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] ClienteCad clientes)
+        public IActionResult Create([FromBody] ClienteLogin clientes)
         {
             if (clientes == null) return BadRequest();
 
-            _clienteRepositorio.Add(clientes);
-            return CreatedAtRoute("GetCliente", new { id = clientes.ID_CLIENTE }, clientes);
+            _clienteRepositorio.AddClienteLogin(clientes);
+            return CreatedAtRoute("GetCliente", new { id = clientes.Id_login }, clientes);
         }
     }
 }

@@ -6,23 +6,23 @@ namespace InternetBanking.Repositorio
 {
     public class ClienteRepositorio : IClienteRepositorio
     {
-        private readonly ClienteDbContext _contexto;
-
-        public ClienteRepositorio(ClienteDbContext ctx)
+        private readonly ClienteDB _contexto;
+        public ClienteRepositorio(ClienteDB ctx)
         {
             _contexto = ctx;
         }
-        public void Add(ClienteCad clientes)
+        public void AddCliente(Cliente cliente)
         {
-            _contexto.ClientesCad.Add(clientes);
-            _contexto.SaveChanges();
+            _contexto.Cliente.Add(cliente);
+            _contexto.SaveChanges();        
         }
-        public IEnumerable<ClienteLogin> GetAll()
+        public Cliente FindByCpf(string cpf)
         {
-            return _contexto.ClienteLogin.ToList();
+            return _contexto.Cliente.FirstOrDefault(c => c.CPF == cpf);
         }
-        public ClienteLogin FindByCpf(string cpf){
-            return _contexto.ClienteLogin.FirstOrDefault(c => c.CPF == cpf);
+        public IEnumerable<Cliente> GetAll()
+        {
+            return _contexto.Cliente.ToList();
         }
     }
 }

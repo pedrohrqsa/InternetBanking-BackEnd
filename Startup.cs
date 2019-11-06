@@ -1,18 +1,17 @@
+using System;
+using System.Text;
+using InternetBanking.Models;
+using System.Threading.Tasks;
+using InternetBanking.Repositorio;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using InternetBanking.Models;
-using InternetBanking.Repositorio;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using System.Threading.Tasks;
-using System;
-
-namespace test
+namespace InternetBanking
 {
     public class Startup
     {
@@ -20,14 +19,17 @@ namespace test
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ClienteDbContext>(options =>
+            services.AddDbContext<ClienteDB>(options =>
            options.UseSqlServer(Configuration.GetConnectionString("ConnectionBD")));
 
             services.AddTransient<IClienteRepositorio, ClienteRepositorio>();
+            
+            services.AddTransient<IClienteLoginRepositorio, ClienteLoginRepositorio>();
+
+            services.AddTransient<IContatoRepositorio, ContatoRepositorio>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>

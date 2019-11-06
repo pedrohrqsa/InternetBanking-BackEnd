@@ -5,8 +5,8 @@ namespace InternetBanking.Repositorio
 {
     public interface IClienteRepositorio
     {
-        void Add(ClienteCad cliente);
-        IEnumerable<ClienteLogin> GetAll();
-       ClienteLogin FindByCpf(string cpf);
+        void AddCliente(Cliente cliente);
+        IEnumerable<Cliente> GetAll();
+        Cliente FindByCpf(string cpf);
     }
 }

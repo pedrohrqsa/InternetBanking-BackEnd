@@ -1,8 +1,13 @@
-namespace InternetBanking_BackEnd.Models
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace InternetBanking.Models
 {
-    public class EnderecosCad
+    [Table("ENDERECO")]
+    public class Endereco
     {
-                
+        [Key]
+        public int id_end { get; set; }
         public string LOGRADOURO { get; set; }
         public string NUMERO { get; set; }
         public string COMPLEMENTO { get; set; }
@@ -10,6 +15,6 @@ namespace InternetBanking_BackEnd.Models
         public string CIDADE { get; set; }
         public string SIGLA_ESTADO { get; set; }
         public string CEP { get; set; }
-        public string STATUS { get; set; }        
+        public string STATUS { get; set; }
     }
 }
