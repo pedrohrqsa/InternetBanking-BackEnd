@@ -1,14 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-using InternetBanking.Models;
-
 namespace InternetBanking.Models
 {
     [Table("CLIENTE")]
     public class Cliente
     {
-        [Key]
+         [Key]
         public int ID_CLIENTE{get;set;}
         public string CPF { get; set; }
         public string RG { get; set; }
@@ -18,8 +16,9 @@ namespace InternetBanking.Models
         public string SOBRENOME { get; set; }
         public string NACIONALIDADE { get; set; }
         public string NATURALIDADE { get; set; }
-        public Endereco ENDERECO { get; set; }
-        public Familiares INFOFAMILIARES { get; set; }
-        public Contato CONTATO { get; set; }
+
+        // public Endereco ENDERECO { get; set; }
+        // public Familiares INFOFAMILIARES { get; set; }
+        // public Contato CONTATO { get; set; }
     }
 }

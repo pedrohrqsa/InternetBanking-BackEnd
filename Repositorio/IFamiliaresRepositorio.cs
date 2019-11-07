@@ -3,7 +3,7 @@ using InternetBanking.Models;
 
 namespace InternetBanking.Repositorio
 {
-    public interface Ifamiliares
+    public interface IfamiliaresRepositorio
     {
         void AddFamiliares(Familiares familiares);
         IEnumerable<Familiares> GetAll();

@@ -4,7 +4,7 @@ using InternetBanking.Models;
 
 namespace InternetBanking.Repositorio
 {
-    public class EnderecoRepositorio : IEnderecoController
+    public class EnderecoRepositorio : IEnderecoRepositorio
     {
         private readonly ClienteDB _contexto;
         public EnderecoRepositorio(ClienteDB ctx)
@@ -16,7 +16,7 @@ namespace InternetBanking.Repositorio
             _contexto.Add(endereco);
             _contexto.SaveChanges();
         }
-        public Endereco FindByEndCli(string cep)
+        public Endereco FindByEnd(string cep)
         {
             return _contexto.Enderecos.FirstOrDefault(c => c.CEP == cep);
         }

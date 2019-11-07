@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace InternetBanking.Repositorio
 {
-    public class FamiliaresRepositorio : Ifamiliares
+    public class FamiliaresRepositorio : IfamiliaresRepositorio
     {
         private readonly ClienteDB _contexto;
         public FamiliaresRepositorio(ClienteDB ctx)
@@ -19,7 +19,7 @@ namespace InternetBanking.Repositorio
         public Familiares FindByFam(int Fam)
         {
             return _contexto.InfoFamiliares.FirstOrDefault(
-                e => e.FK_CLIENTES == Fam
+                e => e.ID_CLIENTE == Fam
             );
         }
         public IEnumerable<Familiares> GetAll()

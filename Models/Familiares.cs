@@ -4,12 +4,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace InternetBanking.Models
 {
 
-    [Table("INFOS_FAMILIARES")]
+    [Table("FAMILIARES")]
     public class Familiares
     {
         [Key]
-        public int id_fam{ get; set; }
-        public int FK_CLIENTES{get; set;}
+        // public int ID_FAMILIARES{get; set;}
+        public int ID_CLIENTE{ get; set; }
         public string NOME_MAE { get; set; }
         public string SOBRENOME_MAE { get; set; }
         public string NOME_PAI { get; set; }

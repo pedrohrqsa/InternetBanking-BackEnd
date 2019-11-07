@@ -31,6 +31,10 @@ namespace InternetBanking
 
             services.AddTransient<IContatoRepositorio, ContatoRepositorio>();
 
+            services.AddTransient<IEnderecoRepositorio, EnderecoRepositorio>();
+
+            services.AddTransient<IfamiliaresRepositorio, FamiliaresRepositorio>();
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {

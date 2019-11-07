@@ -12,6 +12,5 @@ namespace InternetBanking.Models
         public string Email { get; set; }
         public string TEL_RESID { get; set; }
         public string TEL_CEL { get; set; }
-        public string PROPRIETARIO { get; set; }
     }
 }

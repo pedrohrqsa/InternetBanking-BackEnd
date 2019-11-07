@@ -3,10 +3,10 @@ using InternetBanking.Models;
 
 namespace InternetBanking.Repositorio
 {
-    public interface IEnderecoController
+    public interface IEnderecoRepositorio
     {
         void AddEndereco(Endereco endereco);
         IEnumerable<Endereco> GetAll();
-        Endereco FindByEndCli(string Cli);
+        Endereco FindByEnd(string cep);
     }
 }

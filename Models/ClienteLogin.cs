@@ -7,7 +7,7 @@ namespace InternetBanking.Models
     public class ClienteLogin
     {
         [Key]
-        public int Id_login { get; set; }
+        // public int Id_login { get; set; }
          public string CPF { get; set; }
         public string Senha { get;  set; }
     }
