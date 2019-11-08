@@ -7,6 +7,7 @@ namespace InternetBanking.Repositorio
     public class ClienteRepositorio : IClienteRepositorio
     {
         private readonly ClienteDB _contexto;
+
         public ClienteRepositorio(ClienteDB ctx)
         {
             _contexto = ctx;

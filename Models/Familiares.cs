@@ -8,7 +8,7 @@ namespace InternetBanking.Models
     public class Familiares
     {
         [Key]
-        // public int ID_FAMILIARES{get; set;}
+         public int ID_FAMILIARES{get; set;}
         public int ID_CLIENTE{ get; set; }
         public string NOME_MAE { get; set; }
         public string SOBRENOME_MAE { get; set; }

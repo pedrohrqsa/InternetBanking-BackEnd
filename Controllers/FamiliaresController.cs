@@ -6,7 +6,6 @@ using InternetBanking.Repositorio;
 namespace InternetBanking.Controllers
 {
     [Route("api/[Controller]")]
-    [Authorize()]
     public class FamiliaresController : Controller
     {
         private readonly IfamiliaresRepositorio _FamiliaresRepositorio;

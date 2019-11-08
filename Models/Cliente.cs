@@ -6,7 +6,7 @@ namespace InternetBanking.Models
     [Table("CLIENTE")]
     public class Cliente
     {
-         [Key]
+        [Key]
         public int ID_CLIENTE{get;set;}
         public string CPF { get; set; }
         public string RG { get; set; }

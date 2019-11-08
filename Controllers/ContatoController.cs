@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 namespace InternetBanking.Controllers
 {
     [Route("api/[Controller]")]
-    [Authorize()]
     public class ContatoController : Controller
     {
         private readonly IContatoRepositorio _contatoRep;

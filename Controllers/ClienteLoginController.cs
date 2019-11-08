@@ -6,7 +6,6 @@ using InternetBanking.Repositorio;
 namespace InternetBanking.Controllers
 {
     [Route("api/[Controller]")]
-    [Authorize()]
     public class ClienteLoginController : Controller
     {
         private readonly IClienteLoginRepositorio _clienteLoginRepositorio;
@@ -15,12 +14,21 @@ namespace InternetBanking.Controllers
             _clienteLoginRepositorio = clienteRepo;
         }
 
+        [HttpPost]
+        public IActionResult Create([FromBody] ClienteLogin Login)
+        {
+            if (Login == null) return BadRequest();
+            _clienteLoginRepositorio.AddClienteLogin(Login);
+            return new ObjectResult(_clienteLoginRepositorio.FindByCpf(Login.CPF));
+        }
+
+        [Authorize()]
         [HttpGet]
         public IEnumerable<ClienteLogin> GetAll()
         {
             return _clienteLoginRepositorio.GetAll();
         }
-
+        [Authorize()]
         [HttpGet("{cpf}", Name = "GetLogin")]
         public IActionResult GetByLogin(string cpf)
         {
@@ -28,14 +36,6 @@ namespace InternetBanking.Controllers
 
             if (clienteLogin == null) return NotFound();
             return new ObjectResult(clienteLogin);
-        }
-
-        [HttpPost]
-        public IActionResult Create([FromBody] ClienteLogin Login)
-        {
-            if (Login == null) return BadRequest();
-            _clienteLoginRepositorio.AddClienteLogin(Login);
-            return new ObjectResult(_clienteLoginRepositorio.FindByCpf(Login.CPF));
         }
     }
 }

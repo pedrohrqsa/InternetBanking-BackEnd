@@ -24,11 +24,11 @@ namespace InternetBanking
         {
             services.AddDbContext<ClienteDB>(options =>
            options.UseSqlServer(Configuration.GetConnectionString("ConnectionBD")));
+   
+            services.AddTransient<IClienteLoginRepositorio, ClienteLoginRepositorio>();
 
             services.AddTransient<IClienteRepositorio, ClienteRepositorio>();
             
-            services.AddTransient<IClienteLoginRepositorio, ClienteLoginRepositorio>();
-
             services.AddTransient<IContatoRepositorio, ContatoRepositorio>();
 
             services.AddTransient<IEnderecoRepositorio, EnderecoRepositorio>();

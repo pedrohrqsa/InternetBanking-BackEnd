@@ -7,7 +7,6 @@ using InternetBanking.Repositorio;
 namespace InternetBanking.Controllers
 {
     [Route("api/[Controller]")]
-    [Authorize()]
     public class EnderecosController : Controller
     {
         private readonly IEnderecoRepositorio _enderecoRepositorio;
