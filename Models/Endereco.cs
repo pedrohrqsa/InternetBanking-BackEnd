@@ -8,7 +8,7 @@ namespace InternetBanking.Models
     {
         [Key]
         public int ID_ENDERECO { get; set; }
-        public int ID_CLIENTE {get; set;}
+        public int ID_CLIENTE { get; set; }
         public string LOGRADOURO { get; set; }
         public int NUMERO { get; set; }
         public string COMPLEMENTO { get; set; }
@@ -17,5 +17,8 @@ namespace InternetBanking.Models
         public string SIGLA_ESTADO { get; set; }
         public string CEP { get; set; }
         public string FLAG_STATUS { get; set; }
+
+        [ForeignKey("ID_CLIENTE")]
+        public Cliente Cliente { get; set; }
     }
 }

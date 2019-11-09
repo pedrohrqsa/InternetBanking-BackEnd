@@ -17,11 +17,14 @@ namespace InternetBanking.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IClienteLoginRepositorio _clienteLoginRepositorio;
-        public TokenController(IConfiguration configuration, IClienteLoginRepositorio clienteRepo)
+
+        public TokenController(IConfiguration configuration,
+         IClienteLoginRepositorio clienteRepo)
         {
             _configuration = configuration;
             _clienteLoginRepositorio = clienteRepo;
         }
+
         [AllowAnonymous]
         [HttpPost]
         public IActionResult RequestToken([FromBody] ClienteLogin request)

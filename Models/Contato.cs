@@ -5,12 +5,14 @@ namespace InternetBanking.Models
     [Table("CONTATO")]
     public class Contato
     {
-        // [Key]
-        // public int ID_CONTATO { get; set; }
         [Key]
+        public int ID_CONTATO { get; set; }
         public int ID_CLIENTE { get; set; }
         public string Email { get; set; }
         public string TEL_RESID { get; set; }
         public string TEL_CEL { get; set; }
+
+        [ForeignKey("ID_CLIENTE")]
+        public Cliente Cliente { get; set; }
     }
 }

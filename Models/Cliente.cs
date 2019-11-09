@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -7,7 +8,7 @@ namespace InternetBanking.Models
     public class Cliente
     {
         [Key]
-        public int ID_CLIENTE{get;set;}
+        public int ID_CLIENTE { get; set; }
         public string CPF { get; set; }
         public string RG { get; set; }
         public string ORGAOEMISSOR { get; set; }
@@ -17,8 +18,9 @@ namespace InternetBanking.Models
         public string NACIONALIDADE { get; set; }
         public string NATURALIDADE { get; set; }
 
-        // public Endereco ENDERECO { get; set; }
-        // public Familiares INFOFAMILIARES { get; set; }
-        // public Contato CONTATO { get; set; }
+        public ICollection <ClienteLogin> clienteLogin { get; set; }
+        public ICollection <Familiares> Familiares { get; set; }
+        public ICollection <Contato> Contatos { get; set; }
+        public ICollection <Endereco> Endereco { get; set; }
     }
 }

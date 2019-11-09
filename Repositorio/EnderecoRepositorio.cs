@@ -18,12 +18,12 @@ namespace InternetBanking.Repositorio
         }
         public Endereco FindByEnd(string cep)
         {
-            return _contexto.Enderecos.FirstOrDefault(c => c.CEP == cep);
+            return _contexto.Endereco.FirstOrDefault(c => c.CEP == cep);
         }
 
         public IEnumerable<Endereco> GetAll()
         {
-            return _contexto.Enderecos.ToList();
+            return _contexto.Endereco.ToList();
         }
     }
 }

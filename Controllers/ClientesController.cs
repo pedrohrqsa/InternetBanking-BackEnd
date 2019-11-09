@@ -1,8 +1,10 @@
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+using System;
 using InternetBanking.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using InternetBanking.Repositorio;
+using System.Linq;
+
 namespace InternetBanking.Controllers
 {
     [Route("api/[Controller]")]
@@ -13,7 +15,6 @@ namespace InternetBanking.Controllers
         {
             _clienteRepositorio = clienteRepo;
         }
-
         [HttpGet]
         public IEnumerable<Cliente> GetAll()
         {
@@ -21,7 +22,7 @@ namespace InternetBanking.Controllers
         }
 
         [HttpGet("{cpf}", Name = "GetClientes")]
-        public IActionResult GetById(string cpf)
+        public IActionResult GetByCPF(string cpf)
         {
             var cliente = _clienteRepositorio.FindByCpf(cpf);
 
@@ -36,7 +37,23 @@ namespace InternetBanking.Controllers
 
             _clienteRepositorio.AddCliente(cliente);
 
-            return new ObjectResult(_clienteRepositorio.FindByCpf(cliente.CPF));
+             return new ObjectResult(new Cliente());
+
         }
     }
 }
+
+            // return new ObjectResult(new TokenController(token));
+            // return CreatedAtRoute("api/token", ());
+            // ("GetAll", "ControllerName",
+            //  return new ObjectResult( new TokenController(Ok));
+            // return new ObjectResult(new TokenController());
+
+// [HttpGet("{id}", Name = "GetIdClientes")]
+// public IActionResult GetByIdClientes(int id)
+// {
+//     var cliente = _clienteRepositorio.FindByIdCliente(id);
+
+//     if (cliente == null) return NotFound();
+//     return new ObjectResult(cliente.CPF);
+// }

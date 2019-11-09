@@ -174,3 +174,5 @@ C:\Users\pedrohsilva\Desktop\Projeto\InternetBanking-BackEnd\obj\Debug\netcoreap
 C:\Users\pedrohsilva\Desktop\Projeto\InternetBanking-BackEnd\obj\Debug\netcoreapp3.0\test.csproj.CopyComplete
 C:\Users\pedrohsilva\Desktop\Projeto\InternetBanking-BackEnd\obj\Debug\netcoreapp3.0\test.dll
 C:\Users\pedrohsilva\Desktop\Projeto\InternetBanking-BackEnd\obj\Debug\netcoreapp3.0\test.pdb
+c:\Users\pedrohsilva\Desktop\Projeto\InternetBanking-BackEnd\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.Design.dll
+c:\Users\pedrohsilva\Desktop\Projeto\InternetBanking-BackEnd\bin\Debug\netcoreapp3.0\dotnet-ef.dll
