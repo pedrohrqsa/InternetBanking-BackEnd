@@ -27,7 +27,7 @@ namespace InternetBanking.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult RequestToken([FromBody] ClienteLogin request)
+        public IActionResult Token([FromBody] ClienteLogin request)
         {
             var cli = _clienteLoginRepositorio.FindByCpf(request.CPF);
             if (cli != null && cli.Senha == request.Senha)
@@ -52,7 +52,7 @@ namespace InternetBanking.Controllers
                     signingCredentials: creds);
                 return Ok(new
                 {
-                    token = new JwtSecurityTokenHandler().WriteToken(token)
+                     token = new JwtSecurityTokenHandler().WriteToken(token)
                 });
             }
             return BadRequest("Credenciais Inválidas...");

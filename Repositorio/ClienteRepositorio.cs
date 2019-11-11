@@ -1,9 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using InternetBanking.Controllers;
 using InternetBanking.Models;
-using System;
-
 namespace InternetBanking.Repositorio
 {
     public class ClienteRepositorio : IClienteRepositorio
@@ -29,10 +26,5 @@ namespace InternetBanking.Repositorio
         {
             return _contexto.Cliente.ToList();
         }
-
-        // public Cliente FindByIdCliente(int id)
-        // {
-        //     return _contexto.Cliente.FirstOrDefault(Id=> Id.ID_CLIENTE == id);
-        // }
     }
 }

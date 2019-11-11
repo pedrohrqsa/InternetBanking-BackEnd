@@ -1,9 +1,7 @@
-using System;
 using InternetBanking.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using InternetBanking.Repositorio;
-using System.Linq;
 
 namespace InternetBanking.Controllers
 {
@@ -37,17 +35,28 @@ namespace InternetBanking.Controllers
 
             _clienteRepositorio.AddCliente(cliente);
 
-             return new ObjectResult(new Cliente());
+            // return CreatedAtRoute("GetClientes", new {cpf=cliente.CPF}, cliente);
+
+            return new ObjectResult(new ClienteLogin());
+
+            //  return new RedirectToActionResult("RequestToken", "Token", cliente.clienteLogin.FirstOrDefault());
+
+            //   return  RedirectToAction("RequestToken","Token",cliente.clienteLogin.FirstOrDefault());
+
+            //   return  RedirectToAction("RequestToken","Token",cliente.clienteLogin.FirstOrDefault());
+
+            // return RedirectToAction("requestToken", "API/TOKEN", cliente.clienteLogin.FirstOrDefault());
+            // return RedirectToAction("api/token");
 
         }
     }
 }
 
-            // return new ObjectResult(new TokenController(token));
-            // return CreatedAtRoute("api/token", ());
-            // ("GetAll", "ControllerName",
-            //  return new ObjectResult( new TokenController(Ok));
-            // return new ObjectResult(new TokenController());
+// return new ObjectResult(new TokenController(token));
+// return CreatedAtRoute("api/token", ());
+// ("GetAll", "ControllerName",
+//  return new ObjectResult( new TokenController(Ok));
+// return new ObjectResult(new TokenController());
 
 // [HttpGet("{id}", Name = "GetIdClientes")]
 // public IActionResult GetByIdClientes(int id)
