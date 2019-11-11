@@ -35,22 +35,23 @@ namespace InternetBanking.Controllers
 
             _clienteRepositorio.AddCliente(cliente);
 
-            // return CreatedAtRoute("GetClientes", new {cpf=cliente.CPF}, cliente);
-
             return new ObjectResult(new ClienteLogin());
-
-            //  return new RedirectToActionResult("RequestToken", "Token", cliente.clienteLogin.FirstOrDefault());
-
-            //   return  RedirectToAction("RequestToken","Token",cliente.clienteLogin.FirstOrDefault());
-
-            //   return  RedirectToAction("RequestToken","Token",cliente.clienteLogin.FirstOrDefault());
-
-            // return RedirectToAction("requestToken", "API/TOKEN", cliente.clienteLogin.FirstOrDefault());
-            // return RedirectToAction("api/token");
-
         }
     }
 }
+
+
+
+
+// return CreatedAtRoute("GetClientes", new {cpf=cliente.CPF}, cliente);
+//  return new RedirectToActionResult("RequestToken", "Token", cliente.clienteLogin.FirstOrDefault());
+
+//   return  RedirectToAction("RequestToken","Token",cliente.clienteLogin.FirstOrDefault());
+
+//   return  RedirectToAction("RequestToken","Token",cliente.clienteLogin.FirstOrDefault());
+
+// return RedirectToAction("requestToken", "API/TOKEN", cliente.clienteLogin.FirstOrDefault());
+// return RedirectToAction("api/token");
 
 // return new ObjectResult(new TokenController(token));
 // return CreatedAtRoute("api/token", ());
