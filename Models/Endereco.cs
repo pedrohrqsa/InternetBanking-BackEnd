@@ -16,7 +16,6 @@ namespace InternetBanking.Models
         public string CIDADE { get; set; }
         public string SIGLA_ESTADO { get; set; }
         public string CEP { get; set; }
-        public string FLAG_STATUS { get; set; }
 
         [ForeignKey("ID_CLIENTE")]
         public Cliente Cliente { get; set; }
