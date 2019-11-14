@@ -39,31 +39,3 @@ namespace InternetBanking.Controllers
         }
     }
 }
-
-
-
-
-// return CreatedAtRoute("GetClientes", new {cpf=cliente.CPF}, cliente);
-//  return new RedirectToActionResult("RequestToken", "Token", cliente.clienteLogin.FirstOrDefault());
-
-//   return  RedirectToAction("RequestToken","Token",cliente.clienteLogin.FirstOrDefault());
-
-//   return  RedirectToAction("RequestToken","Token",cliente.clienteLogin.FirstOrDefault());
-
-// return RedirectToAction("requestToken", "API/TOKEN", cliente.clienteLogin.FirstOrDefault());
-// return RedirectToAction("api/token");
-
-// return new ObjectResult(new TokenController(token));
-// return CreatedAtRoute("api/token", ());
-// ("GetAll", "ControllerName",
-//  return new ObjectResult( new TokenController(Ok));
-// return new ObjectResult(new TokenController());
-
-// [HttpGet("{id}", Name = "GetIdClientes")]
-// public IActionResult GetByIdClientes(int id)
-// {
-//     var cliente = _clienteRepositorio.FindByIdCliente(id);
-
-//     if (cliente == null) return NotFound();
-//     return new ObjectResult(cliente.CPF);
-// }
