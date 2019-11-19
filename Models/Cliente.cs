@@ -4,19 +4,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InternetBanking.Models
 {
-    [Table("CLIENTE")]
+    [Table("Cliente")]
     public class Cliente
     {
         [Key]
-        public int ID_CLIENTE { get; set; }
-        public string CPF { get; set; }
-        public string RG { get; set; }
-        public string ORGAOEMISSOR { get; set; }
-        public string DTNASCIMENTO { get; set; }
-        public string NOME { get; set; }
-        public string SOBRENOME { get; set; }
-        public string NACIONALIDADE { get; set; }
-        public string NATURALIDADE { get; set; }
+        public int idCliente { get; set; }
+        public string cpf { get; set; }
+        public string rg { get; set; }
+        public string orgaoEmissor { get; set; }
+        public string dtNascimento { get; set; }
+        public string nome { get; set; }
+        public string sobrenome { get; set; }
+        public string nacionalidade { get; set; }
+        public string naturalidade { get; set; }
 
         public ICollection <ClienteLogin> clienteLogin { get; set; }
         public ICollection <Familiares> Familiares { get; set; }

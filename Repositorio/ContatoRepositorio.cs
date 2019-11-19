@@ -17,7 +17,7 @@ namespace InternetBanking.Repositorio
         }
         public Contato FindByContato(int contato)
         {
-            return _contexto.Contato.FirstOrDefault(u => u.ID_CLIENTE == contato);
+            return _contexto.Contato.FirstOrDefault(u => u.idCliente == contato);
         }
         public IEnumerable<Contato> GetAll()
         {

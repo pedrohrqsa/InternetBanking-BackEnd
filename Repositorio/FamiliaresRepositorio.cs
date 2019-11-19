@@ -19,7 +19,7 @@ namespace InternetBanking.Repositorio
         public Familiares FindByFam(int Fam)
         {
             return _contexto.Familiares.FirstOrDefault(
-                e => e.ID_CLIENTE == Fam
+                e => e.idCliente == Fam
             );
         }
         public IEnumerable<Familiares> GetAll()

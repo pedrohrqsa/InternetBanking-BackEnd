@@ -34,7 +34,7 @@ namespace InternetBanking.Controllers
         {
             if (endereco == null) return BadRequest();
             _enderecoRepositorio.AddEndereco(endereco);
-            return new ObjectResult(_enderecoRepositorio.FindByEnd(endereco.CEP));
+            return new ObjectResult(_enderecoRepositorio.FindByEnd(endereco.cep));
         }
     }
 }

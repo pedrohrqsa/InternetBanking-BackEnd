@@ -14,29 +14,29 @@ namespace InternetBanking.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Cliente>().HasKey(cl => cl.ID_CLIENTE);
-            modelBuilder.Entity<ClienteLogin>().HasKey(cl => cl.Id_login);
+            modelBuilder.Entity<Cliente>().HasKey(cl => cl.idCliente);
+            modelBuilder.Entity<ClienteLogin>().HasKey(cl => cl.idLogin);
             modelBuilder.Entity<ClienteLogin>()
                  .HasOne(p => p.Cliente)
                  .WithMany(b => b.clienteLogin);
 
 
-            modelBuilder.Entity<Cliente>().HasKey(cl => cl.ID_CLIENTE);
-            modelBuilder.Entity<Familiares>().HasKey(cl => cl.ID_FAMILIARES);
+            modelBuilder.Entity<Cliente>().HasKey(cl => cl.idCliente);
+            modelBuilder.Entity<Familiares>().HasKey(cl => cl.idFamiliares);
             modelBuilder.Entity<Familiares>()
                 .HasOne(p => p.Cliente)
                 .WithMany(b => b.Familiares);
 
 
-            modelBuilder.Entity<Cliente>().HasKey(cl => cl.ID_CLIENTE);
-            modelBuilder.Entity<Contato>().HasKey(cl => cl.ID_CONTATO);
+            modelBuilder.Entity<Cliente>().HasKey(cl => cl.idCliente);
+            modelBuilder.Entity<Contato>().HasKey(cl => cl.idContato);
             modelBuilder.Entity<Contato>()
                 .HasOne(p => p.Cliente)
                 .WithMany(b => b.Contatos);
 
 
-            modelBuilder.Entity<Cliente>().HasKey(cl => cl.ID_CLIENTE);
-            modelBuilder.Entity<Endereco>().HasKey(cl => cl.ID_ENDERECO);
+            modelBuilder.Entity<Cliente>().HasKey(cl => cl.idCliente);
+            modelBuilder.Entity<Endereco>().HasKey(cl => cl.idEndereco);
             modelBuilder.Entity<Endereco>()
                 .HasOne(p => p.Cliente)
                 .WithMany(b => b.Endereco);

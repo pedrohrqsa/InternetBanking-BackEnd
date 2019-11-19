@@ -34,7 +34,7 @@ namespace InternetBanking.Controllers
             if (familiares == null) return BadRequest();
 
             _FamiliaresRepositorio.AddFamiliares(familiares);
-            return new ObjectResult(_FamiliaresRepositorio.FindByFam(familiares.ID_CLIENTE));
+            return new ObjectResult(_FamiliaresRepositorio.FindByFam(familiares.idCliente));
         }
     }
 }

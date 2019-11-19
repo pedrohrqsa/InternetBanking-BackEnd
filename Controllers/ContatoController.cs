@@ -36,7 +36,7 @@ namespace InternetBanking.Controllers
             if (contatos == null) return BadRequest();
 
             _contatoRep.AddContato(contatos);
-            return new ObjectResult(_contatoRep.FindByContato(contatos.ID_CLIENTE));
+            return new ObjectResult(_contatoRep.FindByContato(contatos.idCliente));
         }
     }
 }

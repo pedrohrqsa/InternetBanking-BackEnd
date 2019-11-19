@@ -3,21 +3,21 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InternetBanking.Models
 {
-    [Table("ENDERECO")]
+    [Table("Endereco")]
     public class Endereco
     {
         [Key]
-        public int ID_ENDERECO { get; set; }
-        public int ID_CLIENTE { get; set; }
-        public string LOGRADOURO { get; set; }
-        public int NUMERO { get; set; }
-        public string COMPLEMENTO { get; set; }
-        public string BAIRRO { get; set; }
-        public string CIDADE { get; set; }
-        public string SIGLA_ESTADO { get; set; }
-        public string CEP { get; set; }
+        public int idEndereco { get; set; }
+        public int idCliente { get; set; }
+        public string logradouro { get; set; }
+        public int numero { get; set; }
+        public string complemento { get; set; }
+        public string bairro { get; set; }
+        public string cidade { get; set; }
+        public string siglaEstado { get; set; }
+        public string cep { get; set; }
 
-        [ForeignKey("ID_CLIENTE")]
+        [ForeignKey("idCliente")]
         public Cliente Cliente { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace InternetBanking.Controllers
         {
             if (Login == null) return BadRequest();
             _clienteLoginRepositorio.AddClienteLogin(Login);
-            return new ObjectResult(_clienteLoginRepositorio.FindByCpf(Login.CPF));
+            return new ObjectResult(_clienteLoginRepositorio.FindByCpf(Login.cpf));
         }
 
         [Authorize()]

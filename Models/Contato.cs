@@ -2,17 +2,17 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace InternetBanking.Models
 {
-    [Table("CONTATO")]
+    [Table("Contato")]
     public class Contato
     {
         [Key]
-        public int ID_CONTATO { get; set; }
-        public int ID_CLIENTE { get; set; }
-        public string Email { get; set; }
-        public string TEL_RESID { get; set; }
-        public string TEL_CEL { get; set; }
+        public int idContato { get; set; }
+        public int idCliente { get; set; }
+        public string email { get; set; }
+        public string telResid { get; set; }
+        public string telCel { get; set; }
 
-        [ForeignKey("ID_CLIENTE")]
+        [ForeignKey("idCliente")]
         public Cliente Cliente { get; set; }
     }
 }

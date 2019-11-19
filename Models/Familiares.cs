@@ -4,18 +4,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace InternetBanking.Models
 {
 
-    [Table("FAMILIARES")]
+    [Table("Familiares")]
     public class Familiares
     {
         [Key]
-        public int ID_FAMILIARES { get; set; }
-        public int ID_CLIENTE { get; set; }
-        public string NOME_MAE { get; set; }
-        public string SOBRENOME_MAE { get; set; }
-        public string NOME_PAI { get; set; }
-        public string SOBRENOME_PAI { get; set; }
+        public int idFamiliares { get; set; }
+        public int idCliente { get; set; }
+        public string nomeMae { get; set; }
+        public string sobrenomeMae { get; set; }
+        public string nomePai { get; set; }
+        public string sobrenomePai { get; set; }
 
-        [ForeignKey("ID_CLIENTE")]
+        [ForeignKey("idCliente")]
         public Cliente Cliente { get; set; }
     }
 }
