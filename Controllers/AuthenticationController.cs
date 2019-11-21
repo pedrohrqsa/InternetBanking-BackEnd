@@ -29,12 +29,12 @@ namespace InternetBanking.Controllers
         [HttpPost]
         public IActionResult Token([FromBody] ClienteLogin request)
         {
-            var cli = _clienteLoginRepositorio.FindByCpf(request.CPF);
-            if (cli != null && cli.Senha == request.Senha)
+            var cli = _clienteLoginRepositorio.FindByCpf(request.cpf);
+            if (cli != null && cli.senha == request.senha)
             {
                 var claims = new[]
                 {
-                    new Claim (ClaimTypes.Name, request.CPF)
+                    new Claim (ClaimTypes.Name, request.cpf)
                 };
 
                 IdentityModelEventSource.ShowPII = true;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace InternetBanking.Repositorio
 {
-    public class FamiliaresRepositorio : IfamiliaresRepositorio
+    public class FamiliaresRepositorio : IFamiliaresRepositorio
     {
         private readonly ClienteDB _contexto;
         public FamiliaresRepositorio(ClienteDB ctx)
