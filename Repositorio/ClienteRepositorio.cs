@@ -17,6 +17,7 @@ namespace InternetBanking.Repositorio
             _contexto.Cliente.Add(cliente);
             _contexto.SaveChanges();
         }
+        
         public Cliente FindByCpf(string cpf)
         {
             return _contexto.Cliente.FirstOrDefault(c => c.cpf == cpf);
