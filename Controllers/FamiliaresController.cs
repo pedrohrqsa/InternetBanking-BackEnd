@@ -8,8 +8,8 @@ namespace InternetBanking.Controllers
     [Route("api/[Controller]")]
     public class FamiliaresController : Controller
     {
-        private readonly IFamiliaresRepositorio _FamiliaresRepositorio;
-        public FamiliaresController(IFamiliaresRepositorio familiaresRepo)
+        private readonly IfamiliaresRepositorio _FamiliaresRepositorio;
+        public FamiliaresController(IfamiliaresRepositorio familiaresRepo)
         {
             _FamiliaresRepositorio = familiaresRepo;
         }
