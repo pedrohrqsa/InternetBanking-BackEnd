@@ -35,7 +35,7 @@ namespace InternetBanking.Controllers
 
             _clienteRepositorio.AddCliente(cliente);
 
-            return new ObjectResult(new ClienteLogin());
+            return new ObjectResult(new Conta());
         }
     }
 }
