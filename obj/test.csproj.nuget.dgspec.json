@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\luizmarinelli\\Desktop\\InternetBanking - BackEnd\\InternetBanking-BackEnd\\test.csproj": {}
   },
   "projects": {
@@ -15,6 +16,22 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\luizmarinelli\\AppData\\Roaming\\NuGet\\NuGet.Config"
+=======
+    "C:\\Users\\luizeleal\\Desktop\\InternetBanking\\InternetBanking-BackEnd\\test.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\luizeleal\\Desktop\\InternetBanking\\InternetBanking-BackEnd\\test.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\luizeleal\\Desktop\\InternetBanking\\InternetBanking-BackEnd\\test.csproj",
+        "projectName": "test",
+        "projectPath": "C:\\Users\\luizeleal\\Desktop\\InternetBanking\\InternetBanking-BackEnd\\test.csproj",
+        "packagesPath": "C:\\Users\\luizeleal\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\luizeleal\\Desktop\\InternetBanking\\InternetBanking-BackEnd\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\luizeleal\\AppData\\Roaming\\NuGet\\NuGet.Config"
+>>>>>>> f65091c2569cb3a47d3affdfdc836725a6aec0db
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
