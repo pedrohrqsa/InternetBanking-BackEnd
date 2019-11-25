@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,7 +13,7 @@ namespace InternetBanking.Models
         public string cpf { get; set; }
         public string rg { get; set; }
         public string orgaoEmissor { get; set; }
-        public string dtNascimento { get; set; }
+        public DateTime dtNascimento { get; set; }
         public string nome { get; set; }
         public string sobrenome { get; set; }
         public string nacionalidade { get; set; }
