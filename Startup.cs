@@ -24,18 +24,13 @@ namespace InternetBanking
         {
             services.AddDbContext<ClienteDB>(options =>
            options.UseSqlServer(Configuration.GetConnectionString("ConnectionBD")));
-   
             services.AddTransient<IClienteLoginRepositorio, ClienteLoginRepositorio>();
-
             services.AddTransient<IClienteRepositorio, ClienteRepositorio>();
-            
             services.AddTransient<IContatoRepositorio, ContatoRepositorio>();
-
             services.AddTransient<IEnderecoRepositorio, EnderecoRepositorio>();
-
             services.AddTransient<IFamiliaresRepositorio, FamiliaresRepositorio>();
-
             services.AddTransient<IContaRepositorio, ContaRepositorio>();
+            services.AddTransient<IContaCorrenteRepositorio, ContaCorrenteRepositorio>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>

@@ -22,7 +22,7 @@ namespace InternetBanking.Controllers
             return new ObjectResult(_clienteLoginRepositorio.FindByCpf(Login.cpf));
         }
 
-        [Authorize()]
+        // [Authorize()]
         [HttpGet]
         public IEnumerable<ClienteLogin> GetAll()
         {

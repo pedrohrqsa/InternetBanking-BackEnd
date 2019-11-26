@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using InternetBanking.Models;
+using System.Collections.Generic;
 
 namespace InternetBanking.Repositorio
 {

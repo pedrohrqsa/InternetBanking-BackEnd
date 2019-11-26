@@ -12,6 +12,8 @@ namespace InternetBanking.Models
         public DbSet<Contato> Contato { get; set; }
         public DbSet<Familiares> Familiares { get; set; }
         public DbSet<Conta> Conta { get; set; }
+        public DbSet<ContaCorrente> ContaCorrente { get; set; }
+        public DbSet<Transacao> Transacao { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -42,11 +44,17 @@ namespace InternetBanking.Models
                 .HasOne(p => p.Cliente)
                 .WithMany(b => b.Endereco);
 
-            modelBuilder.Entity<Cliente>().HasKey(cl => cl.idCliente);
             modelBuilder.Entity<Conta>().HasKey(cl => cl.idConta);
-            modelBuilder.Entity<Conta>()
-                .HasOne(p => p.Cliente)
-                .WithMany(b => b.Conta);     
+            modelBuilder.Entity<ContaCorrente>().HasKey(cl => cl.idContaCorrente);
+            modelBuilder.Entity<ContaCorrente>()
+                 .HasOne(p => p.Conta)
+                 .WithMany(b => b.ContaCorrente);
+
+            modelBuilder.Entity<ContaCorrente>().HasKey(cl => cl.idContaCorrente);
+            modelBuilder.Entity<Transacao>().HasKey(cl => cl.idTransacao);
+            modelBuilder.Entity<Transacao>()
+                 .HasOne(p => p.ContaCorrente)
+                 .WithMany(b => b.Transacao);
         }
     }
 }
