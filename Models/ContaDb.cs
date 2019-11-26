@@ -1,37 +1,17 @@
-using InternetBanking.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace InternetBanking.Models
 {
-    public class ContaDb : DbContext
+    public class ContaDB : DbContext
     {
-        public ContaDb(DbContextOptions<ContaDb> options) : base(options) { }
-
-        public DbSet<Conta> Conta { get; set; }
-        public DbSet<Agencia> Agencia { get; set; }
-        public DbSet<ContaCorrente> ContaCorrente { get; set; }
-        public DbSet<Banco> Banco { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
+        public ContaDB(DbContextOptions<ContaDB> options) : base(options) { }
+        public DbSet<Transacao> Transacao { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder){
             modelBuilder.Entity<Conta>().HasKey(cl => cl.idConta);
-            modelBuilder.Entity<Agencia>().HasKey(cl => cl.idAgencia);
-            modelBuilder.Entity<Agencia>()
+            modelBuilder.Entity<Transacao>().HasKey(cl => cl.idTransacao);
+            modelBuilder.Entity<Transacao>()
                  .HasOne(p => p.Conta)
-                 .WithMany(b => b.Agencia);
-
-
-            modelBuilder.Entity<Cliente>().HasKey(cl => cl.idCliente);
-            modelBuilder.Entity<Familiares>().HasKey(cl => cl.idFamiliares);
-            modelBuilder.Entity<Familiares>()
-                .HasOne(p => p.Cliente)
-                .WithMany(b => b.Familiares);
-
-            modelBuilder.Entity<Cliente>().HasKey(cl => cl.idCliente);
-            modelBuilder.Entity<Familiares>().HasKey(cl => cl.idFamiliares);
-            modelBuilder.Entity<Familiares>()
-                .HasOne(p => p.Cliente)
-                .WithMany(b => b.Familiares);
+                 .WithMany(b => b.Transacao);
         }
     }
 }

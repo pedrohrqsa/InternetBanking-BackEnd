@@ -23,5 +23,6 @@ namespace InternetBanking.Models
         public ICollection <Familiares> Familiares { get; set; }
         public ICollection <Contato> Contatos { get; set; }
         public ICollection <Endereco> Endereco { get; set; }
+        public ICollection <Conta> Conta { get; set; }
     }
 }

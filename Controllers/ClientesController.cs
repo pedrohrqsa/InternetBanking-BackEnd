@@ -2,6 +2,7 @@ using InternetBanking.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using InternetBanking.Repositorio;
+using System;
 
 namespace InternetBanking.Controllers
 {
@@ -35,7 +36,7 @@ namespace InternetBanking.Controllers
 
             _clienteRepositorio.AddCliente(cliente);
 
-            return new ObjectResult(new Conta());
+            return new ObjectResult(new ClienteLogin());
         }
     }
 }

@@ -4,20 +4,18 @@ using InternetBanking.Models;
 
 namespace InternetBanking.Repositorio
 {
-    public class ContaRepositorio: IContaRepositorio
+    public class ContaRepositorio : IContaRepositorio
     {
-        private readonly ContaDb _contexto;
-        
-        public ContaRepositorio(ContaDb ctx){
+        private readonly ClienteDB _contexto;
+        public ContaRepositorio(ClienteDB ctx)
+        {
             _contexto = ctx;
         }
-
         public void AddConta(Conta conta)
         {
             _contexto.Conta.Add(conta);
             _contexto.SaveChanges();
         }
-
         public Conta FindByConta(int conta)
         {
             return _contexto.Conta.FirstOrDefault(u => u.idCliente == conta);
