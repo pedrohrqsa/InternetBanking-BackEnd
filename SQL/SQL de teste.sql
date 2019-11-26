@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------------------------------
 
--- CREATE DATABASE InternetBanking;
+CREATE DATABASE InternetBanking;
 USE InternetBanking;
 
 ---------------------------------------------------------------------------------------------------------------------------
@@ -130,10 +130,12 @@ CREATE TABLE Contato(
 
 -- DROP TABLE Deposito;
 -- DELETE FROM Deposito;
---CREATE TABLE Deposito(
---	idDeposito							    INT										NOT NULL						 PRIMARY KEY CLUSTERED,
---	contaDestino						    INT										NOT NULL,
---);
+CREATE TABLE Deposito(
+	idDeposito								INT										NOT NULL						 PRIMARY KEY CLUSTERED,
+	idTransacao								INT										NOT NULL,
+	valor									NUMERIC									NOT NULL,
+	CONSTRAINT FKDepositoTransacao			FOREIGN KEY (idTransacao)					REFERENCES Transacao (idTransacao)
+);
 
 
 ---------------------------------------------------------------------------------------------------------------------------
@@ -141,10 +143,12 @@ CREATE TABLE Contato(
 
 -- DROP TABLE Saque;
 -- DELETE FROM Saque;
---CREATE TABLE Saque(
---	idSaque								    INT										NOT NULL						 PRIMARY KEY CLUSTERED,
---	contaOrigem							    INT										NOT NULL,
---);
+CREATE TABLE Saque(
+	idSaque								    INT										NOT NULL						 PRIMARY KEY CLUSTERED,
+	idTransacao								INT										NOT NULL,
+	valor									NUMERIC									NOT NULL,
+	CONSTRAINT FKSaqueTransacao			    FOREIGN KEY (idTransacao)				REFERENCES Transacao (idTransacao)
+);
 
 
 ---------------------------------------------------------------------------------------------------------------------------
@@ -152,17 +156,12 @@ CREATE TABLE Contato(
 
 -- DROP TABLE Transacao;
 -- DELETE FROM Transacao;
---CREATE TABLE Transacao(
---	idTransacao							    INT										NOT NULL	IDENTITY(1, 1)		 PRIMARY KEY CLUSTERED,
---	idSaque								    INT										NOT NULL,
---	idDeposito							    INT										NOT NULL,
---	idTransferencia						    INT										NOT NULL,
---	dtTransacao							    DATE									NOT NULL,
---	valor								    NUMERIC									NOT NULL
---	CONSTRAINT FKSaqueTransacao			    FOREIGN KEY (idSaque)					REFERENCES Saque(idSaque),
---	CONSTRAINT FKDepositoTransacao		    FOREIGN KEY (idDeposito)				REFERENCES Deposito(idDeposito),
---	CONSTRAINT FKTransferenciaTransacao     FOREIGN KEY (idTransferencia)			REFERENCES Transferencia(idTransferencia)
---);
+CREATE TABLE Transacao(
+	idTransacao							    INT										NOT NULL	IDENTITY(1, 1)		 PRIMARY KEY CLUSTERED,
+	idContaCorrente							INT										NOT NULL,
+	dtTransacao							    DATE									NOT NULL	DEFAULT(GETDATE()),
+	CONSTRAINT FKContaTransacao			    FOREIGN KEY (idContaCorrente)					REFERENCES ContaCorrente(idContaCorrente)
+);
 
 
 ---------------------------------------------------------------------------------------------------------------------------
@@ -173,8 +172,8 @@ CREATE TABLE Contato(
 CREATE TABLE Conta(
 	idConta								    INT										NOT NULL	IDENTITY(1, 1)		 PRIMARY KEY CLUSTERED,
 	idCliente							    INT										NOT NULL,
-	idAgencia							    INT										NOT NULL DEFAULT (1),
-	idBanco								    INT										NOT NULL DEFAULT (1),
+	Agencia									INT										NOT NULL DEFAULT (1),
+	Banco								    INT										NOT NULL DEFAULT (1),
 	senhaTransacoes						    VARCHAR(4)								NOT NULL DEFAULT '1234',
 	dtCriacao							    DATE									NOT NULL DEFAULT GETDATE(),
 	flagAtivo							    CHAR(1)									NOT NULL DEFAULT(1),
@@ -187,15 +186,13 @@ CREATE TABLE Conta(
 
 -- DROP TABLE ContaCorrente;
 -- DELETE FROM ContaCorrente;
---CREATE TABLE ContaCorrente(
---	idContaCorrente						    INT										NOT NULL	IDENTITY(1, 1)		 PRIMARY KEY CLUSTERED,
---	idTransacao							    INT										NOT NULL,
---	idConta									INT										NOT NULL,
---	numConta							    INT										NOT NULL,
---	saldo								    VARCHAR(6)  DEFAULT(0)					NOT NULL,
---	CONSTRAINT FKTransacaoContaCorrente	    FOREIGN KEY (idTransacao)				REFERENCES Transacao(idTransacao),
---	CONSTRAINT FKContaContaCorrente			FOREIGN KEY (idConta)					REFERENCES Conta(idConta)
---);
+CREATE TABLE ContaCorrente(
+	idContaCorrente						    INT										NOT NULL	IDENTITY(1, 1)		 PRIMARY KEY CLUSTERED,
+	idConta									INT										NOT NULL,
+	numConta							    INT										NOT NULL,
+	saldo								    NUMERIC  DEFAULT(0)						NOT NULL,
+	CONSTRAINT FKContaContaCorrente			FOREIGN KEY (idConta)					REFERENCES Conta(idConta)
+);
 
 
 ---------------------------------------------------------------------------------------------------------------------------
@@ -206,14 +203,14 @@ CREATE TABLE Conta(
 INSERT INTO Cliente (cpf, rg, orgaoEmissor, dtNascimento, nome, sobrenome, nacionalidade, naturalidade)
 VALUES ('11111111111', '111111111', 'SSPSP', '2000-01-01', 'Nome', 'Sobrenome', 'Nacionalidade', 'Naturalidade');
 INSERT INTO Login (idCliente, cpf, senha)
-VALUES (1, '11111111111', 'senha');
+VALUES (2, '11111111111', 'senha');
 INSERT INTO Familiares (idCliente, nomeMae, sobrenomeMae, nomePai, sobrenomePai)
-VALUES (1, 'NomeMãe', 'SobrenomeMãe', 'NomePai', 'SobrenomePai');
+VALUES (2, 'NomeMãe', 'SobrenomeMãe', 'NomePai', 'SobrenomePai');
 INSERT INTO Endereco (idCliente, logradouro, numero, complemento, bairro, cidade, siglaEstado, cep)
-VALUES (1, 'Rua Logradouro', 1, 'Complemento', 'Bairro', 'Cidade', 'SP', '11111111');
+VALUES (2, 'Rua Logradouro', 1, 'Complemento', 'Bairro', 'Cidade', 'SP', '11111111');
 INSERT INTO Contato (idCliente, email, telResid, telCel)
-VALUES (1, 'email@email.com', '11 0000-0000','11 11111-1111');
-INSERT INTO Conta (idCliente);
+VALUES (2, 'email@email.com', '11 0000-0000','11 11111-1111');
+INSERT INTO Conta (idCliente)
 VALUES (1);
 
 */
@@ -228,13 +225,6 @@ SELECT * FROM Endereco;
 SELECT * FROM Contato;
 SELECT * FROM Conta;
 SELECT * FROM Cliente;
-SELECT * FROM Agencia;
-SELECT * FROM Banco;
-SELECT * FROM ContaCorrente;
-SELECT * FROM Transacao;
-SELECT * FROM Deposito;
-SELECT * FROM Saque;
-SELECT * FROM Transferencia;
 */
 
 
@@ -247,13 +237,6 @@ DROP TABLE Endereco;
 DROP TABLE Contato;
 DROP TABLE Conta;
 DROP TABLE Cliente;
-DROP TABLE Agencia;
-DROP TABLE Banco;
-DROP TABLE ContaCorrente;
-DROP TABLE Transacao;
-DROP TABLE Deposito;
-DROP TABLE Saque;
-DROP TABLE Transferencia;
 */
 
 
@@ -264,7 +247,7 @@ DELETE FROM Login;
 DELETE FROM Familiares;
 DELETE FROM Endereco;
 DELETE FROM Contato;
-DELETE FROM Conta;
+DELETE FROM Conta WHERE idConta=2;
 DELETE FROM Cliente;
 DELETE FROM Agencia;
 DELETE FROM Banco;
@@ -274,3 +257,5 @@ DELETE FROM Deposito;
 DELETE FROM Saque;
 DELETE FROM Transferencia;
 */
+
+--SELECT * FROM INFORMATION_SCHEMA.TABLES;
