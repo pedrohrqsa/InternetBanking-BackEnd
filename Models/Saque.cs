@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InternetBanking.Models
 {
-    public class Deposito
+    public class Saque
     {
         [Key]
-        public int idDeposito { get; set; }
+        public int idSaque { get; set; }
         public int idTransacao { get; set; }
         public decimal valor { get; set; }
 

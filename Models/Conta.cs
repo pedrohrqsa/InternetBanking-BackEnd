@@ -17,7 +17,6 @@ namespace InternetBanking.Models
 
         [ForeignKey("idCliente")]
         public Cliente Cliente { get; set; }
-        public ICollection <Transacao> Transacao { get; set; }
         public ICollection <ContaCorrente> ContaCorrente { get; set; }
         
     }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\luizmarinelli\\Desktop\\Nova pasta\\test.csproj": {}
+    "C:\\Users\\luizmarinelli\\Desktop\\InternetBanking - BackEnd\\InternetBanking-BackEnd\\test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\luizmarinelli\\Desktop\\Nova pasta\\test.csproj": {
+    "C:\\Users\\luizmarinelli\\Desktop\\InternetBanking - BackEnd\\InternetBanking-BackEnd\\test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\luizmarinelli\\Desktop\\Nova pasta\\test.csproj",
+        "projectUniqueName": "C:\\Users\\luizmarinelli\\Desktop\\InternetBanking - BackEnd\\InternetBanking-BackEnd\\test.csproj",
         "projectName": "test",
-        "projectPath": "C:\\Users\\luizmarinelli\\Desktop\\Nova pasta\\test.csproj",
+        "projectPath": "C:\\Users\\luizmarinelli\\Desktop\\InternetBanking - BackEnd\\InternetBanking-BackEnd\\test.csproj",
         "packagesPath": "C:\\Users\\luizmarinelli\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\luizmarinelli\\Desktop\\Nova pasta\\obj\\",
+        "outputPath": "C:\\Users\\luizmarinelli\\Desktop\\InternetBanking - BackEnd\\InternetBanking-BackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\luizmarinelli\\AppData\\Roaming\\NuGet\\NuGet.Config"
