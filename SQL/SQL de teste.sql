@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------------------------------------------------------
 
---CREATE DATABASE InternetBanking;
---USE InternetBanking;
+-- CREATE DATABASE InternetBanking;
+USE InternetBanking;
 
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Cliente;
@@ -43,8 +43,6 @@ CREATE TABLE Familiares(
 );
 
 ---------------------------------------------------------------------------------------------------------------------------
-
-
 -- DROP TABLE Endereco;
 -- DELETE FROM Endereco;
 CREATE TABLE Endereco(
@@ -100,6 +98,8 @@ CREATE TABLE ContaCorrente(
 );
 
 ---------------------------------------------------------------------------------------------------------------------------
+-- DROP TABLE Transacao;
+-- DELETE FROM Transacao;
 CREATE TABLE Transacao(
 	idTransacao							    INT										NOT NULL					IDENTITY(1, 1) PRIMARY KEY,
 	idContaCorrente							INT										NOT NULL,
@@ -126,10 +126,6 @@ CREATE TABLE Saque(
 	valor									NUMERIC									NOT NULL,
 	CONSTRAINT FKSaqueTransacao			    FOREIGN KEY (idTransacao)				REFERENCES Transacao (idTransacao)
 );
-
----------------------------------------------------------------------------------------------------------------------------
--- DROP TABLE Transacao;
--- DELETE FROM Transacao;
 
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Banco;
@@ -234,7 +230,6 @@ SELECT * FROM Saque;
 
 -- COMANDOS DROP
 /*
-
 DROP TABLE Login;
 DROP TABLE Familiares;
 DROP TABLE Endereco;

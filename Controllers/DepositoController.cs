@@ -27,18 +27,27 @@ namespace InternetBanking.Controllers
         public IActionResult GetById(int idDeposito)
         {
             var deposito = _depositoRepositorio.FindByDeposito(idDeposito);
+
             if (deposito == null) return NotFound();
+            
             return new ObjectResult(deposito);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] Deposito deposito, ContaCorrente contaCorrente)
+        public IActionResult Update(int _idDeposito, int _idContaCorrente, [FromBody] Deposito deposito, [FromBody] ContaCorrente contaCorrente)
         {
-            if (deposito == null || deposito.idDeposito != id) return BadRequest();
+            if(deposito.valor <= 0)
+                return false;
+            contaCorrente.saldo += deposito.valor;
+            return true;
 
-            var _deposito = _depositoRepositorio.FindByDeposito(id);
+            if (deposito == null || contaCorrente == null || deposito.idDeposito != _idDeposito || deposito.valor < contaCorrente.saldo)
+                return BadRequest();
 
-            if (deposito == null) return NotFound();
+            var _contaCorrente = _contaCorrenteRepositorio.FindByContaCorrente(_idContaCorrente);
+
+            if (deposito == null || contaCorrente == null)
+                return NotFound();
 
             _contaCorrenteRepositorio.saldo = contaCorrente.saldo;
 
