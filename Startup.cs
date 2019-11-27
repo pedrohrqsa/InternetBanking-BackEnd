@@ -24,6 +24,13 @@ namespace InternetBanking
         {
             services.AddDbContext<ClienteDB>(options =>
            options.UseSqlServer(Configuration.GetConnectionString("ConnectionBD")));
+
+            services.AddDbContext<ContaCorrenteDB>(options =>
+           options.UseSqlServer(Configuration.GetConnectionString("ConnectionBD")));
+
+            services.AddDbContext<TransacaoDB>(options =>
+           options.UseSqlServer(Configuration.GetConnectionString("ConnectionBD")));
+
             services.AddTransient<IClienteLoginRepositorio, ClienteLoginRepositorio>();
             services.AddTransient<IClienteRepositorio, ClienteRepositorio>();
             services.AddTransient<IContatoRepositorio, ContatoRepositorio>();
@@ -31,9 +38,9 @@ namespace InternetBanking
             services.AddTransient<IFamiliaresRepositorio, FamiliaresRepositorio>();
             services.AddTransient<IContaRepositorio, ContaRepositorio>();
             services.AddTransient<IContaCorrenteRepositorio, ContaCorrenteRepositorio>();
-            // services.AddTransient<ITransacaoRepositorio, TransacaoRepositorio>();
-            // services.AddTransient<ISaqueRepositorio, SaqueRepositorio>();
-            // services.AddTransient<IDepositoRepositorio, DepositoRepositorio>();
+            services.AddTransient<ITransacaoRepositorio, TransacaoRepositorio>();
+            services.AddTransient<ISaqueRepositorio, SaqueRepositorio>();
+            services.AddTransient<IDepositoRepositorio, DepositoRepositorio>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
