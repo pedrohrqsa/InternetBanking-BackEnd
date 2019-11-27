@@ -31,9 +31,9 @@ namespace InternetBanking
             services.AddTransient<IFamiliaresRepositorio, FamiliaresRepositorio>();
             services.AddTransient<IContaRepositorio, ContaRepositorio>();
             services.AddTransient<IContaCorrenteRepositorio, ContaCorrenteRepositorio>();
-            services.AddTransient<ITransacaoRepositorio, TransacaoRepositorio>();
-            services.AddTransient<ISaqueRepositorio, SaqueRepositorio>();
-            services.AddTransient<IDepositoRepositorio, DepositoRepositorio>();
+            // services.AddTransient<ITransacaoRepositorio, TransacaoRepositorio>();
+            // services.AddTransient<ISaqueRepositorio, SaqueRepositorio>();
+            // services.AddTransient<IDepositoRepositorio, DepositoRepositorio>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
