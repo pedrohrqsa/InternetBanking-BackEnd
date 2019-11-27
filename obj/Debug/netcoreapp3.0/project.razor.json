@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\pedrohsilva\\Desktop\\Projeto\\InternetBanking-BackEnd\\test.csproj",
+  "FilePath": "c:\\Users\\luizmarinelli\\Desktop\\InternetBanking-BackEnd\\test.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -15,7 +15,7 @@
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
-        "Documentation": "\n             <summary>\n             Combines the behaviors of <see cref=\"T:Microsoft.AspNetCore.Components.Authorization.AuthorizeView\" /> and <see cref=\"T:Microsoft.AspNetCore.Components.RouteView\" />,\n             so that it displays the page matching the specified route but only if the user\n             is authorized to see it.\n            \n             Additionally, this component supplies a cascading parameter of type <see cref=\"T:System.Threading.Tasks.Task`1\" />,\n             which makes the user's current authentication state available to descendants.\n             </summary>\n        ",
+        "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
@@ -35,7 +35,7 @@
             "IsEnum": false,
             "IndexerNamePrefix": null,
             "IndexerTypeName": null,
-            "Documentation": "\n            <summary>\n            The content that will be displayed while asynchronous authorization is in progress.\n            </summary>\n        ",
+            "Documentation": null,
             "Diagnostics": [],
             "Metadata": {
               "Common.PropertyName": "Authorizing",
@@ -112,7 +112,7 @@
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
-        "Documentation": "\n             <summary>\n             Combines the behaviors of <see cref=\"T:Microsoft.AspNetCore.Components.Authorization.AuthorizeView\" /> and <see cref=\"T:Microsoft.AspNetCore.Components.RouteView\" />,\n             so that it displays the page matching the specified route but only if the user\n             is authorized to see it.\n            \n             Additionally, this component supplies a cascading parameter of type <see cref=\"T:System.Threading.Tasks.Task`1\" />,\n             which makes the user's current authentication state available to descendants.\n             </summary>\n        ",
+        "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
@@ -132,7 +132,7 @@
             "IsEnum": false,
             "IndexerNamePrefix": null,
             "IndexerTypeName": null,
-            "Documentation": "\n            <summary>\n            The content that will be displayed while asynchronous authorization is in progress.\n            </summary>\n        ",
+            "Documentation": null,
             "Diagnostics": [],
             "Metadata": {
               "Common.PropertyName": "Authorizing",
@@ -210,7 +210,7 @@
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.Authorizing",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
-        "Documentation": "\n            <summary>\n            The content that will be displayed while asynchronous authorization is in progress.\n            </summary>\n        ",
+        "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
@@ -235,7 +235,7 @@
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.Authorizing",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
-        "Documentation": "\n            <summary>\n            The content that will be displayed while asynchronous authorization is in progress.\n            </summary>\n        ",
+        "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
@@ -1051,7 +1051,7 @@
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.CascadingValue<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components",
-        "Documentation": "\n            <summary>\n            A component that provides a cascading value to all descendant components.\n            </summary>\n        ",
+        "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
@@ -1086,7 +1086,7 @@
             "IsEnum": false,
             "IndexerNamePrefix": null,
             "IndexerTypeName": null,
-            "Documentation": "\n            <summary>\n            The content to which the value should be provided.\n            </summary>\n        ",
+            "Documentation": null,
             "Diagnostics": [],
             "Metadata": {
               "Common.PropertyName": "ChildContent",
@@ -1101,7 +1101,7 @@
             "IsEnum": false,
             "IndexerNamePrefix": null,
             "IndexerTypeName": null,
-            "Documentation": "\n            <summary>\n            If true, indicates that <see cref=\"P:Microsoft.AspNetCore.Components.CascadingValue`1.Value\" /> will not change. This is a\n            performance optimization that allows the framework to skip setting up\n            change notifications. Set this flag only if you will not change\n            <see cref=\"P:Microsoft.AspNetCore.Components.CascadingValue`1.Value\" /> during the component's lifetime.\n            </summary>\n        ",
+            "Documentation": null,
             "Diagnostics": [],
             "Metadata": {
               "Common.PropertyName": "IsFixed"
@@ -1115,7 +1115,7 @@
             "IsEnum": false,
             "IndexerNamePrefix": null,
             "IndexerTypeName": null,
-            "Documentation": "\n             <summary>\n             Optionally gives a name to the provided value. Descendant components\n             will be able to receive the value by specifying this name.\n            \n             If no name is specified, then descendant components will receive the\n             value based the type of value they are requesting.\n             </summary>\n        ",
+            "Documentation": null,
             "Diagnostics": [],
             "Metadata": {
               "Common.PropertyName": "Name"
@@ -1129,7 +1129,7 @@
             "IsEnum": false,
             "IndexerNamePrefix": null,
             "IndexerTypeName": null,
-            "Documentation": "\n            <summary>\n            The value to be provided.\n            </summary>\n        ",
+            "Documentation": null,
             "Diagnostics": [],
             "Metadata": {
               "Common.PropertyName": "Value",
@@ -1150,7 +1150,7 @@
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.CascadingValue<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components",
-        "Documentation": "\n            <summary>\n            A component that provides a cascading value to all descendant components.\n            </summary>\n        ",
+        "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
@@ -1185,7 +1185,7 @@
             "IsEnum": false,
             "IndexerNamePrefix": null,
             "IndexerTypeName": null,
-            "Documentation": "\n            <summary>\n            The content to which the value should be provided.\n            </summary>\n        ",
+            "Documentation": null,
             "Diagnostics": [],
             "Metadata": {
               "Common.PropertyName": "ChildContent",
@@ -1200,7 +1200,7 @@
             "IsEnum": false,
             "IndexerNamePrefix": null,
             "IndexerTypeName": null,
-            "Documentation": "\n            <summary>\n            If true, indicates that <see cref=\"P:Microsoft.AspNetCore.Components.CascadingValue`1.Value\" /> will not change. This is a\n            performance optimization that allows the framework to skip setting up\n            change notifications. Set this flag only if you will not change\n            <see cref=\"P:Microsoft.AspNetCore.Components.CascadingValue`1.Value\" /> during the component's lifetime.\n            </summary>\n        ",
+            "Documentation": null,
             "Diagnostics": [],
             "Metadata": {
               "Common.PropertyName": "IsFixed"
@@ -1214,7 +1214,7 @@
             "IsEnum": false,
             "IndexerNamePrefix": null,
             "IndexerTypeName": null,
-            "Documentation": "\n             <summary>\n             Optionally gives a name to the provided value. Descendant components\n             will be able to receive the value by specifying this name.\n            \n             If no name is specified, then descendant components will receive the\n             value based the type of value they are requesting.\n             </summary>\n        ",
+            "Documentation": null,
             "Diagnostics": [],
             "Metadata": {
               "Common.PropertyName": "Name"
@@ -1228,7 +1228,7 @@
             "IsEnum": false,
             "IndexerNamePrefix": null,
             "IndexerTypeName": null,
-            "Documentation": "\n            <summary>\n            The value to be provided.\n            </summary>\n        ",
+            "Documentation": null,
             "Diagnostics": [],
             "Metadata": {
               "Common.PropertyName": "Value",
@@ -1250,7 +1250,7 @@
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.CascadingValue<TValue>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components",
-        "Documentation": "\n            <summary>\n            The content to which the value should be provided.\n            </summary>\n        ",
+        "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
@@ -1275,7 +1275,7 @@
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.CascadingValue<TValue>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components",
-        "Documentation": "\n            <summary>\n            The content to which the value should be provided.\n            </summary>\n        ",
+        "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
@@ -1895,7 +1895,7 @@
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator",
         "AssemblyName": "Microsoft.AspNetCore.Components.Forms",
-        "Documentation": "\n            <summary>\n            Adds Data Annotations validation support to an <see cref=\"T:Microsoft.AspNetCore.Components.Forms.EditContext\" />.\n            </summary>\n        ",
+        "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
@@ -1919,7 +1919,7 @@
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator",
         "AssemblyName": "Microsoft.AspNetCore.Components.Forms",
-        "Documentation": "\n            <summary>\n            Adds Data Annotations validation support to an <see cref=\"T:Microsoft.AspNetCore.Components.Forms.EditContext\" />.\n            </summary>\n        ",
+        "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [

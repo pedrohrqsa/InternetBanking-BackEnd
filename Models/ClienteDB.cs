@@ -44,17 +44,11 @@ namespace InternetBanking.Models
                 .HasOne(p => p.Cliente)
                 .WithMany(b => b.Endereco);
 
+            modelBuilder.Entity<Cliente>().HasKey(cl => cl.idCliente);
             modelBuilder.Entity<Conta>().HasKey(cl => cl.idConta);
-            modelBuilder.Entity<ContaCorrente>().HasKey(cl => cl.idContaCorrente);
-            modelBuilder.Entity<ContaCorrente>()
-                 .HasOne(p => p.Conta)
-                 .WithMany(b => b.ContaCorrente);
-
-            modelBuilder.Entity<ContaCorrente>().HasKey(cl => cl.idContaCorrente);
-            modelBuilder.Entity<Transacao>().HasKey(cl => cl.idTransacao);
-            modelBuilder.Entity<Transacao>()
-                 .HasOne(p => p.ContaCorrente)
-                 .WithMany(b => b.Transacao);
+            modelBuilder.Entity<Conta>()
+                 .HasOne(p => p.Cliente)
+                 .WithMany(b => b.Conta);
         }
     }
 }
