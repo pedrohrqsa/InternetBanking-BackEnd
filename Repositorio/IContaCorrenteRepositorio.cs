@@ -7,6 +7,6 @@ namespace InternetBanking.Repositorio
     {
         void AddContaCorrente(ContaCorrente contaCorrente);
         IEnumerable<ContaCorrente> GetAll();
-        ContaCorrente FindByContaCorrente(int contaCorrente);
+        ContaCorrente FindByContaCorrente(int id);
     }
 }

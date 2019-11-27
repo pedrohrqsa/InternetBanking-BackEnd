@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------------------------------------------------------
 
---CREATE DATABASE InternetBanking;
---USE InternetBanking;
+-- CREATE DATABASE InternetBanking;
+USE InternetBanking;
 
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Cliente;
@@ -43,8 +43,6 @@ CREATE TABLE Familiares(
 );
 
 ---------------------------------------------------------------------------------------------------------------------------
-
-
 -- DROP TABLE Endereco;
 -- DELETE FROM Endereco;
 CREATE TABLE Endereco(
@@ -100,6 +98,8 @@ CREATE TABLE ContaCorrente(
 );
 
 ---------------------------------------------------------------------------------------------------------------------------
+-- DROP TABLE Transacao;
+-- DELETE FROM Transacao;
 CREATE TABLE Transacao(
 	idTransacao							    INT										NOT NULL					IDENTITY(1, 1) PRIMARY KEY,
 	idContaCorrente							INT										NOT NULL,
@@ -126,10 +126,6 @@ CREATE TABLE Saque(
 	valor									NUMERIC									NOT NULL,
 	CONSTRAINT FKSaqueTransacao			    FOREIGN KEY (idTransacao)				REFERENCES Transacao (idTransacao)
 );
-
----------------------------------------------------------------------------------------------------------------------------
--- DROP TABLE Transacao;
--- DELETE FROM Transacao;
 
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Banco;
@@ -166,6 +162,7 @@ CREATE TABLE Saque(
 
 -- COMANDOS INSERT
 
+-- CLIENTE
 INSERT INTO Cliente (cpf, rg, orgaoEmissor, dtNascimento, nome, sobrenome, nacionalidade, naturalidade)
 VALUES ('11111111111', '111111111', 'SSPSP', '2000-01-01', 'Nome', 'Sobrenome', 'Nacionalidade', 'Naturalidade');
 
@@ -181,15 +178,14 @@ VALUES (1, 'Rua Logradouro', 1, 'Complemento', 'Bairro', 'Cidade', 'SP', '111111
 INSERT INTO Contato (idCliente, email, telResid, telCel)
 VALUES (1, 'email@email.com', '11 0000-0000','11 11111-1111');
 
-
+-- CONTA
 INSERT INTO Conta (idCliente)
 VALUES (1);
 
 INSERT INTO ContaCorrente (idConta , numConta)
 VALUES (1, 01235456);
 
-
-
+-- TRANSACAO
 INSERT INTO Transacao (idContaCorrente)
 VALUES (1);
 
@@ -198,8 +194,6 @@ VALUES (1, 500);
 
 INSERT INTO Saque (idTransacao, valor)
 VALUES (1, 500);
-
-
 
 -- INSERT INTO Banco (idBanco, idEndereco, nomeFantasia, cnpj, ispb)
 -- VALUES (1, 1, 'NomeFantasia', '11111111111111', '11111111');
@@ -211,18 +205,17 @@ VALUES (1, 500);
 -- VALUES (1, 1111111111, 1111111112);
 
 
-
-
 -- COMANDOS SELECT
-
+/*
 SELECT * FROM Cliente;
 SELECT * FROM Login;
 SELECT * FROM Familiares;
 SELECT * FROM Endereco;
 SELECT * FROM Contato;
-SELECT * FROM Conta;
 
+SELECT * FROM Conta;
 SELECT * FROM ContaCorrente;
+
 SELECT * FROM Transacao;
 SELECT * FROM Deposito;
 SELECT * FROM Saque;
@@ -230,20 +223,18 @@ SELECT * FROM Saque;
 -- SELECT * FROM Agencia;
 -- SELECT * FROM Banco;
 -- SELECT * FROM Transferencia;
+*/
 
 
 -- COMANDOS DROP
 /*
-
 DROP TABLE Login;
 DROP TABLE Familiares;
 DROP TABLE Endereco;
 DROP TABLE Contato;
-
 DROP TABLE Deposito;
 DROP TABLE Saque;
 DROP TABLE Transacao;
-
 DROP TABLE ContaCorrente;
 DROP TABLE Conta;
 DROP TABLE Cliente;
@@ -254,25 +245,20 @@ DROP TABLE Cliente;
 */
 
 
-
 -- COMANDOS DELETE
 /*
-DELETE FROM Cliente;
 DELETE FROM Login;
 DELETE FROM Familiares;
 DELETE FROM Endereco;
 DELETE FROM Contato;
-
-DELETE FROM Conta;
-DELETE FROM ContaCorrente;
-
-DELETE FROM Transacao;
 DELETE FROM Deposito;
 DELETE FROM Saque;
+DELETE FROM Transacao;
+DELETE FROM ContaCorrente;
+DELETE FROM Conta;
+DELETE FROM Cliente;
 
 -- DELETE FROM Agencia;
 -- DELETE FROM Banco;
 -- DELETE FROM Transferencia;
 */
-
---SELECT * FROM INFORMATION_SCHEMA.TABLES;

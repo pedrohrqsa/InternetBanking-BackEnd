@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using InternetBanking.Models;
-
 namespace InternetBanking.Repositorio
 {
     public class SaqueRepositorio : ISaqueRepositorio
