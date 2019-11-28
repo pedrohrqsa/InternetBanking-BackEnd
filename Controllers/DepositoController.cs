@@ -33,26 +33,23 @@ namespace InternetBanking.Controllers
             return new ObjectResult(deposito);
         }
 
-        // [HttpPut("{id}")]
-        // public IActionResult Update(int _idDeposito, int _idContaCorrente, [FromBody] Deposito deposito, [FromBody] ContaCorrente contaCorrente)
-        // {
-        //     if(deposito.valor <= 0)
-        //         return false;
-        //     contaCorrente.saldo += deposito.valor;
-        //     return true;
+        [HttpPut("{valor}")]
+        public IActionResult Update(int idDeposito, int idContaCorrente, [FromBody] Deposito deposito, [FromBody] ContaCorrente contaCorrente)
+        {
+            if (deposito.valor <= 0 || deposito == null || contaCorrente == null || deposito.idDeposito != _idDeposito || deposito.valor <= 0)
+                return BadRequest();
 
-        //     if (deposito == null || contaCorrente == null || deposito.idDeposito != _idDeposito || deposito.valor < contaCorrente.saldo)
-        //         return BadRequest();
+            if (deposito == null || contaCorrente == null)
+                return NotFound();
 
-        //     var _contaCorrente = _contaCorrenteRepositorio.FindByContaCorrente(_idContaCorrente);
+            var _contaCorrente = _contaCorrenteRepositorio.FindByContaCorrente(idContaCorrente);
 
-        //     if (deposito == null || contaCorrente == null)
-        //         return NotFound();
+            _contaCorrente.saldo = contaCorrente.saldo;
 
-        //     _contaCorrenteRepositorio.saldo = contaCorrente.saldo;
+            contaCorrente.saldo += deposito.valor;
 
-        //     _contaCorrenteRepositorio.Update(_deposito);
-        //     return new NoContentResult();
-        // }
+            _contaCorrenteRepositorio.Update(_contaCorrente);
+            return new NoContentResult();
+        }
     }
 }
