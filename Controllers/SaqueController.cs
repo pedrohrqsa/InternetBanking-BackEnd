@@ -31,24 +31,5 @@ namespace InternetBanking.Controllers
             
             return new ObjectResult(saque);
         }
-
-        [HttpPut("{valor}")]
-        public IActionResult Update(int idSaque, int idContaCorrente, [FromBody] Saque saque, [FromBody] ContaCorrente contaCorrente)
-        {
-            if (saque.valor <= 0 || contaCorrente.saldo < saque.valor || saque == null || contaCorrente == null || saque.idSaque != _idSaque || saque.valor < contaCorrente.saldo)
-                return BadRequest();
-
-            if (saque == null || contaCorrente == null)
-                return NotFound();
-            
-            var _contaCorrente = _contaCorrenteRepositorio.FindByContaCorrente(idContaCorrente);
-
-            _contaCorrente.saldo = contaCorrente.saldo;
-
-            contaCorrente.saldo -= saque.valor;
-
-            _contaCorrenteRepositorio.Update(_contaCorrente);
-            return new NoContentResult();
-        }
     }
 }

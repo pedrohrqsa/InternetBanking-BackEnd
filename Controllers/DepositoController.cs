@@ -32,24 +32,5 @@ namespace InternetBanking.Controllers
             
             return new ObjectResult(deposito);
         }
-
-        [HttpPut("{valor}")]
-        public IActionResult Update(int idDeposito, int idContaCorrente, [FromBody] Deposito deposito, [FromBody] ContaCorrente contaCorrente)
-        {
-            if (deposito.valor <= 0 || deposito == null || contaCorrente == null || deposito.idDeposito != _idDeposito || deposito.valor <= 0)
-                return BadRequest();
-
-            if (deposito == null || contaCorrente == null)
-                return NotFound();
-
-            var _contaCorrente = _contaCorrenteRepositorio.FindByContaCorrente(idContaCorrente);
-
-            _contaCorrente.saldo = contaCorrente.saldo;
-
-            contaCorrente.saldo += deposito.valor;
-
-            _contaCorrenteRepositorio.Update(_contaCorrente);
-            return new NoContentResult();
-        }
     }
 }
