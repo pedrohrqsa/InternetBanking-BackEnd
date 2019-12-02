@@ -7,6 +7,7 @@ namespace InternetBanking.Repositorio
     public class SaqueRepositorio : ISaqueRepositorio
     {
         private readonly TransacaoDB _contexto;
+        
         public SaqueRepositorio(TransacaoDB ctx)
         {
             _contexto = ctx;

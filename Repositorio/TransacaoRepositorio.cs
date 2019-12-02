@@ -6,8 +6,9 @@ namespace InternetBanking.Repositorio
 {
     public class TransacaoRepositorio : ITransacaoRepositorio
     {
-        private readonly ContaCorrenteDB _contexto;
-        public TransacaoRepositorio(ContaCorrenteDB ctx)
+        private readonly TransacaoDB _contexto;
+        
+        public TransacaoRepositorio(TransacaoDB ctx)
         {
             _contexto = ctx;
         }

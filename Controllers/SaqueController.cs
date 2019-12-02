@@ -9,6 +9,7 @@ namespace InternetBanking.Controllers
     public class SaqueController : Controller
     {
         private readonly ISaqueRepositorio _saqueRepositorio;
+        
         public SaqueController(ISaqueRepositorio ContaRepositorio){
             _saqueRepositorio = ContaRepositorio;
         }

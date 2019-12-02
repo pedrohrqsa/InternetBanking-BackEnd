@@ -9,7 +9,9 @@ namespace InternetBanking.Controllers
     public class TransacaoController : Controller
     {
         private readonly ITransacaoRepositorio _transacaoRepositorio;
-        public TransacaoController(ITransacaoRepositorio ContaRepositorio){
+        
+        public TransacaoController(ITransacaoRepositorio ContaRepositorio)
+        {
             _transacaoRepositorio = ContaRepositorio;
         }
 
@@ -20,7 +22,8 @@ namespace InternetBanking.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Transacao transacao){
+        public IActionResult Create([FromBody] Transacao transacao)
+        {
             if (transacao == null) return BadRequest();
             
             _transacaoRepositorio.AddTransacao(transacao);

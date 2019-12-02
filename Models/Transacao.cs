@@ -11,7 +11,6 @@ namespace InternetBanking.Models
         public int idTransacao { get; set; }
         public int idContaCorrente { get; set; }
         public DateTime dtTransacao { get; set; }
-        public decimal valor { get; set; }
 
         [ForeignKey("idContaCorrente")]
         public ContaCorrente ContaCorrente { get; set; }
