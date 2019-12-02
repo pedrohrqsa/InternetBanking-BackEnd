@@ -20,11 +20,11 @@ namespace InternetBanking.Controllers
         }
 
         public void Deposito(decimal valor){
-                _contaCorrenteRepositorio.FindByContaCorrente(0).saldo += valor;
+            _contaCorrenteRepositorio.FindByContaCorrente(0).saldo += valor;
         } 
 
         public void Saque(decimal valor){
-                _contaCorrenteRepositorio.FindByContaCorrente(0).saldo -= valor;
+            _contaCorrenteRepositorio.FindByContaCorrente(0).saldo -= valor;
         }
 
         [HttpPost]

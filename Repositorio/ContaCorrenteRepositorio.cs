@@ -34,5 +34,13 @@ namespace InternetBanking.Repositorio
             _contexto.ContaCorrente.Update(contaCorrente);
             _contexto.SaveChanges();
         }
+
+        public void Saque(decimal valor){
+            _contexto.SaveChanges();
+        }
+
+        public void Deposito(decimal valor){
+            _contexto.SaveChanges();
+        }
     }
 }
