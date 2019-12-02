@@ -24,7 +24,7 @@ namespace InternetBanking.Controllers
             if (conta == null) return BadRequest();
             
             _contaRepositorio.AddConta(conta);
-            return new ObjectResult(_contaRepositorio.FindByConta(conta.idCliente));
+            return new ObjectResult(new ContaCorrente());
         }
     }
 }

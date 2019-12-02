@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using InternetBanking.Models;
 using InternetBanking.Repositorio;
+using Microsoft.AspNetCore.Mvc;
 
 namespace InternetBanking.Controllers
 {
@@ -10,11 +9,8 @@ namespace InternetBanking.Controllers
     public class DepositoController : Controller
     {
         private readonly IDepositoRepositorio _depositoRepositorio;
-        // private readonly IContaCorrenteRepositorio _contaCorrenteRepositorio;
-
-        public DepositoController(IDepositoRepositorio depositoRepositorio)
-        {
-            _depositoRepositorio = depositoRepositorio;
+        public DepositoController(IDepositoRepositorio ContaRepositorio){
+            _depositoRepositorio = ContaRepositorio;
         }
 
         [HttpGet]
@@ -23,14 +19,12 @@ namespace InternetBanking.Controllers
             return _depositoRepositorio.GetAll();
         }
 
-        [HttpGet("{id}", Name = "GetDeposito")]
-        public IActionResult GetById(int idDeposito)
-        {
-            var deposito = _depositoRepositorio.FindByDeposito(idDeposito);
-
-            if (deposito == null) return NotFound();
+        [HttpPost]
+        public IActionResult Create([FromBody] Deposito deposito){
+            if (deposito == null) return BadRequest();
             
-            return new ObjectResult(deposito);
+            _depositoRepositorio.AddDeposito(deposito);
+            return new ObjectResult(_depositoRepositorio.FindByID(deposito.idDeposito));
         }
     }
 }

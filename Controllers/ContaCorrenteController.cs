@@ -19,6 +19,14 @@ namespace InternetBanking.Controllers
             return _contaCorrenteRepositorio.GetAll();
         }
 
+        public void Deposito(decimal valor){
+                _contaCorrenteRepositorio.FindByContaCorrente(0).saldo += valor;
+        } 
+
+        public void Saque(decimal valor){
+                _contaCorrenteRepositorio.FindByContaCorrente(0).saldo -= valor;
+        }
+
         [HttpPost]
         public IActionResult Create([FromBody] ContaCorrente contaCorrente){
             if (contaCorrente == null) return BadRequest();

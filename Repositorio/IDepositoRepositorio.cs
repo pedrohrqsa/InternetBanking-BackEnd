@@ -7,6 +7,6 @@ namespace InternetBanking.Repositorio
     {
         void AddDeposito(Deposito deposito);
         IEnumerable<Deposito> GetAll();
-        Deposito FindByDeposito(int deposito);
+        Deposito FindByID(int id);
     }
 }
