@@ -2,6 +2,7 @@ using InternetBanking.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using InternetBanking.Repositorio;
+using System;
 
 namespace InternetBanking.Controllers
 {
@@ -9,7 +10,7 @@ namespace InternetBanking.Controllers
     public class SaqueController : Controller
     {
         private readonly ISaqueRepositorio _saqueRepositorio;
-        private readonly IContaCorrenteRepositorio _contaCorrenteRepositorio;
+        // private readonly IContaCorrenteRepositorio _contaCorrenteRepositorio;
 
         public SaqueController(ISaqueRepositorio saqueRepositorio)
         {
@@ -19,17 +20,16 @@ namespace InternetBanking.Controllers
         [HttpGet]
         public IEnumerable<Saque> GetAll()
         {
-            return _saqueRepositorio.GetAll();
+            var x = _saqueRepositorio.GetAll();
+            return x;
         }
 
         [HttpGet("{id}", Name = "GetSaque")]
         public IActionResult GetById(int idSaque)
         {
-            var saque = _saqueRepositorio.FindBySaque(idSaque);
-
-            if (saque == null) return NotFound();
+            var y = _saqueRepositorio.validaSaque(12, 5000);
             
-            return new ObjectResult(saque);
+            return new ObjectResult(y);
         }
     }
 }

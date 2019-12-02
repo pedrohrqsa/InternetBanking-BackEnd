@@ -7,6 +7,7 @@ namespace InternetBanking.Repositorio
     {
          void AddSaque(Saque saque);
         IEnumerable<Saque> GetAll();
-        Saque FindBySaque(int saque);
+        decimal GetById(int saque);
+        decimal validaSaque(decimal valorSaque, decimal saldoAtual);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using InternetBanking.Models;
@@ -7,9 +8,11 @@ namespace InternetBanking.Repositorio
     public class DepositoRepositorio : IDepositoRepositorio
     {
         private readonly TransacaoDB _contexto;
-        public DepositoRepositorio(TransacaoDB ctx)
+        private readonly ContaCorrenteDB _contextoCC;
+        public DepositoRepositorio(TransacaoDB ctx, ContaCorrenteDB ctxCC)
         {
             _contexto = ctx;
+            _contextoCC = ctxCC;
         }
         public void AddDeposito(Deposito deposito)
         {
