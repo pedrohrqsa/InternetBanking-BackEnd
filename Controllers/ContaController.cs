@@ -19,6 +19,17 @@ namespace InternetBanking.Controllers
             return _contaRepositorio.GetAll();
         }
 
+        
+        [HttpGet("{conta}", Name = "GetConta")]
+        public IActionResult GetByCont(int id)
+        {
+            var conta = _contaRepositorio.FindByConta(id);
+
+            if (conta == null) return NotFound();
+            return new ObjectResult(conta);
+        }
+
+
         [HttpPost]
         public IActionResult Create([FromBody] Conta conta){
             if (conta == null) return BadRequest();
