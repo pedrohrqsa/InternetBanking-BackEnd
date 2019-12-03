@@ -7,12 +7,9 @@ namespace InternetBanking.Repositorio
     {
         void AddContaCorrente(ContaCorrente contaCorrente);
         IEnumerable<ContaCorrente> GetAll();
-
-        void Saque(decimal valor);
-
-        void Deposito(decimal valor);
-        ContaCorrente FindByContaCorrente(int idContaCorrente);
-
+        ContaCorrente FindByContaCorrente(int id);
         void Update(ContaCorrente contaCorrente);
+        void Deposito(int numConta, decimal valor);
+        void Saque(int numConta, decimal valor);
     }
 }

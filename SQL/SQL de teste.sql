@@ -98,36 +98,29 @@ CREATE TABLE ContaCorrente(
 );
 
 ---------------------------------------------------------------------------------------------------------------------------
+-- DROP TABLE TipoTransacao;
+-- DELETE FROM TipoTransacao;
+CREATE TABLE TipoTransacao(
+	idTipoTransacao							INT										NOT NULL					PRIMARY KEY,
+	cdTipoTransacao							INT										NOT NULL
+);
+
+---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Transacao;
 -- DELETE FROM Transacao;
 CREATE TABLE Transacao(
 	idTransacao							    INT										NOT NULL					IDENTITY(1, 1) PRIMARY KEY,
 	idContaCorrente							INT										NOT NULL,
-	dtTransacao							    DATE									NOT NULL	DEFAULT(GETDATE()),
-	CONSTRAINT FKContaTransacao			    FOREIGN KEY (idContaCorrente)					REFERENCES ContaCorrente(idContaCorrente)
-);
-
----------------------------------------------------------------------------------------------------------------------------
--- DROP TABLE Deposito;
--- DELETE FROM Deposito;
-CREATE TABLE Deposito(
-	idDeposito								INT										NOT NULL 					IDENTITY (1,1) PRIMARY KEY,
-	idTransacao								INT										NOT NULL,
+	idTipoTransacao							INT										NOT NULL,
+	dtTransacao							    DATE									NOT NULL					DEFAULT(GETDATE()),
+	numConta								INT										NOT NULL,
 	valor									NUMERIC									NOT NULL,
-	CONSTRAINT FKDepositoTransacao			FOREIGN KEY (idTransacao)					REFERENCES Transacao (idTransacao)
+	CONSTRAINT FKContaTransacao			    FOREIGN KEY (idContaCorrente)					REFERENCES ContaCorrente(idContaCorrente),
+	CONSTRAINT FKTipoTransacaoTransacao		FOREIGN KEY (idTipoTransacao)					REFERENCES TipoTransacao(idTipoTransacao)
 );
 
 ---------------------------------------------------------------------------------------------------------------------------
--- DROP TABLE Saque;
--- DELETE FROM Saque;
-CREATE TABLE Saque(
-	idSaque								    INT										NOT NULL 					IDENTITY (1,1) PRIMARY KEY,
-	idTransacao								INT										NOT NULL,
-	valor									NUMERIC									NOT NULL,
-	CONSTRAINT FKSaqueTransacao			    FOREIGN KEY (idTransacao)				REFERENCES Transacao (idTransacao)
-);
 
----------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Banco;
 -- DELETE FROM Banco;
 --CREATE TABLE Banco(
@@ -186,14 +179,9 @@ INSERT INTO ContaCorrente (idConta , numConta)
 VALUES (1, 01235456);
 
 -- TRANSACAO
-INSERT INTO Transacao (idContaCorrente)
-VALUES (1);
-
-INSERT INTO Deposito (idTransacao, valor)
-VALUES (1, 500);
-
-INSERT INTO Saque (idTransacao, valor)
-VALUES (1, 500);
+/*
+INSERT INTO Transacao (idContaCorrente, idTipoTransacao, numConta, valor)
+VALUES (1, 1, 123456, 500);
 
 -- INSERT INTO Banco (idBanco, idEndereco, nomeFantasia, cnpj, ispb)
 -- VALUES (1, 1, 'NomeFantasia', '11111111111111', '11111111');
@@ -203,7 +191,7 @@ VALUES (1, 500);
 
 -- INSERT INTO Transferencia (idTransferencia, contaOrigem, contaDestino)
 -- VALUES (1, 1111111111, 1111111112);
-
+*/
 
 -- COMANDOS SELECT
 /*
@@ -217,8 +205,6 @@ SELECT * FROM Conta;
 SELECT * FROM ContaCorrente;
 
 SELECT * FROM Transacao;
-SELECT * FROM Deposito;
-SELECT * FROM Saque;
 
 -- SELECT * FROM Agencia;
 -- SELECT * FROM Banco;
@@ -232,9 +218,8 @@ DROP TABLE Login;
 DROP TABLE Familiares;
 DROP TABLE Endereco;
 DROP TABLE Contato;
-DROP TABLE Deposito;
-DROP TABLE Saque;
 DROP TABLE Transacao;
+DROP TABLE TipoTransacao;
 DROP TABLE ContaCorrente;
 DROP TABLE Conta;
 DROP TABLE Cliente;
@@ -251,8 +236,6 @@ DELETE FROM Login;
 DELETE FROM Familiares;
 DELETE FROM Endereco;
 DELETE FROM Contato;
-DELETE FROM Deposito;
-DELETE FROM Saque;
 DELETE FROM Transacao;
 DELETE FROM ContaCorrente;
 DELETE FROM Conta;

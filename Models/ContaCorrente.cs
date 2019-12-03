@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InternetBanking.Models
 {
+    [Table("ContaCorrente")]
     public class ContaCorrente
     {
         [Key]
