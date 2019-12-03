@@ -9,8 +9,13 @@ namespace InternetBanking.Controllers
     public class ContaCorrenteController : Controller
     {
         private readonly IContaCorrenteRepositorio _contaCorrenteRepositorio;
-        public ContaCorrenteController(IContaCorrenteRepositorio contaCorrenteRepositorio){
+        private readonly ITransacaoRepositorio _transacaoRepositorio;
+
+        public ContaCorrenteController(IContaCorrenteRepositorio contaCorrenteRepositorio,
+            ITransacaoRepositorio transacaoRepositorio)
+        {
             _contaCorrenteRepositorio = contaCorrenteRepositorio;
+            _transacaoRepositorio = transacaoRepositorio;
         }
 
         [HttpGet]
@@ -19,6 +24,7 @@ namespace InternetBanking.Controllers
             return _contaCorrenteRepositorio.GetAll();
         }
 
+<<<<<<< HEAD
         [HttpGet("{contaCorrente}", Name = "GetContaCorrente")]
         public IActionResult GetByContaCorrente(int id)
         {
@@ -36,12 +42,26 @@ namespace InternetBanking.Controllers
             _contaCorrenteRepositorio.FindByContaCorrente(0).saldo -= valor;
         }
 
+=======
+>>>>>>> 665801a89aeb3c0cb800d76892b720d139b14a34
         [HttpPost]
-        public IActionResult Create([FromBody] ContaCorrente contaCorrente){
+        public IActionResult Create([FromBody] ContaCorrente contaCorrente)
+        {
             if (contaCorrente == null) return BadRequest();
             _contaCorrenteRepositorio.AddContaCorrente(contaCorrente);
             return new ObjectResult(_contaCorrenteRepositorio.FindByContaCorrente(contaCorrente.idContaCorrente));
         }
 
+        public void Deposito(Transacao deposito, int numConta, decimal valor)
+        {
+            _transacaoRepositorio.Deposito(deposito);
+            _contaCorrenteRepositorio.Deposito(numConta, valor);
+        }
+
+        public void Saque(Transacao saque, int numConta, decimal valor)
+        {
+            _transacaoRepositorio.Saque(saque);
+            _contaCorrenteRepositorio.Saque(numConta, valor);
+        }
     }
 }

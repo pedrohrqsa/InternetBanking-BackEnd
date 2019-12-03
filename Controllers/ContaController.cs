@@ -9,7 +9,9 @@ namespace InternetBanking.Controllers
     public class ContaController : Controller
     {
         private readonly IContaRepositorio _contaRepositorio;
-        public ContaController(IContaRepositorio ContaRepositorio){
+
+        public ContaController(IContaRepositorio ContaRepositorio)
+        {
             _contaRepositorio = ContaRepositorio;
         }
 
@@ -31,7 +33,8 @@ namespace InternetBanking.Controllers
 
 
         [HttpPost]
-        public IActionResult Create([FromBody] Conta conta){
+        public IActionResult Create([FromBody] Conta conta)
+        {
             if (conta == null) return BadRequest();
             
             _contaRepositorio.AddConta(conta);
