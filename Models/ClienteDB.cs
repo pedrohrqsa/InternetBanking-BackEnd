@@ -5,7 +5,9 @@ namespace InternetBanking.Models
 {
     public class ClienteDB : DbContext
     {
-        public ClienteDB(DbContextOptions<ClienteDB> options) : base(options) { }
+        public ClienteDB(DbContextOptions<ClienteDB> options)
+            : base(options) { }
+            
         public DbSet<ClienteLogin> ClienteLogin { get; set; }
         public DbSet<Cliente> Cliente { get; set; }
         public DbSet<Endereco> Endereco { get; set; }
@@ -20,8 +22,8 @@ namespace InternetBanking.Models
             modelBuilder.Entity<Cliente>().HasKey(cl => cl.idCliente);
             modelBuilder.Entity<ClienteLogin>().HasKey(cl => cl.idLogin);
             modelBuilder.Entity<ClienteLogin>()
-                 .HasOne(p => p.Cliente)
-                 .WithMany(b => b.clienteLogin);
+                .HasOne(p => p.Cliente)
+                .WithMany(b => b.clienteLogin);
 
 
             modelBuilder.Entity<Cliente>().HasKey(cl => cl.idCliente);
@@ -47,8 +49,8 @@ namespace InternetBanking.Models
             modelBuilder.Entity<Cliente>().HasKey(cl => cl.idCliente);
             modelBuilder.Entity<Conta>().HasKey(cl => cl.idConta);
             modelBuilder.Entity<Conta>()
-                 .HasOne(p => p.Cliente)
-                 .WithMany(b => b.Conta);
+                .HasOne(p => p.Cliente)
+                .WithMany(b => b.Conta);
         }
     }
 }

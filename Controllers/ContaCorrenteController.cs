@@ -9,8 +9,13 @@ namespace InternetBanking.Controllers
     public class ContaCorrenteController : Controller
     {
         private readonly IContaCorrenteRepositorio _contaCorrenteRepositorio;
-        public ContaCorrenteController(IContaCorrenteRepositorio contaCorrenteRepositorio){
+        private readonly ITransacaoRepositorio _transacaoRepositorio;
+
+        public ContaCorrenteController(IContaCorrenteRepositorio contaCorrenteRepositorio,
+            ITransacaoRepositorio transacaoRepositorio)
+        {
             _contaCorrenteRepositorio = contaCorrenteRepositorio;
+            _transacaoRepositorio = transacaoRepositorio;
         }
 
         [HttpGet]
@@ -19,20 +24,24 @@ namespace InternetBanking.Controllers
             return _contaCorrenteRepositorio.GetAll();
         }
 
-        public void Deposito(decimal valor){
-            _contaCorrenteRepositorio.FindByContaCorrente(0).saldo += valor;
-        } 
-
-        public void Saque(decimal valor){
-            _contaCorrenteRepositorio.FindByContaCorrente(0).saldo -= valor;
-        }
-
         [HttpPost]
-        public IActionResult Create([FromBody] ContaCorrente contaCorrente){
+        public IActionResult Create([FromBody] ContaCorrente contaCorrente)
+        {
             if (contaCorrente == null) return BadRequest();
             _contaCorrenteRepositorio.AddContaCorrente(contaCorrente);
             return new ObjectResult(_contaCorrenteRepositorio.FindByContaCorrente(contaCorrente.idContaCorrente));
         }
 
+        public void Deposito(Transacao deposito, int numConta, decimal valor)
+        {
+            _transacaoRepositorio.Deposito(deposito);
+            _contaCorrenteRepositorio.Deposito(numConta, valor);
+        }
+
+        public void Saque(Transacao saque, int numConta, decimal valor)
+        {
+            _transacaoRepositorio.Saque(saque);
+            _contaCorrenteRepositorio.Saque(numConta, valor);
+        }
     }
 }

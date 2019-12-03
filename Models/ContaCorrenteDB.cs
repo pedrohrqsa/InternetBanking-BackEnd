@@ -8,15 +8,6 @@ namespace InternetBanking.Models
             : base(options) { }
             
         public DbSet<ContaCorrente> ContaCorrente {get; set;}
-        // public DbSet<Transacao> Transacao { get; set; }
-
-        // protected override void OnModelCreating(ModelBuilder modelBuilder)
-        // {
-        //     modelBuilder.Entity<ContaCorrente>().HasKey(cl => cl.idContaCorrente);
-        //     modelBuilder.Entity<Transacao>().HasKey(cl => cl.idTransacao);
-        //     modelBuilder.Entity<Transacao>()
-        //          .HasOne(p => p.ContaCorrente)
-        //          .WithMany(b => b.Transacao);
-        // }
+        public DbSet<Transacao> Transacao { get; set; }
     }
 }
