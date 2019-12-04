@@ -1,2 +1,2 @@
-# Ignores appsettings.json
 appsettings.json
+obj/Debug/netcoreapp3.0/test.assets.cache
