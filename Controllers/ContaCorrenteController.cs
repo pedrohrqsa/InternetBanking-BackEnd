@@ -2,6 +2,7 @@ using InternetBanking.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using InternetBanking.Repositorio;
+using System;
 
 namespace InternetBanking.Controllers
 {
@@ -24,7 +25,6 @@ namespace InternetBanking.Controllers
             return _contaCorrenteRepositorio.GetAll();
         }
 
-        [HttpPost]
         public IActionResult Create([FromBody] ContaCorrente contaCorrente)
         {
             if (contaCorrente == null) return BadRequest();
@@ -32,10 +32,27 @@ namespace InternetBanking.Controllers
             return new ObjectResult(_contaCorrenteRepositorio.FindByContaCorrente(contaCorrente.idContaCorrente));
         }
 
-        public void Deposito(Transacao deposito, int numConta, decimal valor)
+        [HttpPost]
+        public IActionResult Deposito(Transacao deposito)
         {
-            _transacaoRepositorio.Deposito(deposito);
-            _contaCorrenteRepositorio.Deposito(numConta, valor);
+            try
+            {
+                bool depositoEfetuado = _transacaoRepositorio.Deposito(deposito);
+                if (depositoEfetuado)
+                {
+                    _contaCorrenteRepositorio.Deposito(deposito.numConta, deposito.valor);
+                }
+                else
+                {
+                    return new ObjectResult("erro não identificado!!!");
+                }
+
+            }
+            catch (Exception e)
+            {
+                return new ObjectResult(e);
+            }
+            return new ObjectResult(_contaCorrenteRepositorio.FindByContaCorrente(deposito.numConta));
         }
 
         public void Saque(Transacao saque, int numConta, decimal valor)

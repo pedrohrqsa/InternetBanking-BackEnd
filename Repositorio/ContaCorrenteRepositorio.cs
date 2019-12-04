@@ -19,9 +19,9 @@ namespace InternetBanking.Repositorio
             _contexto.SaveChanges();
         }
 
-        public ContaCorrente FindByContaCorrente(int idContaCorrente)
+        public ContaCorrente FindByContaCorrente(int numConta)
         {
-            return _contexto.ContaCorrente.FirstOrDefault(u => u.idContaCorrente == idContaCorrente);
+            return _contexto.ContaCorrente.FirstOrDefault(u => u.numConta == numConta);
         }
 
         public IEnumerable<ContaCorrente> GetAll()

@@ -8,7 +8,8 @@ namespace InternetBanking.Repositorio
         void AddTransacao(Transacao transacao);
         IEnumerable<Transacao> GetAll();
         Transacao FindByID(int id);
-        void Deposito(Transacao deposito);
-        void Saque(Transacao saque);
+        void Update(Deposito deposito);
+        bool Deposito(Transacao deposito);
+        // void Saque(Transacao saque);
     }
 }
