@@ -37,16 +37,32 @@ namespace InternetBanking.Repositorio
 
         public void Deposito(int idContaCorrente, int numeroConta, decimal valor)
         {
-            var contaCorrentee = FindByContaCorrente(idContaCorrente);
-            contaCorrentee.saldo += valor;
-            _contexto.SaveChanges();
+            var contaCorrente = FindByContaCorrente(idContaCorrente);
+
+            if(valor <= 0)
+            {
+                throw new System.Exception();
+            }
+            else
+            {
+                contaCorrente.saldo += valor;
+                _contexto.SaveChanges();
+            }
         }
 
         public void Saque(int idContaCorrente, int numeroConta, decimal valor)
         {
             var contaCorrente = FindByContaCorrente(idContaCorrente);
-            contaCorrente.saldo -= valor;
-            _contexto.SaveChanges();
+            
+            if(contaCorrente.saldo < valor || valor <= 0)
+            {
+                throw new System.Exception(); 
+            }
+            else
+            {
+                contaCorrente.saldo -= valor;
+                _contexto.SaveChanges();
+            }
         }
     }
 }
