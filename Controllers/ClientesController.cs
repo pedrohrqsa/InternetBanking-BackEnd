@@ -30,12 +30,19 @@ namespace InternetBanking.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Cliente cliente)
+        public IActionResult Create([FromBody] Cliente cliente, ContaCorrente cc, Conta c)
         {
             if (cliente == null) return BadRequest();
 
-            _clienteRepositorio.AddCliente(cliente);
+            // ContaCorrente cc = new ContaCorrente();
 
+            if (cc.numeroConta == 0)
+            {
+                Random randNum = new Random();
+                cc.numeroConta = (randNum.Next(1001, 9999));
+            }
+
+            _clienteRepositorio.AddCliente(cliente);
             return new ObjectResult(new ClienteLogin());
         }
     }

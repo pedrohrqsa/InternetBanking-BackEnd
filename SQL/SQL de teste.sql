@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------------------------------------------------------
 
 -- CREATE DATABASE InternetBanking;
-USE InternetBanking;
+--USE InternetBanking;
 
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Cliente;
@@ -68,7 +68,7 @@ CREATE TABLE Contato(
 	email								    VARCHAR(30)								NOT NULL									UNIQUE,
 	telResid							    VARCHAR(12)									NULL,
 	telCel								    VARCHAR(13)								NOT NULL									UNIQUE,
-	flagStatus							    CHAR(1)			DEFAULT(1)				NOT NULL,
+	flagStatus							    CHAR(1)		DEFAULT(1)					NOT NULL,
 	CONSTRAINT FKClienteContato			    FOREIGN KEY (idCliente)					REFERENCES Cliente (idCliente)
 );
 
@@ -92,9 +92,20 @@ CREATE TABLE Conta(
 CREATE TABLE ContaCorrente(
 	idContaCorrente						    INT										NOT NULL	IDENTITY(1, 1)					PRIMARY KEY,
 	idConta									INT										NOT NULL,
-	numeroConta							    INT										NOT NULL,
+	numeroConta							    numeric default rand()					NOT NULL UNIQUE,
 	saldo								    NUMERIC  DEFAULT(0)						NOT NULL,
 	CONSTRAINT FKContaContaCorrente			FOREIGN KEY (idConta)					REFERENCES Conta(idConta)
+);
+
+---------------------------------------------------------------------------------------------------------------------------
+ --DROP TABLE Agencia;
+ --DELETE FROM Agencia;
+CREATE TABLE Agencia(
+	idAgencia							    INT										NOT NULL									PRIMARY KEY,
+	idConta									INT										NOT NULL,
+	cepAgencia								varchar(8)								NULL,
+	numeroAgencia							    INT									NULL DEFAULT(6969),
+	CONSTRAINT FKContaAgencia			    FOREIGN KEY (idConta)					REFERENCES Conta (idConta)
 );
 
 ---------------------------------------------------------------------------------------------------------------------------
@@ -114,28 +125,6 @@ CREATE TABLE Transacao(
 );
 
 ---------------------------------------------------------------------------------------------------------------------------
--- DROP TABLE Banco;
--- DELETE FROM Banco;
---CREATE TABLE Banco(
---	idBanco								    INT										NOT NULL									PRIMARY KEY,
---	idEndereco							    INT										NOT NULL,
---	nomeFantasia						    VARCHAR(30)								NOT NULL,
---	cnpj								    VARCHAR(14)								NOT NULL,
---	ispb								    VARCHAR(8)								NOT NULL
---);
-
----------------------------------------------------------------------------------------------------------------------------
--- DROP TABLE Agencia;
--- DELETE FROM Agencia;
---CREATE TABLE Agencia(
---	idAgencia							    INT										NOT NULL									PRIMARY KEY,
---	idBanco								    INT										NOT NULL,
---	numAgencia							    INT										NOT NULL,
---	CONSTRAINT FKBancoAgencia			    FOREIGN KEY (idBanco)					REFERENCES Banco (idBanco)
---);
-
----------------------------------------------------------------------------------------------------------------------------
-
 
 -- COMANDOS INSERT
 
@@ -143,34 +132,26 @@ CREATE TABLE Transacao(
 INSERT INTO Cliente (cpf, rg, orgaoEmissor, dtNascimento, nome, sobrenome, nacionalidade, naturalidade)
 VALUES ('11111111111', '111111111', 'SSPSP', '2000-01-01', 'Nome', 'Sobrenome', 'Nacionalidade', 'Naturalidade');
 
-INSERT INTO Login (idCliente, cpf, senha)
-VALUES (1, '11111111111', 'senha');
+--INSERT INTO Login (idCliente, cpf, senha)
+--VALUES (1, '11111111111', 'senha');
 
-INSERT INTO Familiares (idCliente, nomeMae, sobrenomeMae, nomePai, sobrenomePai)
-VALUES (1, 'NomeMãe', 'SobrenomeMãe', 'NomePai', 'SobrenomePai');
+--INSERT INTO Familiares (idCliente, nomeMae, sobrenomeMae, nomePai, sobrenomePai)
+--VALUES (1, 'NomeMãe', 'SobrenomeMãe', 'NomePai', 'SobrenomePai');
 
-INSERT INTO Endereco (idCliente, logradouro, numero, complemento, bairro, cidade, siglaEstado, cep)
-VALUES (1, 'Rua Logradouro', 1, 'Complemento', 'Bairro', 'Cidade', 'SP', '11111111');
+--INSERT INTO Endereco (idCliente, logradouro, numero, complemento, bairro, cidade, siglaEstado, cep)
+--VALUES (1, 'Rua Logradouro', 1, 'Complemento', 'Bairro', 'Cidade', 'SP', '11111111');
 
-INSERT INTO Contato (idCliente, email, telResid, telCel)
-VALUES (1, 'email@email.com', '11 0000-0000','11 11111-1111');
+--INSERT INTO Contato (idCliente, email, telResid, telCel)
+--VALUES (1, 'email@email.com', '11 0000-0000','11 11111-1111');
 
+INSERT INTO Conta (idCliente, senhaTransacoes)
+VALUES (1, 1234);
 
--- CONTA
-INSERT INTO Cliente (cpf, rg, orgaoEmissor, dtNascimento, nome, sobrenome, nacionalidade, naturalidade)
-VALUES ('11111111112', '111111112', 'SSPSP', '2000-01-01', 'Nome', 'Sobrenome', 'Nacionalidade', 'Naturalidade');
-
-INSERT INTO Conta (idCliente)
+INSERT INTO ContaCorrente (idConta)
 VALUES (1);
 
-INSERT INTO ContaCorrente (idConta , numeroConta)
-VALUES (1, 123456);
-
-INSERT INTO Conta (idCliente)
-VALUES (2);
-
-INSERT INTO ContaCorrente (idConta , numeroConta)
-VALUES (2, 654321);
+--INSERT INTO Agencia (idAgencia, idConta ,cepAgencia, numeroAgencia)
+--VALUES (1, 1, '06325858', 1324);
 
 -- TRANSACAO
 /*
@@ -180,12 +161,9 @@ VALUES (1, 1, 123456, 500);
 -- INSERT INTO Banco (idBanco, idEndereco, nomeFantasia, cnpj, ispb)
 -- VALUES (1, 1, 'NomeFantasia', '11111111111111', '11111111');
 
--- INSERT INTO Agencia (idAgencia, idBanco, numAgencia)
--- VALUES (1, 1, 1);
 */
 
--- COMANDOS SELECT
-/*
+--COMANDOS SELECT
 SELECT * FROM Cliente;
 SELECT * FROM Login;
 SELECT * FROM Familiares;
@@ -196,11 +174,7 @@ SELECT * FROM Conta;
 SELECT * FROM ContaCorrente;
 
 SELECT * FROM Transacao;
-
--- SELECT * FROM Agencia;
--- SELECT * FROM Banco;
-*/
-
+SELECT * FROM Agencia;
 
 -- COMANDOS DROP
 /*
@@ -209,13 +183,10 @@ DROP TABLE Familiares;
 DROP TABLE Endereco;
 DROP TABLE Contato;
 DROP TABLE Transacao;
-DROP TABLE TipoTransacao;
 DROP TABLE ContaCorrente;
+DROP TABLE Agencia;
 DROP TABLE Conta;
 DROP TABLE Cliente;
-
--- DROP TABLE Agencia;
--- DROP TABLE Banco;
 */
 
 
@@ -227,10 +198,10 @@ DELETE FROM Endereco;
 DELETE FROM Contato;
 DELETE FROM Transacao;
 DELETE FROM ContaCorrente;
+DELETE FROM Agencia;
 DELETE FROM Conta;
 DELETE FROM Cliente;
 
--- DELETE FROM Agencia;
 -- DELETE FROM Banco;
 -- DELETE FROM Transferencia;
 */

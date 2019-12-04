@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using InternetBanking.Models;
@@ -11,13 +12,13 @@ namespace InternetBanking.Repositorio
         {
             _contexto = ctx;
         }
-        
+
         public void AddCliente(Cliente cliente)
         {
-            _contexto.Cliente.Add(cliente);
-            _contexto.SaveChanges();
+                _contexto.Cliente.Add(cliente);
+                _contexto.SaveChanges();
         }
-        
+
         public Cliente FindByCpf(string cpf)
         {
             return _contexto.Cliente.FirstOrDefault(c => c.cpf == cpf);
