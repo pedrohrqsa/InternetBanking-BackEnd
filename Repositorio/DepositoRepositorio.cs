@@ -13,7 +13,7 @@ namespace InternetBanking.Repositorio
             _contexto = ctx;
         }
 
-        public void AddDeposito(Deposito deposito)
+        public void AddDeposito(Transacao deposito)
         {
             _contexto.Transacao.Add(deposito);
             _contexto.SaveChanges();

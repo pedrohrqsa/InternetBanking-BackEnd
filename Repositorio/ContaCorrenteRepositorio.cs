@@ -19,9 +19,9 @@ namespace InternetBanking.Repositorio
             _contexto.SaveChanges();
         }
 
-        public ContaCorrente FindByContaCorrente(int numConta)
+        public ContaCorrente FindByContaCorrente(int id)
         {
-            return _contexto.ContaCorrente.FirstOrDefault(u => u.numConta == numConta);
+            return _contexto.ContaCorrente.FirstOrDefault(c => c.idContaCorrente == id);
         }
 
         public IEnumerable<ContaCorrente> GetAll()
@@ -35,16 +35,16 @@ namespace InternetBanking.Repositorio
             _contexto.SaveChanges();
         }
 
-        public void Deposito(int conta, decimal valor)
+        public void Deposito(int numeroConta, decimal valor)
         {
-            var contaCorrente = FindByContaCorrente(conta);
-            contaCorrente.saldo += valor;
+            var contaCorrentee = FindByContaCorrente(id);
+            contaCorrentee.saldo += valor;
             _contexto.SaveChanges();
         }
 
-        public void Saque(int conta, decimal valor)
+        public void Saque(int numeroConta, decimal valor)
         {
-            var contaCorrente = FindByContaCorrente(conta);
+            var contaCorrente = FindByContaCorrente(numeroConta);
             contaCorrente.saldo -= valor;
             _contexto.SaveChanges();
         }

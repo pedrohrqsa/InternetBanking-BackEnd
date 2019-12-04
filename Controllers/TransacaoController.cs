@@ -9,10 +9,13 @@ namespace InternetBanking.Controllers
     public class TransacaoController : Controller
     {
         private readonly ITransacaoRepositorio _transacaoRepositorio;
+        private readonly IContaCorrenteRepositorio _contaCorrenteRepositorio;
         
-        public TransacaoController(ITransacaoRepositorio ContaRepositorio)
+        public TransacaoController(ITransacaoRepositorio transacaoRepositorio,
+            IContaCorrenteRepositorio contaCorrenteRepositorio)
         {
-            _transacaoRepositorio = ContaRepositorio;
+            _transacaoRepositorio = transacaoRepositorio;
+            _contaCorrenteRepositorio = contaCorrenteRepositorio;
         }
 
         [HttpGet]
@@ -25,6 +28,8 @@ namespace InternetBanking.Controllers
         public IActionResult Create([FromBody] Transacao deposito)
         {
             if (deposito == null) return BadRequest();
+
+            _contaCorrenteRepositorio.Deposito(deposito.numConta, deposito.valor);
             
             _transacaoRepositorio.Deposito(deposito);
             return new ObjectResult(_transacaoRepositorio.FindByID(deposito.idTransacao));

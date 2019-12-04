@@ -5,7 +5,7 @@ namespace InternetBanking.Repositorio
 {
     public interface IDepositoRepositorio
     {
-        void AddDeposito(Deposito deposito);
+        void AddDeposito(Transacao deposito);
         IEnumerable<Deposito> GetAll();
         Deposito FindByID(int id);
     }

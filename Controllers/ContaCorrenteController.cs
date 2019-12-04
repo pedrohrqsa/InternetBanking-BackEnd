@@ -34,20 +34,20 @@ namespace InternetBanking.Controllers
             return new ObjectResult(contaCorrente);
         }
 
-        public void Deposito(decimal valor){
-            _contaCorrenteRepositorio.FindByContaCorrente(0).saldo += valor;
-        } 
-
-        public void Saque(decimal valor){
-            _contaCorrenteRepositorio.FindByContaCorrente(0).saldo -= valor;
-        }
-
         [HttpPost]
         public IActionResult Create([FromBody] ContaCorrente contaCorrente)
         {
             if (contaCorrente == null) return BadRequest();
             _contaCorrenteRepositorio.AddContaCorrente(contaCorrente);
             return new ObjectResult(_contaCorrenteRepositorio.FindByContaCorrente(contaCorrente.idContaCorrente));
+        }
+
+        public void Deposito(decimal valor){
+            _contaCorrenteRepositorio.FindByContaCorrente(0).saldo += valor;
+        } 
+
+        public void Saque(decimal valor){
+            _contaCorrenteRepositorio.FindByContaCorrente(0).saldo -= valor;
         }
 
         [HttpPost]
@@ -64,7 +64,6 @@ namespace InternetBanking.Controllers
                 {
                     return new ObjectResult("erro não identificado!!!");
                 }
-
             }
             catch (Exception e)
             {
@@ -73,10 +72,26 @@ namespace InternetBanking.Controllers
             return new ObjectResult(_contaCorrenteRepositorio.FindByContaCorrente(deposito.numConta));
         }
 
-        public void Saque(Transacao saque, int numConta, decimal valor)
+        [HttpPost]
+        public IActionResult Saque(Transacao saque)
         {
-            _transacaoRepositorio.Saque(saque);
-            _contaCorrenteRepositorio.Saque(numConta, valor);
+            try
+            {
+                bool saqueEfetuado = _transacaoRepositorio.Saque(saque);
+                if (saqueEfetuado)
+                {
+                    _contaCorrenteRepositorio.Saque(saque.numConta, saque.valor);
+                }
+                else
+                {
+                    return new ObjectResult("erro não identificado!!!");
+                }
+            }
+            catch (Exception e)
+            {
+                return new ObjectResult(e);
+            }
+            return new ObjectResult(_contaCorrenteRepositorio.FindByContaCorrente(saque.numConta));
         }
     }
 }

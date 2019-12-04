@@ -26,22 +26,30 @@ namespace InternetBanking.Repositorio
             return _contextoTransacao.Transacao.ToList();
         }
 
-        // public void Deposito(Transacao deposito)
-        // {
-        //     _contextoTransacao.Transacao.Add(deposito);
-        //     _contextoTransacao.SaveChanges();
-        // }
-
         public void AddTransacao(Transacao transacao)
         {
             _contextoTransacao.Transacao.Add(transacao);
         }
 
-        public bool Deposito(Deposito deposito)
+        public bool Deposito(Transacao deposito)
         {
             try
             {
                 _contextoTransacao.Add(deposito);
+                _contextoTransacao.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool Saque(Transacao saque)
+        {
+            try
+            {
+                _contextoTransacao.Add(saque);
                 _contextoTransacao.SaveChanges();
             }
             catch (Exception e)

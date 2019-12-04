@@ -24,14 +24,12 @@ namespace InternetBanking.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Deposito deposito)
+        public IActionResult Create([FromBody] Transacao deposito)
         {
             if (deposito == null) return BadRequest();
 
-            _contaCorrenteRepositorio.Deposito(deposito.valor);
-
             _depositoRepositorio.AddDeposito(deposito);
-            return new ObjectResult(_depositoRepositorio.FindByID(deposito.idDeposito));
+            return new ObjectResult(_depositoRepositorio.FindByID(deposito.idTransacao));
         }
     }
 }
