@@ -29,7 +29,7 @@ namespace InternetBanking.Controllers
         {
             if (deposito == null) return BadRequest();
 
-            _contaCorrenteRepositorio.Deposito(deposito.numConta, deposito.valor);
+            _contaCorrenteRepositorio.Deposito(deposito.idContaCorrente, deposito.numConta, deposito.valor);
             
             _transacaoRepositorio.Deposito(deposito);
             return new ObjectResult(_transacaoRepositorio.FindByID(deposito.idTransacao));

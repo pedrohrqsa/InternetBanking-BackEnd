@@ -42,14 +42,6 @@ namespace InternetBanking.Controllers
             return new ObjectResult(_contaCorrenteRepositorio.FindByContaCorrente(contaCorrente.idContaCorrente));
         }
 
-        public void Deposito(decimal valor){
-            _contaCorrenteRepositorio.FindByContaCorrente(0).saldo += valor;
-        } 
-
-        public void Saque(decimal valor){
-            _contaCorrenteRepositorio.FindByContaCorrente(0).saldo -= valor;
-        }
-
         [HttpPost]
         public IActionResult Deposito(Transacao deposito)
         {
@@ -58,7 +50,7 @@ namespace InternetBanking.Controllers
                 bool depositoEfetuado = _transacaoRepositorio.Deposito(deposito);
                 if (depositoEfetuado)
                 {
-                    _contaCorrenteRepositorio.Deposito(deposito.numConta, deposito.valor);
+                    _contaCorrenteRepositorio.Deposito(deposito.idContaCorrente, deposito.numConta, deposito.valor);
                 }
                 else
                 {

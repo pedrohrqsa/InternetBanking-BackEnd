@@ -35,9 +35,9 @@ namespace InternetBanking.Repositorio
             _contexto.SaveChanges();
         }
 
-        public void Deposito(int numeroConta, decimal valor)
+        public void Deposito(int idContaCorrente, int numeroConta, decimal valor)
         {
-            var contaCorrentee = FindByContaCorrente(id);
+            var contaCorrentee = FindByContaCorrente(idContaCorrente);
             contaCorrentee.saldo += valor;
             _contexto.SaveChanges();
         }
