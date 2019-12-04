@@ -72,7 +72,7 @@ namespace InternetBanking.Controllers
                 bool saqueEfetuado = _transacaoRepositorio.Saque(saque);
                 if (saqueEfetuado)
                 {
-                    _contaCorrenteRepositorio.Saque(saque.numConta, saque.valor);
+                    _contaCorrenteRepositorio.Saque(saque.idContaCorrente, saque.numConta, saque.valor);
                 }
                 else
                 {

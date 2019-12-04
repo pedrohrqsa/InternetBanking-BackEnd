@@ -42,9 +42,9 @@ namespace InternetBanking.Repositorio
             _contexto.SaveChanges();
         }
 
-        public void Saque(int numeroConta, decimal valor)
+        public void Saque(int idContaCorrente, int numeroConta, decimal valor)
         {
-            var contaCorrente = FindByContaCorrente(numeroConta);
+            var contaCorrente = FindByContaCorrente(idContaCorrente);
             contaCorrente.saldo -= valor;
             _contexto.SaveChanges();
         }

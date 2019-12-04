@@ -10,6 +10,6 @@ namespace InternetBanking.Repositorio
         ContaCorrente FindByContaCorrente(int id);
         void Update(ContaCorrente contaCorrente);
         void Deposito(int idContaCorrente, int numeroConta, decimal valor);
-        void Saque(int numeroConta, decimal valor);
+        void Saque(int idContaCorrente, int numeroConta, decimal valor);
     }
 }
