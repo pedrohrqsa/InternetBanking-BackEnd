@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using InternetBanking.Models;
 using System.Linq;
+using System;
 
 namespace InternetBanking.Repositorio
 {
@@ -19,9 +20,14 @@ namespace InternetBanking.Repositorio
             _contexto.SaveChanges();
         }
 
-        public ContaCorrente FindByContaCorrente(int id)
+        public ContaCorrente FindByContaCorrenteOrigem(int numeroConta)
         {
-            return _contexto.ContaCorrente.FirstOrDefault(c => c.idContaCorrente == id);
+            return _contexto.ContaCorrente.FirstOrDefault(c => c.numeroConta == numeroConta);
+        }
+
+        public ContaCorrente FindByContaCorrenteDestino(int numeroConta)
+        {
+            return _contexto.ContaCorrente.FirstOrDefault(c => c.numeroConta == numeroConta);
         }
 
         public IEnumerable<ContaCorrente> GetAll()
@@ -35,13 +41,13 @@ namespace InternetBanking.Repositorio
             _contexto.SaveChanges();
         }
 
-        public void Deposito(int idContaCorrente, int numeroConta, decimal valor)
+        public void Deposito(int idContaCorrente, int numeroContaCorrenteDestino, decimal valor)
         {
-            var contaCorrente = FindByContaCorrente(idContaCorrente);
+            var contaCorrente = FindByContaCorrenteDestino(numeroContaCorrenteDestino);
 
             if(valor <= 0)
             {
-                throw new System.Exception();
+                Console.WriteLine("Depósito não efetuado.");
             }
             else
             {
@@ -50,13 +56,13 @@ namespace InternetBanking.Repositorio
             }
         }
 
-        public void Saque(int idContaCorrente, int numeroConta, decimal valor)
+        public void Saque(int idContaCorrente, int numeroContaOrigem, decimal valor)
         {
-            var contaCorrente = FindByContaCorrente(idContaCorrente);
+            var contaCorrente = FindByContaCorrenteOrigem(numeroContaOrigem);
             
             if(contaCorrente.saldo < valor || valor <= 0)
             {
-                throw new System.Exception(); 
+                Console.WriteLine("Saque não efetuado.");
             }
             else
             {
@@ -65,14 +71,15 @@ namespace InternetBanking.Repositorio
             }
         }
 
-        public void Transferencia(int idContaCorrenteOrigem, int idContaCorrenteDestino, int numeroContaOrigem, int numeroContaDestino, decimal valor)
+        public void Transferencia(int idContaCorrente, int numeroContaCorrenteOrigem,
+            int numeroContaCorrenteDestino, decimal valor)
         {
-            var contaCorrenteOrigem = FindByContaCorrente(idContaCorrenteOrigem);
-            var contaCorrenteDestino = FindByContaCorrente(idContaCorrenteDestino);
+            var contaCorrenteOrigem = FindByContaCorrenteOrigem(numeroContaCorrenteOrigem);
+            var contaCorrenteDestino = FindByContaCorrenteDestino(numeroContaCorrenteDestino);
             
             if(contaCorrenteOrigem.saldo < valor || valor <= 0)
             {
-                throw new System.Exception(); 
+                Console.WriteLine("Transferência não efetuada.");
             }
             else
             {

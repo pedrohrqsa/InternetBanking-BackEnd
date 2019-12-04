@@ -55,9 +55,3 @@ namespace InternetBanking.Models
         }
     }
 }
-
-// modelBuilder.Entity<Cl iente>().HasAlternateKey(cl => cl.cpf);
-// modelBuilder.Entity<Conta>().HasKey(cl => cl.cpfCliente);
-// modelBuilder.Entity<Conta>()
-//      .HasOne(p => p.Cliente)
-//      .WithMany(b => b.Conta);

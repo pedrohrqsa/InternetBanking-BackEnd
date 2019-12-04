@@ -10,7 +10,7 @@ namespace InternetBanking.Models
         [Key]
         public int idContaCorrente { get; set; }
         public int idConta { get; set; }
-        public int numConta { get; set; }
+        public int numeroConta { get; set; }
         public decimal saldo { get; set; }
 
         [ForeignKey("idConta")]

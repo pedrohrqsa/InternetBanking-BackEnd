@@ -92,27 +92,19 @@ CREATE TABLE Conta(
 CREATE TABLE ContaCorrente(
 	idContaCorrente						    INT										NOT NULL	IDENTITY(1, 1)					PRIMARY KEY,
 	idConta									INT										NOT NULL,
-	numConta							    INT										NOT NULL,
+	numeroConta							    INT										NOT NULL,
 	saldo								    NUMERIC  DEFAULT(0)						NOT NULL,
 	CONSTRAINT FKContaContaCorrente			FOREIGN KEY (idConta)					REFERENCES Conta(idConta)
 );
 
 ---------------------------------------------------------------------------------------------------------------------------
--- DROP TABLE TipoTransacao;
--- DELETE FROM TipoTransacao;
---CREATE TABLE TipoTransacao(
---	idTipoTransacao							INT										NOT NULL					PRIMARY KEY,
---	cdTipoTransacao							INT										NOT NULL,
---	-- CONSTRAINT FKTipoTransacaoTransacao		FOREIGN KEY (idTipoTransacao)					REFERENCES TipoTransacao(idTipoTransacao)
---);
-
----------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Transacao;
 -- DELETE FROM Transacao;
+-- QUANDO "numeroContaOrigem" ESTIVER COMO "0", É DEPÓSITO
+-- QUANDO "numeroContaDestino" ESTIVER COMO "0", É SAQUE
 CREATE TABLE Transacao(
 	idTransacao							    INT										NOT NULL					IDENTITY(1, 1) PRIMARY KEY,
-	idContaCorrenteOrigem					INT										NOT NULL,
-	idContaCorrenteDestino					INT										NOT NULL,
+	idContaCorrente							INT										NOT NULL,
 	idTipoTransacao							INT										NOT NULL,
 	dtTransacao							    DATE									NOT NULL					DEFAULT(GETDATE()),
 	numeroContaOrigem						INT										    NULL,
@@ -171,13 +163,13 @@ VALUES ('11111111112', '111111112', 'SSPSP', '2000-01-01', 'Nome', 'Sobrenome', 
 INSERT INTO Conta (idCliente)
 VALUES (1);
 
-INSERT INTO ContaCorrente (idConta , numConta)
-VALUES (1, 1235456);
+INSERT INTO ContaCorrente (idConta , numeroConta)
+VALUES (1, 123456);
 
 INSERT INTO Conta (idCliente)
 VALUES (2);
 
-INSERT INTO ContaCorrente (idConta , numConta)
+INSERT INTO ContaCorrente (idConta , numeroConta)
 VALUES (2, 654321);
 
 -- TRANSACAO

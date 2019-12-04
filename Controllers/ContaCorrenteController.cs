@@ -26,11 +26,12 @@ namespace InternetBanking.Controllers
         }
 
         [HttpGet("{contaCorrente}", Name = "GetContaCorrente")]
-        public IActionResult GetByContaCorrente(int id)
+        public IActionResult GetByContaCorrente(int numeroContaOrigem)
         {
-            var contaCorrente = _contaCorrenteRepositorio.FindByContaCorrente(id);
+            var contaCorrente = _contaCorrenteRepositorio.FindByContaCorrenteOrigem(numeroContaOrigem);
 
             if (contaCorrente == null) return NotFound();
+
             return new ObjectResult(contaCorrente);
         }
 
@@ -38,8 +39,10 @@ namespace InternetBanking.Controllers
         public IActionResult Create([FromBody] ContaCorrente contaCorrente)
         {
             if (contaCorrente == null) return BadRequest();
+
             _contaCorrenteRepositorio.AddContaCorrente(contaCorrente);
-            return new ObjectResult(_contaCorrenteRepositorio.FindByContaCorrente(contaCorrente.idContaCorrente));
+
+            return new ObjectResult(_contaCorrenteRepositorio.FindByContaCorrenteOrigem(contaCorrente.idContaCorrente));
         }
 
         [HttpPost]
@@ -50,18 +53,18 @@ namespace InternetBanking.Controllers
                 bool depositoEfetuado = _transacaoRepositorio.Deposito(deposito);
                 if (depositoEfetuado)
                 {
-                    _contaCorrenteRepositorio.Deposito(deposito.idContaCorrenteDestino, deposito.numeroContaDestino, deposito.valor);
+                    _contaCorrenteRepositorio.Deposito(deposito.idContaCorrente, deposito.numeroContaDestino, deposito.valor);
                 }
                 else
                 {
-                    return new ObjectResult("erro não identificado!!!");
+                    return new ObjectResult("Depósito não efetuado.");
                 }
             }
             catch (Exception e)
             {
                 return new ObjectResult(e);
             }
-            return new ObjectResult(_contaCorrenteRepositorio.FindByContaCorrente(deposito.numeroContaDestino));
+            return new ObjectResult(_contaCorrenteRepositorio.FindByContaCorrenteDestino(deposito.numeroContaDestino));
         }
 
         [HttpPost]
@@ -72,18 +75,41 @@ namespace InternetBanking.Controllers
                 bool saqueEfetuado = _transacaoRepositorio.Saque(saque);
                 if (saqueEfetuado)
                 {
-                    _contaCorrenteRepositorio.Saque(saque.idContaCorrenteOrigem, saque.numeroContaOrigem, saque.valor);
+                    _contaCorrenteRepositorio.Saque(saque.idContaCorrente, saque.numeroContaOrigem, saque.valor);
                 }
                 else
                 {
-                    return new ObjectResult("erro não identificado!!!");
+                    return new ObjectResult("Saque não efetuado.");
                 }
             }
             catch (Exception e)
             {
                 return new ObjectResult(e);
             }
-            return new ObjectResult(_contaCorrenteRepositorio.FindByContaCorrente(saque.numeroContaOrigem));
+            return new ObjectResult(_contaCorrenteRepositorio.FindByContaCorrenteOrigem(saque.numeroContaOrigem));
+        }
+
+        [HttpPost]
+        public IActionResult Transferencia(Transacao transferencia)
+        {
+            try
+            {
+                bool transferenciaEfetuada = _transacaoRepositorio.Transferencia(transferencia);
+                if (transferenciaEfetuada)
+                {
+                    _contaCorrenteRepositorio.Transferencia(transferencia.idContaCorrente,
+                        transferencia.numeroContaOrigem, transferencia.numeroContaDestino, transferencia.valor);
+                }
+                else
+                {
+                    return new ObjectResult("Transferência não efetuada.");
+                }
+            }
+            catch (Exception e)
+            {
+                return new ObjectResult(e);
+            }
+            return new ObjectResult(_contaCorrenteRepositorio.FindByContaCorrenteOrigem(transferencia.numeroContaOrigem));
         }
     }
 }
