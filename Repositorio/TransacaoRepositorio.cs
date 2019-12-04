@@ -58,5 +58,19 @@ namespace InternetBanking.Repositorio
             }
             return true;
         }
+
+        public bool Transferencia(Transacao transferencia)
+        {
+            try
+            {
+                _contextoTransacao.Add(transferencia);
+                _contextoTransacao.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

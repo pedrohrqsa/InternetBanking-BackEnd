@@ -100,27 +100,28 @@ CREATE TABLE ContaCorrente(
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE TipoTransacao;
 -- DELETE FROM TipoTransacao;
-CREATE TABLE TipoTransacao(
-	idTipoTransacao							INT										NOT NULL					PRIMARY KEY,
-	cdTipoTransacao							INT										NOT NULL
-);
+--CREATE TABLE TipoTransacao(
+--	idTipoTransacao							INT										NOT NULL					PRIMARY KEY,
+--	cdTipoTransacao							INT										NOT NULL,
+--	-- CONSTRAINT FKTipoTransacaoTransacao		FOREIGN KEY (idTipoTransacao)					REFERENCES TipoTransacao(idTipoTransacao)
+--);
 
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Transacao;
 -- DELETE FROM Transacao;
 CREATE TABLE Transacao(
 	idTransacao							    INT										NOT NULL					IDENTITY(1, 1) PRIMARY KEY,
-	idContaCorrente							INT										NOT NULL,
+	idContaCorrenteOrigem					INT										NOT NULL,
+	idContaCorrenteDestino					INT										NOT NULL,
 	idTipoTransacao							INT										NOT NULL,
 	dtTransacao							    DATE									NOT NULL					DEFAULT(GETDATE()),
-	numConta								INT										NOT NULL,
+	numeroContaOrigem						INT										    NULL,
+	numeroContaDestino						INT											NULL,
 	valor									NUMERIC									NOT NULL,
-	CONSTRAINT FKContaTransacao			    FOREIGN KEY (idContaCorrente)					REFERENCES ContaCorrente(idContaCorrente),
-	CONSTRAINT FKTipoTransacaoTransacao		FOREIGN KEY (idTipoTransacao)					REFERENCES TipoTransacao(idTipoTransacao)
+	CONSTRAINT FKContaTransacao			    FOREIGN KEY (idContaCorrente)					REFERENCES ContaCorrente(idContaCorrente)
 );
 
 ---------------------------------------------------------------------------------------------------------------------------
-
 -- DROP TABLE Banco;
 -- DELETE FROM Banco;
 --CREATE TABLE Banco(
@@ -139,15 +140,6 @@ CREATE TABLE Transacao(
 --	idBanco								    INT										NOT NULL,
 --	numAgencia							    INT										NOT NULL,
 --	CONSTRAINT FKBancoAgencia			    FOREIGN KEY (idBanco)					REFERENCES Banco (idBanco)
---);
-
----------------------------------------------------------------------------------------------------------------------------
--- DROP TABLE Transferencia;
--- DELETE FROM Transferencia;
---CREATE TABLE Transferencia(
---	idTransferencia						    INT										NOT NULL									PRIMARY KEY,
---	contaOrigem							    INT										NOT NULL,
---	contaDestino						    INT										NOT NULL
 --);
 
 ---------------------------------------------------------------------------------------------------------------------------
@@ -171,12 +163,22 @@ VALUES (1, 'Rua Logradouro', 1, 'Complemento', 'Bairro', 'Cidade', 'SP', '111111
 INSERT INTO Contato (idCliente, email, telResid, telCel)
 VALUES (1, 'email@email.com', '11 0000-0000','11 11111-1111');
 
+
 -- CONTA
+INSERT INTO Cliente (cpf, rg, orgaoEmissor, dtNascimento, nome, sobrenome, nacionalidade, naturalidade)
+VALUES ('11111111112', '111111112', 'SSPSP', '2000-01-01', 'Nome', 'Sobrenome', 'Nacionalidade', 'Naturalidade');
+
 INSERT INTO Conta (idCliente)
 VALUES (1);
 
 INSERT INTO ContaCorrente (idConta , numConta)
-VALUES (1, 01235456);
+VALUES (1, 1235456);
+
+INSERT INTO Conta (idCliente)
+VALUES (2);
+
+INSERT INTO ContaCorrente (idConta , numConta)
+VALUES (2, 654321);
 
 -- TRANSACAO
 /*
@@ -188,9 +190,6 @@ VALUES (1, 1, 123456, 500);
 
 -- INSERT INTO Agencia (idAgencia, idBanco, numAgencia)
 -- VALUES (1, 1, 1);
-
--- INSERT INTO Transferencia (idTransferencia, contaOrigem, contaDestino)
--- VALUES (1, 1111111111, 1111111112);
 */
 
 -- COMANDOS SELECT
@@ -208,7 +207,6 @@ SELECT * FROM Transacao;
 
 -- SELECT * FROM Agencia;
 -- SELECT * FROM Banco;
--- SELECT * FROM Transferencia;
 */
 
 
@@ -226,7 +224,6 @@ DROP TABLE Cliente;
 
 -- DROP TABLE Agencia;
 -- DROP TABLE Banco;
--- DROP TABLE Transferencia;
 */
 
 

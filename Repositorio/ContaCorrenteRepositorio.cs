@@ -64,5 +64,22 @@ namespace InternetBanking.Repositorio
                 _contexto.SaveChanges();
             }
         }
+
+        public void Transferencia(int idContaCorrenteOrigem, int idContaCorrenteDestino, int numeroContaOrigem, int numeroContaDestino, decimal valor)
+        {
+            var contaCorrenteOrigem = FindByContaCorrente(idContaCorrenteOrigem);
+            var contaCorrenteDestino = FindByContaCorrente(idContaCorrenteDestino);
+            
+            if(contaCorrenteOrigem.saldo < valor || valor <= 0)
+            {
+                throw new System.Exception(); 
+            }
+            else
+            {
+                contaCorrenteOrigem.saldo -= valor;
+                contaCorrenteDestino.saldo += valor;
+                _contexto.SaveChanges();
+            }
+        }
     }
 }

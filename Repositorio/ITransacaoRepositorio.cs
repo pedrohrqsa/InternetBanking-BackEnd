@@ -10,5 +10,6 @@ namespace InternetBanking.Repositorio
         Transacao FindByID(int id);
         bool Deposito(Transacao deposito);
         bool Saque(Transacao saque);
+        bool Transferencia(Transacao transferencia);
     }
 }

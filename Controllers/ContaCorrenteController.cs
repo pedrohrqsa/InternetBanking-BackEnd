@@ -50,7 +50,7 @@ namespace InternetBanking.Controllers
                 bool depositoEfetuado = _transacaoRepositorio.Deposito(deposito);
                 if (depositoEfetuado)
                 {
-                    _contaCorrenteRepositorio.Deposito(deposito.idContaCorrente, deposito.numConta, deposito.valor);
+                    _contaCorrenteRepositorio.Deposito(deposito.idContaCorrenteDestino, deposito.numeroContaDestino, deposito.valor);
                 }
                 else
                 {
@@ -61,7 +61,7 @@ namespace InternetBanking.Controllers
             {
                 return new ObjectResult(e);
             }
-            return new ObjectResult(_contaCorrenteRepositorio.FindByContaCorrente(deposito.numConta));
+            return new ObjectResult(_contaCorrenteRepositorio.FindByContaCorrente(deposito.numeroContaDestino));
         }
 
         [HttpPost]
@@ -72,7 +72,7 @@ namespace InternetBanking.Controllers
                 bool saqueEfetuado = _transacaoRepositorio.Saque(saque);
                 if (saqueEfetuado)
                 {
-                    _contaCorrenteRepositorio.Saque(saque.idContaCorrente, saque.numConta, saque.valor);
+                    _contaCorrenteRepositorio.Saque(saque.idContaCorrenteOrigem, saque.numeroContaOrigem, saque.valor);
                 }
                 else
                 {
@@ -83,7 +83,7 @@ namespace InternetBanking.Controllers
             {
                 return new ObjectResult(e);
             }
-            return new ObjectResult(_contaCorrenteRepositorio.FindByContaCorrente(saque.numConta));
+            return new ObjectResult(_contaCorrenteRepositorio.FindByContaCorrente(saque.numeroContaOrigem));
         }
     }
 }

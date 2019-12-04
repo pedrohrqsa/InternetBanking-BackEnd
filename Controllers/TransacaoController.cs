@@ -31,13 +31,18 @@ namespace InternetBanking.Controllers
 
             if(transacao.idTipoTransacao == 1)
             {
-                _contaCorrenteRepositorio.Deposito(transacao.idContaCorrente, transacao.numConta, transacao.valor);
+                _contaCorrenteRepositorio.Deposito(transacao.idContaCorrenteOrigem, transacao.numeroContaDestino, transacao.valor);
                 _transacaoRepositorio.Deposito(transacao);
             }
             else if(transacao.idTipoTransacao == 2)
             {
-                _contaCorrenteRepositorio.Saque(transacao.idContaCorrente, transacao.numConta, transacao.valor);
+                _contaCorrenteRepositorio.Saque(transacao.idContaCorrenteOrigem, transacao.numeroContaOrigem, transacao.valor);
                 _transacaoRepositorio.Saque(transacao);
+            }
+            else if (transacao.idTipoTransacao == 3)
+            {
+                _contaCorrenteRepositorio.Transferencia(transacao.idContaCorrenteOrigem, transacao.idContaCorrenteDestino, transacao.numeroContaOrigem, transacao.numeroContaDestino, transacao.valor);
+                _transacaoRepositorio.Transferencia(transacao);
             }
             
             return new ObjectResult(_transacaoRepositorio.FindByID(transacao.idTransacao));
