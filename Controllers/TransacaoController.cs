@@ -9,13 +9,13 @@ namespace InternetBanking.Controllers
     public class TransacaoController : Controller
     {
         private readonly ITransacaoRepositorio _transacaoRepositorio;
-        private readonly IContaCorrenteRepositorio _contaCorrenteRepositorio;
+        private readonly IContaRepositorio _contaRepositorio;
         
         public TransacaoController(ITransacaoRepositorio transacaoRepositorio,
-            IContaCorrenteRepositorio contaCorrenteRepositorio)
+            IContaRepositorio contaRepositorio)
         {
             _transacaoRepositorio = transacaoRepositorio;
-            _contaCorrenteRepositorio = contaCorrenteRepositorio;
+            _contaRepositorio = contaRepositorio;
         }
 
         [HttpGet]
@@ -32,17 +32,17 @@ namespace InternetBanking.Controllers
 
             if(transacao.idTipoTransacao == 1)
             {
-                _contaCorrenteRepositorio.Deposito(transacao.idContaCorrente, transacao.numeroContaDestino, transacao.valor);
+                _contaRepositorio.Deposito(transacao.idConta, transacao.numeroContaDestino, transacao.valor);
                 _transacaoRepositorio.Deposito(transacao);
             }
             else if(transacao.idTipoTransacao == 2)
             {
-                _contaCorrenteRepositorio.Saque(transacao.idContaCorrente, transacao.numeroContaOrigem, transacao.valor);
+                _contaRepositorio.Saque(transacao.idConta, transacao.numeroContaOrigem, transacao.valor);
                 _transacaoRepositorio.Saque(transacao);
             }
             else if (transacao.idTipoTransacao == 3)
             {
-                _contaCorrenteRepositorio.Transferencia(transacao.idContaCorrente, transacao.numeroContaOrigem, transacao.numeroContaDestino, transacao.valor);
+                _contaRepositorio.Transferencia(transacao.idConta, transacao.numeroContaOrigem, transacao.numeroContaDestino, transacao.valor);
                 _transacaoRepositorio.Transferencia(transacao);
             }
             return new ObjectResult(_transacaoRepositorio.FindByID(transacao.idTransacao));

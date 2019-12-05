@@ -9,12 +9,12 @@ namespace InternetBanking.Controllers
     public class DepositoController : Controller
     {
         private readonly IDepositoRepositorio _depositoRepositorio;
-        private readonly IContaCorrenteRepositorio _contaCorrenteRepositorio;
+        private readonly IContaRepositorio _contaRepositorio;
 
-        public DepositoController(IDepositoRepositorio depositoRepositorio, IContaCorrenteRepositorio contaCorrenteRepositorio)
+        public DepositoController(IDepositoRepositorio depositoRepositorio, IContaRepositorio contaRepositorio)
         {
             _depositoRepositorio = depositoRepositorio;
-            _contaCorrenteRepositorio = contaCorrenteRepositorio;
+            _contaRepositorio = contaRepositorio;
         }
 
         [HttpGet]

@@ -8,12 +8,12 @@ namespace InternetBanking.Repositorio
     public class TransacaoRepositorio : ITransacaoRepositorio
     {
         private readonly TransacaoDB _contextoTransacao;
-        private readonly ContaCorrenteDB _contextoContaCorrente;
+        private readonly ContaDB _contextoConta;
 
-        public TransacaoRepositorio(TransacaoDB ctxTransacao, ContaCorrenteDB ctxContaCorrente)
+        public TransacaoRepositorio(TransacaoDB ctxTransacao, ContaDB ctxConta)
         {
             _contextoTransacao = ctxTransacao;
-            _contextoContaCorrente = ctxContaCorrente;
+            _contextoConta = ctxConta;
         }
 
         public Transacao FindByID(int id)

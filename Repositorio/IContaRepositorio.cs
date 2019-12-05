@@ -7,6 +7,12 @@ namespace InternetBanking.Repositorio
     {
         void AddConta(Conta conta);
         IEnumerable<Conta> GetAll();
+        Conta FindByContaOrigem(int numeroContaOrigem);
+        Conta FindByContaDestino(int numeroContaDestino);
         Conta FindByConta(int conta);
+        void Update(Conta conta);
+        void Deposito(int idContaCorrente, int numeroConta, decimal valor);
+        void Saque(int idContaCorrente, int numeroConta, decimal valor);
+        void Transferencia(int idContaCorrente, int numeroContaOrigem, int numeroContaDestino, decimal valor);
     }
 }
