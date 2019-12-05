@@ -15,7 +15,6 @@ namespace InternetBanking.Models
         public DbSet<Familiares> Familiares { get; set; }
         public DbSet<Conta> Conta { get; set; }
         public DbSet<Transacao> Transacao { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Cliente>().HasKey(cl => cl.idCliente);
