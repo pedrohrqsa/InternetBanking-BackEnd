@@ -6292,11 +6292,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\luizmarinelli\\Desktop\\InternetBanking-BackEnd\\test.csproj",
+      "projectUniqueName": "C:\\Users\\luizmarinelli\\Desktop\\BackUp2\\test.csproj",
       "projectName": "test",
-      "projectPath": "C:\\Users\\luizmarinelli\\Desktop\\InternetBanking-BackEnd\\test.csproj",
+      "projectPath": "C:\\Users\\luizmarinelli\\Desktop\\BackUp2\\test.csproj",
       "packagesPath": "C:\\Users\\luizmarinelli\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\luizmarinelli\\Desktop\\InternetBanking-BackEnd\\obj\\",
+      "outputPath": "C:\\Users\\luizmarinelli\\Desktop\\BackUp2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\luizmarinelli\\AppData\\Roaming\\NuGet\\NuGet.Config"
