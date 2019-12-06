@@ -18,6 +18,7 @@ namespace InternetBanking.Models
         public string sobrenome { get; set; }
         public string nacionalidade { get; set; }
         public string naturalidade { get; set; }
+
         public ICollection <ClienteLogin> clienteLogin { get; set; }
         public ICollection <Familiares> Familiares { get; set; }
         public ICollection <Contato> Contatos { get; set; }

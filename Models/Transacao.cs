@@ -10,13 +10,13 @@ namespace InternetBanking.Models
     {
         [Key]
         public int idTransacao { get; set; }
-        public int idConta { get; set; }
+        public int numeroConta { get; set; }
         public int idTipoTransacao { get; set; }
         public int numeroContaOrigem { get; set; }
         public int numeroContaDestino { get; set; }
         public decimal valor { get; set; }
 
-        [ForeignKey("idConta")]
+        [ForeignKey("numeroConta")]
         public Conta Conta { get; set; }
     }
 }

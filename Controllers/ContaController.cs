@@ -51,7 +51,7 @@ namespace InternetBanking.Controllers
                 bool depositoEfetuado = _transacaoRepositorio.Deposito(deposito);
                 if (depositoEfetuado)
                 {
-                    _contaRepositorio.Deposito(deposito.idConta, deposito.numeroContaDestino, deposito.valor);
+                    _contaRepositorio.Deposito(deposito.numeroConta, deposito.numeroContaDestino, deposito.valor);
                 }
                 else
                 {
@@ -73,7 +73,7 @@ namespace InternetBanking.Controllers
                 bool saqueEfetuado = _transacaoRepositorio.Saque(saque);
                 if (saqueEfetuado)
                 {
-                    _contaRepositorio.Saque(saque.idConta, saque.numeroContaOrigem, saque.valor);
+                    _contaRepositorio.Saque(saque.numeroConta, saque.numeroContaOrigem, saque.valor);
                 }
                 else
                 {
@@ -95,7 +95,7 @@ namespace InternetBanking.Controllers
                 bool transferenciaEfetuada = _transacaoRepositorio.Transferencia(transferencia);
                 if (transferenciaEfetuada)
                 {
-                    _contaRepositorio.Transferencia(transferencia.idConta,
+                    _contaRepositorio.Transferencia(transferencia.numeroConta,
                         transferencia.numeroContaOrigem, transferencia.numeroContaDestino, transferencia.valor);
                 }
                 else

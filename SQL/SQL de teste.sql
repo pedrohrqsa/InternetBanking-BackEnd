@@ -1,6 +1,5 @@
 ---------------------------------------------------------------------------------------------------------------------------
--- CREATE DATABASE InternetBanking;
---DROP DATABASE InternetBanking;
+-- create DATABASE InternetBanking;
 USE InternetBanking;
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Cliente;
@@ -71,7 +70,7 @@ CREATE TABLE Contato(
 -- DELETE FROM Agencia;
 CREATE TABLE Agencia(
 	idAgencia							    INT										NOT NULL	PRIMARY KEY,
-	numAgencia							    INT										NOT NULL	DEFAULT(123)
+	numeroAgencia							INT										NOT NULL	DEFAULT(1)
 );
 
 INSERT INTO Agencia (idAgencia) VALUES (1);
@@ -79,13 +78,12 @@ INSERT INTO Agencia (idAgencia) VALUES (1);
 -- DROP TABLE Conta;
 -- DELETE FROM Conta;
 CREATE TABLE Conta(
-	idConta								    INT										NOT NULL	IDENTITY(1, 1)					PRIMARY KEY,
+	numeroConta								INT										NOT NULL	IDENTITY(1000, 1)					PRIMARY KEY,
 	idCliente							    INT										NOT NULL,
 	idAgencia								INT										NOT NULL	DEFAULT (1),
-	senhaTransacoes						    VARCHAR(4)								NOT NULL	DEFAULT '1234',
+	senhaTransacoes						    VARCHAR(4)								NOT NULL,
 	dtCriacao							    DATE									NOT NULL	DEFAULT GETDATE(),
 	flagAtivo							    CHAR(1)									NOT NULL	DEFAULT(1),
-	numeroConta								INT										NOT NULL	UNIQUE  DEFAULT(RAND()*(9999-1000+1)+1000),
 	saldoAtual								NUMERIC									NOT NULL	DEFAULT (0),
 	CONSTRAINT FKClienteConta			    FOREIGN KEY (idCliente)					REFERENCES Cliente (idCliente),
 	CONSTRAINT FKAgenciaConta			    FOREIGN KEY (idAgencia)					REFERENCES Agencia (idAgencia),
@@ -97,22 +95,22 @@ CREATE TABLE Conta(
 -- QUANDO "numeroContaDestino" ESTIVER COMO "2", É SAQUE
 CREATE TABLE Transacao(
 	idTransacao							    INT										NOT NULL					IDENTITY(1, 1) PRIMARY KEY,
-	idConta									INT										NOT NULL,
+	numeroConta								INT										NOT NULL,
 	idTipoTransacao							INT										NOT NULL,
 	dtTransacao							    DATE									NOT NULL					DEFAULT(GETDATE()),
 	numeroContaOrigem						INT										NULL,
 	numeroContaDestino						INT										NULL,
 	valor									NUMERIC									NOT NULL,
-	CONSTRAINT FKContaTransacao			    FOREIGN KEY (idConta)					REFERENCES Conta(idConta)
+	CONSTRAINT FKContaTransacao			    FOREIGN KEY (numeroConta)					REFERENCES Conta(numeroConta)
 );
 ---------------------------------------------------------------------------------------------------------------------------
 --INSERTS
 
-INSERT INTO Cliente (cpf, rg, orgaoEmissor, dtNascimento, nome, sobrenome, nacionalidade, naturalidade) 
-VALUES ('12345678901', '123456789', 'SSPSP', '1998-06-12', 'José', 'da Silva', 'Brasileira', 'São Paulo');
+--INSERT INTO Cliente (cpf, rg, orgaoEmissor, dtNascimento, nome, sobrenome, nacionalidade, naturalidade) 
+--VALUES ('12345678901', '123456789', 'SSPSP', '1998-06-12', 'José', 'da Silva', 'Brasileira', 'São Paulo');
 
-INSERT INTO Conta (idCliente) 
-VALUES (1);
+--INSERT INTO Conta (idCliente) 
+--VALUES (1);
 
 ---------------------------------------------------------------------------------------------------------------------------
 

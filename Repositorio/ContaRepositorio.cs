@@ -13,7 +13,8 @@ namespace InternetBanking.Repositorio
             _contexto = ctx;
         }
         public void AddConta(Conta conta)
-        {
+        {   
+            // conta.idAgencia = 1;
             _contexto.Conta.Add(conta);
             _contexto.SaveChanges();
         }
@@ -89,6 +90,5 @@ namespace InternetBanking.Repositorio
                 _contexto.SaveChanges();
             }
         }
-
     }
 }

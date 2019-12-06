@@ -10,16 +10,15 @@ namespace InternetBanking.Models
         public DbSet<Transacao> Transacao { get; set; }
         public DbSet<Agencia> Agencia { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Conta>().HasKey(con => con.idConta);
+        protected override void OnModelCreating(ModelBuilder modelBuilder){
+            modelBuilder.Entity<Conta>().HasKey(con => con.numeroConta);
             modelBuilder.Entity<Transacao>().HasKey(con => con.idTransacao);
             modelBuilder.Entity<Transacao>()
                 .HasOne(c => c.Conta)
                 .WithMany(cc => cc.Transacao);
 
-            modelBuilder.Entity<Agencia>().HasKey(con => con.idAgencia);
-            modelBuilder.Entity<Conta>().HasKey(con => con.idAgencia);
+            modelBuilder.Entity<Agencia>().HasKey(con => con.numeroAgencia);
+            modelBuilder.Entity<Conta>().HasKey(con => con.numeroConta);
             modelBuilder.Entity<Conta>()
                 .HasOne(c => c.Agencia)
                 .WithMany(cc => cc.Conta);
