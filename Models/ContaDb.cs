@@ -17,7 +17,7 @@ namespace InternetBanking.Models
                 .HasOne(c => c.Conta)
                 .WithMany(cc => cc.Transacao);
 
-            modelBuilder.Entity<Agencia>().HasKey(con => con.numeroAgencia);
+            modelBuilder.Entity<Agencia>().HasKey(con => con.idAgencia);
             modelBuilder.Entity<Conta>().HasKey(con => con.numeroConta);
             modelBuilder.Entity<Conta>()
                 .HasOne(c => c.Agencia)
