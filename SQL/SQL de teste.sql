@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------------------------------------------------------
--- create DATABASE InternetBanking;
+-- CREATE DATABASE InternetBanking;
 USE InternetBanking;
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Cliente;
@@ -91,8 +91,9 @@ CREATE TABLE Conta(
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Transacao;
 -- DELETE FROM Transacao;
--- QUANDO "numeroContaOrigem" ESTIVER COMO "1", É DEPÓSITO
--- QUANDO "numeroContaDestino" ESTIVER COMO "2", É SAQUE
+-- QUANDO "idTipoTransacao" ESTIVER COMO "1", É DEPÓSITO
+-- QUANDO "idTipoTransacao" ESTIVER COMO "2", É SAQUE
+-- QUANDO "idTipoTransacao" ESTIVER COMO "3", É TRANSFERÊNCIA
 CREATE TABLE Transacao(
 	idTransacao							    INT										NOT NULL					IDENTITY(1, 1) PRIMARY KEY,
 	numeroConta								INT										NOT NULL,
@@ -104,13 +105,13 @@ CREATE TABLE Transacao(
 	CONSTRAINT FKContaTransacao			    FOREIGN KEY (numeroConta)					REFERENCES Conta(numeroConta)
 );
 ---------------------------------------------------------------------------------------------------------------------------
---INSERTS
-
---INSERT INTO Cliente (cpf, rg, orgaoEmissor, dtNascimento, nome, sobrenome, nacionalidade, naturalidade) 
---VALUES ('12345678901', '123456789', 'SSPSP', '1998-06-12', 'José', 'da Silva', 'Brasileira', 'São Paulo');
-
---INSERT INTO Conta (idCliente) 
---VALUES (1);
+-- COMANDOS INSERT
+   
+-- INSERT INTO Cliente (cpf, rg, orgaoEmissor, dtNascimento, nome, sobrenome, nacionalidade, naturalidade) 
+-- VALUES ('12345678901', '123456789', 'SSPSP', '1998-06-12', 'José', 'da Silva', 'Brasileira', 'São Paulo');
+   
+-- INSERT INTO Conta (idCliente) 
+-- VALUES (1);
 
 ---------------------------------------------------------------------------------------------------------------------------
 
@@ -132,17 +133,15 @@ SELECT * FROM Transacao;
 
 -- COMANDOS DROP
 /*
-DROP TABLE Cliente;
 DROP TABLE Login;
 DROP TABLE Familiares;
 DROP TABLE Endereco;
 DROP TABLE Contato;
 
-
-
-DROP TABLE Agencia;
-DROP TABLE Conta;
 DROP TABLE Transacao;
+DROP TABLE Conta;
+DROP TABLE Cliente;
+DROP TABLE Agencia;
 */
 
 
@@ -155,6 +154,5 @@ DELETE FROM Contato;
 DELETE FROM Transacao;
 DELETE FROM Conta;
 DELETE FROM Cliente;
-
 DELETE FROM Agencia;
 */
