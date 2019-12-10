@@ -48,9 +48,9 @@ namespace InternetBanking.Repositorio
             var conta = FindByContaDestino(numeroContaDestino);
 
             if (valor <= 0 ||
-             conta == null ||
-              numeroContaDestino <= 0 ||
-               idConta <= 0)
+                conta == null ||
+                numeroContaDestino <= 0 ||
+                idConta <= 0)
             {
                 Console.WriteLine("Depósito não efetuado.");
             }
@@ -66,9 +66,9 @@ namespace InternetBanking.Repositorio
             var conta = FindByContaOrigem(numeroContaOrigem);
 
             if (valor <= 0 ||
-             conta == null ||
-              numeroContaOrigem <= 0 ||
-               idConta <= 0)
+                conta == null ||
+                numeroContaOrigem <= 0 ||
+                idConta <= 0)
             {
                 Console.WriteLine("/ não efetuado.");
             }
@@ -86,10 +86,10 @@ namespace InternetBanking.Repositorio
             var contaDestino = FindByContaDestino(numeroContaDestino);
 
             if (contaOrigem.saldoAtual < valor ||
-             valor <= 0 ||
-             idConta <= 0 ||
-              numeroContaDestino <= 0 ||
-               numeroContaOrigem <= 0)
+                valor <= 0 ||
+                idConta <= 0 ||
+                numeroContaDestino <= 0 ||
+                numeroContaOrigem <= 0)
             {
                 Console.WriteLine("Transferência não efetuada.");
             }

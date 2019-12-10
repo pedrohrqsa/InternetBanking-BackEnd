@@ -23,7 +23,7 @@ namespace InternetBanking.Controllers
             return _contaRepositorio.GetAll();
         }
 
-        
+
         [HttpGet("{conta}", Name = "GetConta")]
         public IActionResult GetByCont(int id)
         {
@@ -38,7 +38,7 @@ namespace InternetBanking.Controllers
         public IActionResult Create([FromBody] Conta conta)
         {
             if (conta == null) return BadRequest();
-            
+
             _contaRepositorio.AddConta(conta);
             return new ObjectResult(new Conta());
         }
@@ -108,6 +108,23 @@ namespace InternetBanking.Controllers
                 return new ObjectResult(e);
             }
             return new ObjectResult(_contaRepositorio.FindByContaOrigem(transferencia.numeroContaOrigem));
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Update([FromBody] Conta conta)
+        {
+            if (conta == null || conta.numeroConta != null)
+                return BadRequest();
+
+            var _conta = _contaRepositorio.FindByConta(conta);
+
+            if (_conta == null)
+                return NotFound();
+
+            _conta.flagStatus = conta.flagStatus;
+
+            _contaRepositorio.Update(_conta);
+            return new NoContentResult();
         }
     }
 }
