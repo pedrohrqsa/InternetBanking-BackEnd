@@ -50,7 +50,7 @@ namespace InternetBanking.Repositorio
             if (valor <= 0 ||
              conta == null ||
               numeroContaDestino <= 0 ||
-               idConta <= 0 )
+               idConta <= 0)
             {
                 Console.WriteLine("Depósito não efetuado.");
             }
@@ -69,7 +69,7 @@ namespace InternetBanking.Repositorio
                 valor <= 0 ||
              conta == null ||
               numeroContaOrigem <= 0 ||
-               idConta <= 0 )
+               idConta <= 0)
             {
                 Console.WriteLine("Saque não efetuado.");
             }
@@ -91,8 +91,7 @@ namespace InternetBanking.Repositorio
              idConta <= 0 ||
               numeroContaDestino <= 0 ||
                numeroContaOrigem <= 0 ||
-                numeroContaOrigem == numeroContaDestino
-               )
+                numeroContaOrigem == numeroContaDestino)
             {
                 Console.WriteLine("Transferência não efetuada.");
             }
@@ -102,6 +101,11 @@ namespace InternetBanking.Repositorio
                 contaDestino.saldoAtual += valor;
                 _contexto.SaveChanges();
             }
+        }
+
+        public void InactivateAccount(int idContaCorrente, int numeroContaOrigem)
+        {
+            // throw new NotImplementedException();
         }
     }
 }

@@ -10,10 +10,12 @@ namespace InternetBanking.Controllers
     public class ClientesController : Controller
     {
         private readonly IClienteRepositorio _clienteRepositorio;
+
         public ClientesController(IClienteRepositorio clienteRepo)
         {
             _clienteRepositorio = clienteRepo;
         }
+
         [HttpGet]
         public IEnumerable<Cliente> GetAll()
         {
