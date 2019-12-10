@@ -110,21 +110,21 @@ namespace InternetBanking.Controllers
             return new ObjectResult(_contaRepositorio.FindByContaOrigem(transferencia.numeroContaOrigem));
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Update([FromBody] Conta conta)
-        {
-            if (conta == null || conta.numeroConta != null)
-                return BadRequest();
+        // [HttpPut("{id}")]
+        // public IActionResult Update([FromBody] Conta conta)
+        // {
+        //     if (conta == null || conta.numeroConta != null)
+        //         return BadRequest();
 
-            var _conta = _contaRepositorio.FindByConta(conta);
+        //     var _conta = _contaRepositorio.FindByConta(conta);
 
-            if (_conta == null)
-                return NotFound();
+        //     if (_conta == null)
+        //         return NotFound();
 
-            _conta.flagStatus = conta.flagStatus;
+        //     _conta.flagStatus = conta.flagStatus;
 
-            _contaRepositorio.Update(_conta);
-            return new NoContentResult();
-        }
+        //     _contaRepositorio.Update(_conta);
+        //     return new NoContentResult();
+        // }
     }
 }
