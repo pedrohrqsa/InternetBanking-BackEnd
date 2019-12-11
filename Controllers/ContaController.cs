@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using InternetBanking.Models;
 using InternetBanking.Repositorio;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InternetBanking.Controllers
@@ -23,7 +24,6 @@ namespace InternetBanking.Controllers
             return _contaRepositorio.GetAll();
         }
 
-
         [HttpGet("{conta}", Name = "GetConta")]
         public IActionResult GetByCont(int id)
         {
@@ -33,7 +33,7 @@ namespace InternetBanking.Controllers
             return new ObjectResult(conta);
         }
 
-
+        [Route("create")]
         [HttpPost]
         public IActionResult Create([FromBody] Conta conta)
         {
