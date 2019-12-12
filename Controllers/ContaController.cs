@@ -43,13 +43,13 @@ namespace InternetBanking.Controllers
             return new ObjectResult(new Conta());
         }
 
-        [HttpPut("{id}")]
-        public IActionResult ToggleAccount([FromBody] Conta conta)
+        [HttpPut("numeroConta")]
+        public IActionResult ToggleAccount(int numeroConta, [FromBody] Conta conta)
         {
-            if (conta == null || conta.numeroConta == null)
+            if (conta == null || conta.numeroConta != numeroConta)
                 return BadRequest();
 
-            var _conta = _contaRepositorio.FindByConta(conta.numeroConta);
+            var _conta = _contaRepositorio.FindByConta(numeroConta);
 
             if (_conta == null)
                 return NotFound();

@@ -14,7 +14,18 @@ namespace InternetBanking.Models
         // public int idAgencia { get; set; }
         public string senhaTransacoes { get; set; }
         public decimal saldoAtual { get; set; }
-        public char flagAtivo { get; set; }
+
+        public char flagAtivo
+        {
+            get
+            {
+                return '1';
+            }
+            set
+            {
+                this.flagAtivo = value;
+            }
+        }
 
         [ForeignKey("idCliente")]
         public Cliente Cliente { get; set; }
