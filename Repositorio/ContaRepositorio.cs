@@ -20,7 +20,7 @@ namespace InternetBanking.Repositorio
         }
         public Conta FindByConta(int conta)
         {
-            return _contexto.Conta.FirstOrDefault(u => u.idCliente == conta);
+            return _contexto.Conta.FirstOrDefault(u => u.numeroConta == conta);
         }
         public IEnumerable<Conta> GetAll()
         {

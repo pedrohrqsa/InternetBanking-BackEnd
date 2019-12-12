@@ -25,9 +25,9 @@ namespace InternetBanking.Controllers
         }
 
         [HttpGet("{conta}", Name = "GetConta")]
-        public IActionResult GetByCont(int id)
+        public IActionResult GetByCont(int numeroConta)
         {
-            var conta = _contaRepositorio.FindByConta(id);
+            var conta = _contaRepositorio.FindByConta(numeroConta);
 
             if (conta == null) return NotFound();
             return new ObjectResult(conta);
@@ -43,19 +43,16 @@ namespace InternetBanking.Controllers
             return new ObjectResult(new Conta());
         }
 
-        [HttpPut("numeroConta")]
-        public IActionResult ToggleAccount(int numeroConta, [FromBody] Conta conta)
+        [HttpPut("{numeroConta}")]
+        public IActionResult Update(int numeroConta, [FromBody] Conta conta)
         {
-            if (conta == null || conta.numeroConta != numeroConta)
+            if (conta == null ||
+             conta.numeroConta != numeroConta ||
+              numeroConta == 0)
                 return BadRequest();
-
+                
             var _conta = _contaRepositorio.FindByConta(numeroConta);
-
-            if (_conta == null)
-                return NotFound();
-
             _conta.flagAtivo = conta.flagAtivo;
-
             _contaRepositorio.Update(_conta);
             return new NoContentResult();
         }
