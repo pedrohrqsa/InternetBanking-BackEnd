@@ -27,9 +27,10 @@ namespace InternetBanking.Controllers
         [HttpPost]
         public IActionResult Create([FromBody] Transacao transacao)
         {
-            if (transacao == null)
+            if (transacao == null || transacao.valor <=0){
                 return BadRequest();
 
+            }
             if(transacao.idTipoTransacao == 1)
             {
                 _contaRepositorio.Deposito(transacao.numeroConta, transacao.numeroContaDestino, transacao.valor);
