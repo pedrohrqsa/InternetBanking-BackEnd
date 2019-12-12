@@ -43,7 +43,6 @@ namespace InternetBanking.Controllers
             return new ObjectResult(new Conta());
         }
 
-<<<<<<< HEAD
         [HttpPut("numeroConta")]
         public IActionResult ToggleAccount(int numeroConta, [FromBody] Conta conta)
         {
@@ -61,8 +60,6 @@ namespace InternetBanking.Controllers
             return new NoContentResult();
         }
 
-=======
->>>>>>> 170e80cfb71200a1ed4a9cb0617d8220dbaeb3e1
         [HttpPost]
         public IActionResult Deposito(Transacao deposito)
         {
