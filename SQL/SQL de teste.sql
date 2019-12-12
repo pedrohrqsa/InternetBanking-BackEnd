@@ -106,14 +106,19 @@ CREATE TABLE Transacao(
 );
 ---------------------------------------------------------------------------------------------------------------------------
 -- COMANDOS INSERT
-
-/*
-INSERT INTO Cliente (cpf, rg, orgaoEmissor, dtNascimento, nome, sobrenome, nacionalidade, naturalidade) 
-VALUES ('12345678901', '123456789', 'SSPSP', '1998-06-12', 'José', 'da Silva', 'Brasileira', 'São Paulo');
    
+<<<<<<< HEAD
 INSERT INTO Conta (idCliente, senhaTransacoes, flagAtivo) 
 VALUES (1, '1234', 1);
 */
+=======
+-- INSERT INTO Cliente (cpf, rg, orgaoEmissor, dtNascimento, nome, sobrenome, nacionalidade, naturalidade) 
+-- VALUES ('12345678901', '123456789', 'SSPSP', '1998-06-12', 'José', 'da Silva', 'Brasileira', 'São Paulo');
+   
+-- INSERT INTO Conta (idCliente) 
+-- VALUES (1);
+
+>>>>>>> 170e80cfb71200a1ed4a9cb0617d8220dbaeb3e1
 ---------------------------------------------------------------------------------------------------------------------------
 
 -- COMANDOS SELECT
