@@ -14,6 +14,5 @@ namespace InternetBanking.Repositorio
         void Deposito(int idContaCorrente, int numeroConta, decimal valor);
         void Saque(int idContaCorrente, int numeroConta, decimal valor);
         void Transferencia(int idContaCorrente, int numeroContaOrigem, int numeroContaDestino, decimal valor);
-        void InactivateAccount(int idContaCorrente, int numeroContaOrigem);
     }
 }

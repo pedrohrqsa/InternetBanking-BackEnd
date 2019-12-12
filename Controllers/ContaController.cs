@@ -43,6 +43,23 @@ namespace InternetBanking.Controllers
             return new ObjectResult(new Conta());
         }
 
+        [HttpPut("{id}")]
+        public IActionResult ToggleAccount([FromBody] Conta conta)
+        {
+            if (conta == null || conta.numeroConta == null)
+                return BadRequest();
+
+            var _conta = _contaRepositorio.FindByConta(conta.numeroConta);
+
+            if (_conta == null)
+                return NotFound();
+
+            _conta.flagAtivo = conta.flagAtivo;
+
+            _contaRepositorio.Update(_conta);
+            return new NoContentResult();
+        }
+
         [HttpPost]
         public IActionResult Deposito(Transacao deposito)
         {
@@ -109,22 +126,5 @@ namespace InternetBanking.Controllers
             }
             return new ObjectResult(_contaRepositorio.FindByContaOrigem(transferencia.numeroContaOrigem));
         }
-
-        // [HttpPut("{id}")]
-        // public IActionResult Update([FromBody] Conta conta)
-        // {
-        //     if (conta == null || conta.numeroConta != null)
-        //         return BadRequest();
-
-        //     var _conta = _contaRepositorio.FindByConta(conta);
-
-        //     if (_conta == null)
-        //         return NotFound();
-
-        //     _conta.flagStatus = conta.flagStatus;
-
-        //     _contaRepositorio.Update(_conta);
-        //     return new NoContentResult();
-        // }
     }
 }

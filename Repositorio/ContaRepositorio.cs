@@ -102,10 +102,5 @@ namespace InternetBanking.Repositorio
                 _contexto.SaveChanges();
             }
         }
-
-        public void InactivateAccount(int idContaCorrente, int numeroContaOrigem)
-        {
-            // throw new NotImplementedException();
-        }
     }
 }
