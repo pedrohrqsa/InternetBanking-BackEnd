@@ -112,7 +112,7 @@ INSERT INTO Cliente (cpf, rg, orgaoEmissor, dtNascimento, nome, sobrenome, nacio
 VALUES ('12345678901', '123456789', 'SSPSP', '1998-06-12', 'José', 'da Silva', 'Brasileira', 'São Paulo');
    
 INSERT INTO Conta (idCliente, senhaTransacoes, flagAtivo) 
-VALUES (1, '1234', '1');
+VALUES (1, '1234', 1);
 */
 
 ---------------------------------------------------------------------------------------------------------------------------
