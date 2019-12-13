@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\luizeleal\\Desktop\\InternetBanking\\InternetBanking-BackEnd\\test.csproj": {}
+    "C:\\Users\\luizmarinelli\\Desktop\\InternetBanking-BackEnd\\test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\luizeleal\\Desktop\\InternetBanking\\InternetBanking-BackEnd\\test.csproj": {
+    "C:\\Users\\luizmarinelli\\Desktop\\InternetBanking-BackEnd\\test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\luizeleal\\Desktop\\InternetBanking\\InternetBanking-BackEnd\\test.csproj",
+        "projectUniqueName": "C:\\Users\\luizmarinelli\\Desktop\\InternetBanking-BackEnd\\test.csproj",
         "projectName": "test",
-        "projectPath": "C:\\Users\\luizeleal\\Desktop\\InternetBanking\\InternetBanking-BackEnd\\test.csproj",
-        "packagesPath": "C:\\Users\\luizeleal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\luizeleal\\Desktop\\InternetBanking\\InternetBanking-BackEnd\\obj\\",
+        "projectPath": "C:\\Users\\luizmarinelli\\Desktop\\InternetBanking-BackEnd\\test.csproj",
+        "packagesPath": "C:\\Users\\luizmarinelli\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\luizmarinelli\\Desktop\\InternetBanking-BackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\luizeleal\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\luizmarinelli\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using InternetBanking.Models;
 using InternetBanking.Repositorio;
@@ -32,17 +33,20 @@ namespace InternetBanking.Controllers
 
             }
             if(transacao.idTipoTransacao == 1)
-            {
+            {   
+                transacao.dtTransacao = DateTime.Now;
                 _contaRepositorio.Deposito(transacao.numeroConta, transacao.numeroContaDestino, transacao.valor);
                 _transacaoRepositorio.Deposito(transacao);
             }
             else if(transacao.idTipoTransacao == 2)
             {
+                transacao.dtTransacao = DateTime.Now;
                 _contaRepositorio.Saque(transacao.numeroConta, transacao.numeroContaOrigem, transacao.valor);
                 _transacaoRepositorio.Saque(transacao);
             }
             else if (transacao.idTipoTransacao == 3)
             {
+                transacao.dtTransacao = DateTime.Now;
                 _contaRepositorio.Transferencia(transacao.numeroConta, transacao.numeroContaOrigem, transacao.numeroContaDestino, transacao.valor);
                 _transacaoRepositorio.Transferencia(transacao);
             }
