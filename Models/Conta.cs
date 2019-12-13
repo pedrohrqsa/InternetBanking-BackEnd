@@ -14,7 +14,7 @@ namespace InternetBanking.Models
         // public int idAgencia { get; set; }
         public string senhaTransacoes { get; set; }
         public decimal saldoAtual { get; set; }
-        public char flagAtivo{ get; set; }
+        public int flagAtivo{ get; set; }
         // public char flagAtivo
         // {
         //     get

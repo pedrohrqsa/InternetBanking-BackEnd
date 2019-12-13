@@ -83,7 +83,7 @@ CREATE TABLE Conta(
 	idAgencia								INT										NOT NULL	DEFAULT (1),
 	senhaTransacoes						    VARCHAR(4)								NOT NULL,
 	dtCriacao							    DATE									NOT NULL	DEFAULT GETDATE(),
-	flagAtivo							    CHAR(1)									NOT NULL,
+	flagAtivo							    INT										NOT NULL,
 	saldoAtual								NUMERIC									NOT NULL	DEFAULT (0),
 	CONSTRAINT FKClienteConta			    FOREIGN KEY (idCliente)					REFERENCES Cliente (idCliente),
 	CONSTRAINT FKAgenciaConta			    FOREIGN KEY (idAgencia)					REFERENCES Agencia (idAgencia),
@@ -107,11 +107,13 @@ CREATE TABLE Transacao(
 ---------------------------------------------------------------------------------------------------------------------------
 -- COMANDOS INSERT
 
--- INSERT INTO Cliente (cpf, rg, orgaoEmissor, dtNascimento, nome, sobrenome, nacionalidade, naturalidade) 
--- VALUES ('12345678901', '123456789', 'SSPSP', '1998-06-12', 'José', 'da Silva', 'Brasileira', 'São Paulo');
+/*
+INSERT INTO Cliente (cpf, rg, orgaoEmissor, dtNascimento, nome, sobrenome, nacionalidade, naturalidade) 
+VALUES ('12345678901', '123456789', 'SSPSP', '1998-06-12', 'José', 'da Silva', 'Brasileira', 'São Paulo');
    
--- INSERT INTO Conta (idCliente) 
--- VALUES (1);
+INSERT INTO Conta (idCliente, senhaTransacoes, flagAtivo) 
+VALUES (1, '1234', '1');
+*/
 
 ---------------------------------------------------------------------------------------------------------------------------
 

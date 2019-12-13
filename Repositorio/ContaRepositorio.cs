@@ -18,9 +18,9 @@ namespace InternetBanking.Repositorio
             _contexto.Conta.Add(conta);
             _contexto.SaveChanges();
         }
-        public Conta FindByConta(int conta)
+        public Conta FindByConta(int numeroConta)
         {
-            return _contexto.Conta.FirstOrDefault(u => u.numeroConta == conta);
+            return _contexto.Conta.FirstOrDefault(u => u.numeroConta == numeroConta);
         }
         public IEnumerable<Conta> GetAll()
         {
@@ -39,7 +39,7 @@ namespace InternetBanking.Repositorio
 
         public bool VerifyAccount(Conta conta)
         {
-            if(conta.saldoAtual == 0 && conta.flagAtivo == '1')
+            if(conta.saldoAtual == 0 && conta.flagAtivo != (conta.flagAtivo * -1))
             {
                 return true;
             }
