@@ -37,6 +37,18 @@ namespace InternetBanking.Repositorio
             return _contexto.Conta.FirstOrDefault(c => c.numeroConta == numeroConta);
         }
 
+        public bool VerifyAccount(Conta conta)
+        {
+            if(conta.saldoAtual == 0 && conta.flagAtivo == '1')
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void Update(Conta conta)
         {
             _contexto.Conta.Update(conta);

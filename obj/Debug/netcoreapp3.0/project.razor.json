@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\luizmarinelli\\Desktop\\BackUp2\\test.csproj",
+  "FilePath": "c:\\Users\\luizeleal\\Desktop\\InternetBanking\\InternetBanking-BackEnd\\test.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -1944,7 +1944,7 @@
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.EditForm",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
-        "Documentation": "\n            <summary>\n            Renders a form element that cascades an <see cref=\"P:Microsoft.AspNetCore.Components.Forms.EditForm.EditContext\" /> to descendants.\n            </summary>\n        ",
+        "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
@@ -2085,7 +2085,7 @@
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.EditForm",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
-        "Documentation": "\n            <summary>\n            Renders a form element that cascades an <see cref=\"P:Microsoft.AspNetCore.Components.Forms.EditForm.EditContext\" /> to descendants.\n            </summary>\n        ",
+        "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
@@ -9043,7 +9043,7 @@
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.Razor",
-        "Documentation": "\n            <summary>\n            <see cref=\"T:Microsoft.AspNetCore.Razor.TagHelpers.ITagHelper\" /> implementation targeting elements containing attributes with URL expected values.\n            </summary>\n            <remarks>Resolves URLs starting with '~/' (relative to the application's 'webroot' setting) that are not\n            targeted by other <see cref=\"T:Microsoft.AspNetCore.Razor.TagHelpers.ITagHelper\" />s. Runs prior to other <see cref=\"T:Microsoft.AspNetCore.Razor.TagHelpers.ITagHelper\" />s to ensure\n            application-relative URLs are resolved.</remarks>\n        ",
+        "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": false,
         "TagMatchingRules": [

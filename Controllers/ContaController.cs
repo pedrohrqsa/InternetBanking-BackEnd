@@ -46,14 +46,29 @@ namespace InternetBanking.Controllers
         [HttpPut("{numeroConta}")]
         public IActionResult Update(int numeroConta, [FromBody] Conta conta)
         {
-            if (conta == null ||
-             conta.numeroConta != numeroConta ||
-              numeroConta == 0)
+            if (conta == null || conta.numeroConta != numeroConta || numeroConta == 0)
                 return BadRequest();
                 
             var _conta = _contaRepositorio.FindByConta(numeroConta);
-            _conta.flagAtivo = conta.flagAtivo;
-            _contaRepositorio.Update(_conta);
+
+            bool contaVerificada = _contaRepositorio.VerifyAccount(_conta);
+
+            try
+            {
+                if(contaVerificada)
+                {
+                    _conta.flagAtivo = conta.flagAtivo;
+                    _contaRepositorio.Update(_conta);
+                }
+                else
+                {
+                    return new ObjectResult("Sua conta não poderá ser inativada.");
+                }
+            }
+            catch (Exception e)
+            {
+                return new ObjectResult(e);
+            }
             return new NoContentResult();
         }
 
