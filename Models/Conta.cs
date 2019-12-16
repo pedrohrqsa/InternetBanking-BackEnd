@@ -8,6 +8,11 @@ namespace InternetBanking.Models
     [Table("Conta")]
     public class Conta
     {
+        public Conta()
+        {
+            flagAtivo = 1;
+        }
+        
         [Key]
         public int numeroConta { get; set; }
         public int idCliente { get; set; }
@@ -15,17 +20,6 @@ namespace InternetBanking.Models
         public string senhaTransacoes { get; set; }
         public decimal saldoAtual { get; set; }
         public int flagAtivo{ get; set; }
-        // public char flagAtivo
-        // {
-        //     get
-        //     {
-        //         return '1';
-        //     }
-        //     set
-        //     {
-        //         this.flagAtivo = value;
-        //     }
-        // }
 
         [ForeignKey("idCliente")]
         public Cliente Cliente { get; set; }
