@@ -19,11 +19,17 @@ namespace InternetBanking.Controllers
             _contaRepositorio = contaRepositorio;
         }
 
-        [HttpGet("{numeroConta}", Name = "GetTransacao")]
-        public IEnumerable<Transacao> GetAll(int numeroConta)
+        public IEnumerable<Transacao> GetAll()
         {
-            return _transacaoRepositorio.GetAll(numeroConta);
+            return _transacaoRepositorio.GetAll();
         }
+
+        // [HttpGet("{numeroConta}", Name = "GetTransacao")]
+        // public IEnumerable<Transacao> GetAll(int numeroConta)
+        // {
+        //     return _transacaoRepositorio.GetAll(numeroConta);
+        // }
+
         [HttpPost]
         public IActionResult Create([FromBody] Transacao transacao)
         {
@@ -33,19 +39,19 @@ namespace InternetBanking.Controllers
             {
                 if (transacao.idTipoTransacao == 1)
                 {
-                    transacao.dtTransacao = DateTime.Now;
+                    transacao.dtTransacao = DateTime.Now.ToString("dd/MM/yyyy");
                     _contaRepositorio.Deposito(transacao.numeroConta, transacao.numeroContaDestino, transacao.valor);
                     _transacaoRepositorio.Deposito(transacao);
                 }
                 else if (transacao.idTipoTransacao == 2)
                 {
-                    transacao.dtTransacao = DateTime.Now;
+                    transacao.dtTransacao = DateTime.Now.ToString("dd/MM/yyyy");
                     _contaRepositorio.Saque(transacao.numeroConta, transacao.numeroContaOrigem, transacao.valor);
                     _transacaoRepositorio.Saque(transacao);
                 }
                 else if (transacao.idTipoTransacao == 3)
                 {
-                    transacao.dtTransacao = DateTime.Now;
+                    transacao.dtTransacao = DateTime.Now.ToString("dd/MM/yyyy");
                     _contaRepositorio.Transferencia(transacao.numeroConta, transacao.numeroContaOrigem, transacao.numeroContaDestino, transacao.valor);
                     _transacaoRepositorio.Transferencia(transacao);
                 }

@@ -6,7 +6,7 @@ namespace InternetBanking.Repositorio
     public interface ITransacaoRepositorio
     {
         void AddTransacao(Transacao transacao);
-        IEnumerable<Transacao> GetAll(int numeroConta);
+        IEnumerable<Transacao> GetAll(/*int numeroConta*/);
         Transacao FindByID(int id);
         bool Deposito(Transacao deposito);
         bool Saque(Transacao saque);
