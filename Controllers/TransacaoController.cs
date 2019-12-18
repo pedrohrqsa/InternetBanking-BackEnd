@@ -11,7 +11,7 @@ namespace InternetBanking.Controllers
     {
         private readonly ITransacaoRepositorio _transacaoRepositorio;
         private readonly IContaRepositorio _contaRepositorio;
-        
+
         public TransacaoController(ITransacaoRepositorio transacaoRepositorio,
             IContaRepositorio contaRepositorio)
         {
@@ -24,33 +24,37 @@ namespace InternetBanking.Controllers
         {
             return _transacaoRepositorio.GetAll();
         }
-
         [HttpPost]
         public IActionResult Create([FromBody] Transacao transacao)
         {
-            if (transacao == null || transacao.valor <=0){
-                return BadRequest();
+            var _conta = _contaRepositorio.FindByConta(transacao.numeroConta);
 
-            }
-            if(transacao.idTipoTransacao == 1)
-            {   
-                transacao.dtTransacao = DateTime.Now;
-                _contaRepositorio.Deposito(transacao.numeroConta, transacao.numeroContaDestino, transacao.valor);
-                _transacaoRepositorio.Deposito(transacao);
-            }
-            else if(transacao.idTipoTransacao == 2)
+            if ((transacao.senhaTransacoes == _conta.senhaTransacoes))
             {
-                transacao.dtTransacao = DateTime.Now;
-                _contaRepositorio.Saque(transacao.numeroConta, transacao.numeroContaOrigem, transacao.valor);
-                _transacaoRepositorio.Saque(transacao);
+                if (transacao.idTipoTransacao == 1)
+                {
+                    transacao.dtTransacao = DateTime.Now;
+                    _contaRepositorio.Deposito(transacao.numeroConta, transacao.numeroContaDestino, transacao.valor);
+                    _transacaoRepositorio.Deposito(transacao);
+                }
+                else if (transacao.idTipoTransacao == 2)
+                {
+                    transacao.dtTransacao = DateTime.Now;
+                    _contaRepositorio.Saque(transacao.numeroConta, transacao.numeroContaOrigem, transacao.valor);
+                    _transacaoRepositorio.Saque(transacao);
+                }
+                else if (transacao.idTipoTransacao == 3)
+                {
+                    transacao.dtTransacao = DateTime.Now;
+                    _contaRepositorio.Transferencia(transacao.numeroConta, transacao.numeroContaOrigem, transacao.numeroContaDestino, transacao.valor);
+                    _transacaoRepositorio.Transferencia(transacao);
+                }
+                return new ObjectResult(_transacaoRepositorio.FindByID(transacao.idTransacao));
             }
-            else if (transacao.idTipoTransacao == 3)
+            else
             {
-                transacao.dtTransacao = DateTime.Now;
-                _contaRepositorio.Transferencia(transacao.numeroConta, transacao.numeroContaOrigem, transacao.numeroContaDestino, transacao.valor);
-                _transacaoRepositorio.Transferencia(transacao);
+                return BadRequest();
             }
-            return new ObjectResult(_transacaoRepositorio.FindByID(transacao.idTransacao));
         }
     }
 }
