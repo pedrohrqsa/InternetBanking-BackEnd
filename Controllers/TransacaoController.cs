@@ -19,10 +19,10 @@ namespace InternetBanking.Controllers
             _contaRepositorio = contaRepositorio;
         }
 
-        [HttpGet]
-        public IEnumerable<Transacao> GetAll()
+        [HttpGet("{numeroConta}", Name = "GetTransacao")]
+        public IEnumerable<Transacao> GetAll(int numeroConta)
         {
-            return _transacaoRepositorio.GetAll();
+            return _transacaoRepositorio.GetAll(numeroConta);
         }
         [HttpPost]
         public IActionResult Create([FromBody] Transacao transacao)
