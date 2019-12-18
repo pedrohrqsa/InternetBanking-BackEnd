@@ -1,5 +1,7 @@
 ---------------------------------------------------------------------------------------------------------------------------
--- CREATE DATABASE InternetBanking;
+USE master;
+DROP DATABASE InternetBanking;
+CREATE DATABASE InternetBanking;
 USE InternetBanking;
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Cliente;
@@ -130,6 +132,8 @@ SELECT * FROM Conta;
 
 SELECT * FROM Transacao;
 
+SELECT * FROM Foto;
+
 */
 
 
@@ -143,12 +147,15 @@ DROP TABLE Contato;
 DROP TABLE Transacao;
 DROP TABLE Conta;
 DROP TABLE Cliente;
-DROP TABLE Agencia;
+DROP TABLE Foto;
+
+
 */
 
 
 -- COMANDOS DELETE
 /*
+DELETE FROM Foto;
 DELETE FROM Login;
 DELETE FROM Familiares;
 DELETE FROM Endereco;
@@ -156,5 +163,23 @@ DELETE FROM Contato;
 DELETE FROM Transacao;
 DELETE FROM Conta;
 DELETE FROM Cliente;
-DELETE FROM Agencia;
+
 */
+
+
+
+CREATE TABLE Foto (
+    idFoto									INT IDENTITY (1, 1)						NOT NULL,
+	idCliente							    INT										NOT NULL,
+    Binario									VARCHAR(max)						NOT NULL,
+
+	CONSTRAINT FKClienteFoto			    FOREIGN KEY (idCliente)					REFERENCES Cliente (idCliente)
+);
+
+
+
+--insert into Foto (idCliente,binario) 
+--select 1, * from openrowset (bulk 'C:\Users\Public\Pictures\Foto\teste.jpg', single_blob) imagem
+ 
+
+
