@@ -20,7 +20,7 @@ namespace InternetBanking.Repositorio
         {
             return _contextoTransacao.Transacao.FirstOrDefault(u => u.idTransacao == id);
         }
-                public IEnumerable<Transacao> GetAll()
+        public IEnumerable<Transacao> GetAll()
         {
             return _contextoTransacao.Transacao.ToList();
         }

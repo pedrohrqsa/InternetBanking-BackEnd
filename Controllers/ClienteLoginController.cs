@@ -37,5 +37,18 @@ namespace InternetBanking.Controllers
             if (clienteLogin == null) return NotFound();
             return new ObjectResult(clienteLogin);
         }
+        
+        [HttpPut("{cpf}")]
+        public IActionResult Update(string cpf, [FromBody] ClienteLogin clienteLogin)
+        {
+            if (clienteLogin == null) return NotFound();
+
+            var _clienteLogin = _clienteLoginRepositorio.FindByCpf(cpf);
+
+            _clienteLogin.senha = clienteLogin.senha;
+
+            _clienteLoginRepositorio.Update(_clienteLogin);
+            return new NoContentResult();
+        }
     }
 }

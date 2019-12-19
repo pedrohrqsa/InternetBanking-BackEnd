@@ -38,5 +38,20 @@ namespace InternetBanking.Controllers
             _contatoRep.AddContato(contatos);
             return new ObjectResult(_contatoRep.FindByContato(contatos.idCliente));
         }
+
+        [HttpPut("{id}")]
+        public IActionResult Update(int idcontato, [FromBody] Contato contato)
+        {
+            if (contato == null) return NotFound();
+
+            var _contato = _contatoRep.FindByContato(idcontato);
+
+            _contato.email = contato.email;
+            _contato.telResid = contato.telResid;
+            _contato.telCel = contato.telCel;
+
+            _contatoRep.Update(_contato);
+            return new NoContentResult();
+        }
     }
 }

@@ -23,5 +23,10 @@ namespace InternetBanking.Repositorio
         {
             return _contexto.Contato.ToList();
         }
+        public void Update(Contato contato)
+        {
+            _contexto.Contato.Update(contato);
+            _contexto.SaveChanges();
+        }
     }
 }

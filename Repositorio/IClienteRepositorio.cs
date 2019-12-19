@@ -8,5 +8,6 @@ namespace InternetBanking.Repositorio
         void AddCliente(Cliente cliente);
         IEnumerable<Cliente> GetAll();
         Cliente FindByCpf(string cpf);
+        void Update(Cliente cliente);
     }
 }

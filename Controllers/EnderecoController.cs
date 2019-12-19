@@ -36,5 +36,24 @@ namespace InternetBanking.Controllers
             _enderecoRepositorio.AddEndereco(endereco);
             return new ObjectResult(_enderecoRepositorio.FindByEnd(endereco.cep));
         }
+
+        [HttpPut("{id}")]
+        public IActionResult Update(string idEndereco, [FromBody] Endereco endereco)
+        {
+            if (endereco == null) return NotFound();
+
+            var _endereco = _enderecoRepositorio.FindByEnd(idEndereco);
+
+            _endereco.logradouro = endereco.logradouro;
+            _endereco.numero = endereco.numero;
+            _endereco.complemento = endereco.complemento;
+            _endereco.bairro = endereco.bairro;
+            _endereco.cidade = endereco.cidade;
+            _endereco.siglaEstado = endereco.siglaEstado;
+            _endereco.cep = endereco.cep;
+   
+            _enderecoRepositorio.Update(_endereco);
+            return new NoContentResult();
+        }
     }
 }
