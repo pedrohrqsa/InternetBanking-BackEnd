@@ -24,5 +24,6 @@ namespace InternetBanking.Models
         public ICollection <Contato> Contatos { get; set; }
         public ICollection <Endereco> Endereco { get; set; }
         public ICollection <Conta> Conta { get; set; }
+        public ICollection <Foto> Foto { get; set; }
     }
 }
