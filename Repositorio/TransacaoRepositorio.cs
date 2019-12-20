@@ -25,11 +25,11 @@ namespace InternetBanking.Repositorio
             return _contextoTransacao.Transacao.ToList();
         }
 
-        // public IEnumerable<Transacao> GetAll(int numeroConta)
-        // {
-        //     List<Transacao> extrato = _contextoTransacao.Transacao.ToList();
-        //     return extrato.Where(a => (a.numeroContaOrigem == numeroConta) || (a.numeroContaDestino == numeroConta));
-        // }
+        public IEnumerable<Transacao> GetAll(int numeroConta)
+        {
+            List<Transacao> extrato = _contextoTransacao.Transacao.ToList();
+             return extrato.Where(a => (a.numeroContaOrigem == numeroConta) || (a.numeroContaDestino == numeroConta));
+        }
 
         public void AddTransacao(Transacao transacao)
         {
