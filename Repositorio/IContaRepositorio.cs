@@ -11,6 +11,7 @@ namespace InternetBanking.Repositorio
         Conta FindByContaDestino(int numeroContaDestino);
         Conta FindByConta(int numeroConta);
         bool VerifyAccount(Conta conta);
+        int FindByNumC(string cpf);
         void Update(Conta conta);
         void Deposito(int idContaCorrente, int numeroConta, decimal valor);
         void Saque(int idContaCorrente, int numeroConta, decimal valor);

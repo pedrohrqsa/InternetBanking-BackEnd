@@ -32,6 +32,15 @@ namespace InternetBanking.Repositorio
             return _contexto.Conta.FirstOrDefault(c => c.numeroConta == numeroConta);
         }
 
+        public int FindByNumC(string cpf){
+
+           Cliente cli = _contexto.Cliente.FirstOrDefault(cli => cli.cpf == cpf);          
+
+            Conta conta = _contexto.Conta.FirstOrDefault(c => c.idCliente == cli.idCliente);
+            return conta.numeroConta;
+
+        }
+
         public Conta FindByContaDestino(int numeroConta)
         {
             return _contexto.Conta.FirstOrDefault(c => c.numeroConta == numeroConta);
