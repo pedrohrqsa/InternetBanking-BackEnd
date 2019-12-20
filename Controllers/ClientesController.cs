@@ -40,5 +40,24 @@ namespace InternetBanking.Controllers
 
             return new ObjectResult(new ClienteLogin());
         }
+
+        [HttpPut("{cpf}")]
+        public IActionResult Update(string cpf, [FromBody] Cliente cliente)
+        {
+            if (cliente == null) return NotFound();
+            var _cliente = _clienteRepositorio.FindByCpf(cpf);
+            _cliente.nome = cliente.nome;
+            _cliente.sobrenome = cliente.sobrenome;
+            // _cliente.cpf = cliente.cpf;
+            _cliente.rg = cliente.rg;
+            _cliente.orgaoEmissor = cliente.orgaoEmissor;
+            _cliente.dtNascimento = cliente.dtNascimento;
+            _cliente.nacionalidade = cliente.nacionalidade;
+            _cliente.naturalidade = cliente.naturalidade;
+
+            _clienteRepositorio.Update(_cliente);
+            return new NoContentResult();
+        }
+
     }
 }

@@ -25,5 +25,10 @@ namespace InternetBanking.Repositorio
         {
             return _contexto.Endereco.ToList();
         }
+        public void Update(Endereco endereco)
+        {
+            _contexto.Endereco.Update(endereco);
+            _contexto.SaveChanges();
+        }
     }
 }

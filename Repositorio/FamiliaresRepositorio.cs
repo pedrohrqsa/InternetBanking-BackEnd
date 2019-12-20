@@ -26,5 +26,11 @@ namespace InternetBanking.Repositorio
         {
             return _contexto.Familiares.ToList();
         }
+
+        public void Update(Familiares familiares)
+        {
+            _contexto.Familiares.Update(familiares);
+            _contexto.SaveChanges();
+        }
     }
 }

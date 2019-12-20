@@ -1,7 +1,6 @@
 ---------------------------------------------------------------------------------------------------------------------------
-USE master;
-DROP DATABASE InternetBanking;
-CREATE DATABASE InternetBanking;
+-- DROP DATABASE InternetBanking;
+-- CREATE DATABASE InternetBanking;
 USE InternetBanking;
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Cliente;
@@ -107,6 +106,17 @@ CREATE TABLE Transacao(
 	CONSTRAINT FKContaTransacao			    FOREIGN KEY (numeroConta)					REFERENCES Conta(numeroConta)
 );
 ---------------------------------------------------------------------------------------------------------------------------
+-- DROP TABLE Foto;
+-- DELETE FROM Foto;
+CREATE TABLE Foto (
+    idFoto									INT IDENTITY (1, 1)						NOT NULL,
+	idCliente							    INT										NOT NULL,
+    Binario									VARCHAR(max)						NOT NULL,
+
+	CONSTRAINT FKClienteFoto			    FOREIGN KEY (idCliente)					REFERENCES Cliente (idCliente)
+);
+---------------------------------------------------------------------------------------------------------------------------
+
 -- COMANDOS INSERT
 
 /*
@@ -115,6 +125,9 @@ VALUES ('12345678901', '123456789', 'SSPSP', '1998-06-12', 'José', 'da Silva', 
    
 INSERT INTO Conta (idCliente, senhaTransacoes, flagAtivo) 
 VALUES (1, '1234', 1);
+
+INSERT INTO Foto (idCliente,binario) 
+SELECT 1, * FROM openrowset (bulk 'C:\Users\Public\Pictures\Foto\teste.jpg', single_blob) imagem
 */
 
 ---------------------------------------------------------------------------------------------------------------------------
@@ -146,40 +159,21 @@ DROP TABLE Contato;
 
 DROP TABLE Transacao;
 DROP TABLE Conta;
-DROP TABLE Cliente;
 DROP TABLE Foto;
-
-
+DROP TABLE Agencia;
+DROP TABLE Cliente;
 */
 
 
 -- COMANDOS DELETE
 /*
-DELETE FROM Foto;
 DELETE FROM Login;
 DELETE FROM Familiares;
 DELETE FROM Endereco;
 DELETE FROM Contato;
 DELETE FROM Transacao;
 DELETE FROM Conta;
+DELETE FROM Foto;
+DELETE FROM Agencia
 DELETE FROM Cliente;
-
 */
-
-
-
-CREATE TABLE Foto (
-    idFoto									INT IDENTITY (1, 1)						NOT NULL,
-	idCliente							    INT										NOT NULL,
-    Binario									VARCHAR(max)						NOT NULL,
-
-	CONSTRAINT FKClienteFoto			    FOREIGN KEY (idCliente)					REFERENCES Cliente (idCliente)
-);
-
-
-
---insert into Foto (idCliente,binario) 
---select 1, * from openrowset (bulk 'C:\Users\Public\Pictures\Foto\teste.jpg', single_blob) imagem
- 
-
-

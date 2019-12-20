@@ -11,13 +11,13 @@ namespace InternetBanking.Repositorio
         {
             _contexto = ctx;
         }
-        
+
         public void AddCliente(Cliente cliente)
         {
             _contexto.Cliente.Add(cliente);
             _contexto.SaveChanges();
         }
-        
+
         public Cliente FindByCpf(string cpf)
         {
             return _contexto.Cliente.FirstOrDefault(c => c.cpf == cpf);
@@ -26,6 +26,12 @@ namespace InternetBanking.Repositorio
         public IEnumerable<Cliente> GetAll()
         {
             return _contexto.Cliente.ToList();
+        }
+        
+        public void Update(Cliente cliente)
+        {
+            _contexto.Cliente.Update(cliente);
+            _contexto.SaveChanges();
         }
     }
 }

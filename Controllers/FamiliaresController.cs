@@ -36,5 +36,21 @@ namespace InternetBanking.Controllers
             _FamiliaresRepositorio.AddFamiliares(familiares);
             return new ObjectResult(_FamiliaresRepositorio.FindByFam(familiares.idCliente));
         }
+
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, [FromBody] Familiares familiares)
+        {
+            if (familiares == null) return NotFound();
+
+            var _familiares = _FamiliaresRepositorio.FindByFam(id);
+
+            _familiares.nomeMae = familiares.nomeMae;
+            _familiares.sobrenomeMae = familiares.sobrenomeMae;
+            _familiares.nomePai = familiares.nomePai;
+            _familiares.sobrenomePai = familiares.sobrenomePai;
+
+            _FamiliaresRepositorio.Update(_familiares);
+            return new NoContentResult();
+        }
     }
 }
