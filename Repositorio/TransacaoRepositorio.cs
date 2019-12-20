@@ -27,8 +27,13 @@ namespace InternetBanking.Repositorio
 
         public IEnumerable<Transacao> GetAll(int numeroConta)
         {
-            List<Transacao> extrato = _contextoTransacao.Transacao.ToList();
-             return extrato.Where(a => (a.numeroContaOrigem == numeroConta) || (a.numeroContaDestino == numeroConta));
+            List<Transacao> temp = _contextoTransacao.Transacao.ToList();
+            temp.ForEach(e =>
+             e.numeroConta = numeroConta);  
+
+            return temp.Where(a => 
+            (a.numeroContaOrigem == numeroConta)
+            || (a.numeroContaDestino == numeroConta));
         }
 
         public void AddTransacao(Transacao transacao)
