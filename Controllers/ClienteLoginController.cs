@@ -22,13 +22,12 @@ namespace InternetBanking.Controllers
             return new ObjectResult(new Conta());
         }
 
-        // [Authorize()]
         [HttpGet]
         public IEnumerable<ClienteLogin> GetAll()
         {
             return _clienteLoginRepositorio.GetAll();
         }
-        [Authorize()]
+
         [HttpGet("{cpf}", Name = "GetLogin")]
         public IActionResult GetByLogin(string cpf)
         {
@@ -39,11 +38,11 @@ namespace InternetBanking.Controllers
         }
         
         [HttpPut("{cpf}")]
-        public IActionResult Update(string cpf, [FromBody] ClienteLogin clienteLogin)
+        public IActionResult Update([FromBody] ClienteLogin clienteLogin)
         {
             if (clienteLogin == null) return NotFound();
 
-            var _clienteLogin = _clienteLoginRepositorio.FindByCpf(cpf);
+            var _clienteLogin = _clienteLoginRepositorio.FindByCpf(clienteLogin.cpf);
 
             _clienteLogin.senha = clienteLogin.senha;
 

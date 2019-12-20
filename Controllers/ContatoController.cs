@@ -40,11 +40,11 @@ namespace InternetBanking.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int idcontato, [FromBody] Contato contato)
+        public IActionResult Update( [FromBody] Contato contato)
         {
             if (contato == null) return NotFound();
 
-            var _contato = _contatoRep.FindByContato(idcontato);
+            var _contato = _contatoRep.FindByContato(contato.idCliente);
 
             _contato.email = contato.email;
             _contato.telResid = contato.telResid;

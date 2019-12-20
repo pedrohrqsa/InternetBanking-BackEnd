@@ -29,9 +29,9 @@ namespace InternetBanking.Repositorio
         {
             List<Transacao> temp = _contextoTransacao.Transacao.ToList();
             temp.ForEach(e =>
-             e.numeroConta = numeroConta);  
+             e.numeroConta = numeroConta);
 
-            return temp.Where(a => 
+            return temp.Where(a =>
             (a.numeroContaOrigem == numeroConta)
             || (a.numeroContaDestino == numeroConta));
         }
@@ -50,6 +50,7 @@ namespace InternetBanking.Repositorio
             }
             catch (Exception e)
             {
+                Console.WriteLine("Erro:" + e);
                 return false;
             }
             return true;
@@ -64,6 +65,7 @@ namespace InternetBanking.Repositorio
             }
             catch (Exception e)
             {
+                Console.WriteLine("Erro:" + e);
                 return false;
             }
             return true;
@@ -78,6 +80,7 @@ namespace InternetBanking.Repositorio
             }
             catch (Exception e)
             {
+                Console.WriteLine("Erro:" + e);
                 return false;
             }
             return true;

@@ -14,7 +14,6 @@ namespace InternetBanking.Repositorio
         }
         public void AddConta(Conta conta)
         {
-            // conta.idAgencia = 1;
             _contexto.Conta.Add(conta);
             _contexto.SaveChanges();
         }
@@ -38,7 +37,6 @@ namespace InternetBanking.Repositorio
 
             Conta conta = _contexto.Conta.FirstOrDefault(c => c.idCliente == cli.idCliente);
             return conta.numeroConta;
-
         }
 
         public Conta FindByContaDestino(int numeroConta)

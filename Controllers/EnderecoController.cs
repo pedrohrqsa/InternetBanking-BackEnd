@@ -22,10 +22,10 @@ namespace InternetBanking.Controllers
         }
 
         [HttpGet("{cep}", Name = "GetEndereco")]
-        public IActionResult GetById(string cep)
+        public IActionResult GetById(int endereco)
         {
-            var endereco = _enderecoRepositorio.FindByEnd(cep);
-            if (endereco == null) return NotFound();
+            var enderecos = _enderecoRepositorio.FindByEnd(endereco);
+            if (enderecos == null) return NotFound();
             return new ObjectResult(endereco);
         }
 
@@ -34,15 +34,15 @@ namespace InternetBanking.Controllers
         {
             if (endereco == null) return BadRequest();
             _enderecoRepositorio.AddEndereco(endereco);
-            return new ObjectResult(_enderecoRepositorio.FindByEnd(endereco.cep));
+            return new ObjectResult(_enderecoRepositorio.FindByEnd(endereco.idEndereco));
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(string idEndereco, [FromBody] Endereco endereco)
+        public IActionResult Update([FromBody] Endereco endereco)
         {
             if (endereco == null) return NotFound();
 
-            var _endereco = _enderecoRepositorio.FindByEnd(idEndereco);
+            var _endereco = _enderecoRepositorio.FindByEnd(endereco.idCliente);
 
             _endereco.logradouro = endereco.logradouro;
             _endereco.numero = endereco.numero;

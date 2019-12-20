@@ -38,11 +38,11 @@ namespace InternetBanking.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] Familiares familiares)
+        public IActionResult Update([FromBody] Familiares familiares)
         {
             if (familiares == null) return NotFound();
 
-            var _familiares = _FamiliaresRepositorio.FindByFam(id);
+            var _familiares = _FamiliaresRepositorio.FindByFam(familiares.idCliente);
 
             _familiares.nomeMae = familiares.nomeMae;
             _familiares.sobrenomeMae = familiares.sobrenomeMae;

@@ -7,7 +7,7 @@ namespace InternetBanking.Repositorio
     {
         void AddEndereco(Endereco endereco);
         IEnumerable<Endereco> GetAll();
-        Endereco FindByEnd(string cep);
+        Endereco FindByEnd(int endereco);
         void Update(Endereco endereco);
     }
 }
