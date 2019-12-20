@@ -11,6 +11,7 @@ namespace InternetBanking.Models
         public Conta()
         {
             flagAtivo = 1;
+            idAgencia = 1;
         }
         
         [Key]
