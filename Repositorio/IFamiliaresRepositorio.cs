@@ -8,6 +8,7 @@ namespace InternetBanking.Repositorio
         void AddFamiliares(Familiares familiares);
         IEnumerable<Familiares> GetAll();
         Familiares FindByFam(int Fam);
+        int FindByIdCliente(string cpf);
         void Update(Familiares familiares);
     }
 }

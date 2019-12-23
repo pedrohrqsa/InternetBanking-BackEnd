@@ -22,12 +22,18 @@ namespace InternetBanking.Repositorio
         {
             return _contexto.Cliente.FirstOrDefault(c => c.cpf == cpf);
         }
+        
+        public int FindByIdCliente(string cpf)
+        {
+            Cliente cli = _contexto.Cliente.FirstOrDefault(cli => cli.cpf == cpf);
+            return cli.idCliente;
+        }
 
         public IEnumerable<Cliente> GetAll()
         {
             return _contexto.Cliente.ToList();
         }
-        
+
         public void Update(Cliente cliente)
         {
             _contexto.Cliente.Update(cliente);

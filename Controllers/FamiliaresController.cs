@@ -37,12 +37,13 @@ namespace InternetBanking.Controllers
             return new ObjectResult(_FamiliaresRepositorio.FindByFam(familiares.idCliente));
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Update([FromBody] Familiares familiares)
+        [HttpPut("{cpf}")]
+        public IActionResult Update([FromBody] Familiares familiares, string cpf)
         {
             if (familiares == null) return NotFound();
 
-            var _familiares = _FamiliaresRepositorio.FindByFam(familiares.idCliente);
+            int idCliente = _FamiliaresRepositorio.FindByIdCliente(cpf);
+            var _familiares = _FamiliaresRepositorio.FindByFam(idCliente);
 
             _familiares.nomeMae = familiares.nomeMae;
             _familiares.sobrenomeMae = familiares.sobrenomeMae;

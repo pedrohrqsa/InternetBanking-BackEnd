@@ -38,12 +38,12 @@ namespace InternetBanking.Controllers
         }
         
         [HttpPut("{cpf}")]
-        public IActionResult Update([FromBody] ClienteLogin clienteLogin)
+        public IActionResult Update([FromBody] ClienteLogin clienteLogin, string cpf)
         {
             if (clienteLogin == null) return NotFound();
 
-            var _clienteLogin = _clienteLoginRepositorio.FindByCpf(clienteLogin.cpf);
-
+            var _clienteLogin = _clienteLoginRepositorio.FindByCpf(cpf);
+            
             _clienteLogin.senha = clienteLogin.senha;
 
             _clienteLoginRepositorio.Update(_clienteLogin);

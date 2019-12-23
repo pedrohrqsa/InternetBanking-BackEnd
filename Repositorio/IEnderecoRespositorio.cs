@@ -8,6 +8,7 @@ namespace InternetBanking.Repositorio
         void AddEndereco(Endereco endereco);
         IEnumerable<Endereco> GetAll();
         Endereco FindByEnd(int endereco);
+        int FindByIdCliente(string cpf);
         void Update(Endereco endereco);
     }
 }

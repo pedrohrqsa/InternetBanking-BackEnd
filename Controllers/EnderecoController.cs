@@ -37,12 +37,13 @@ namespace InternetBanking.Controllers
             return new ObjectResult(_enderecoRepositorio.FindByEnd(endereco.idEndereco));
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Update([FromBody] Endereco endereco)
+        [HttpPut("{cpf}")]
+        public IActionResult Update([FromBody] Endereco endereco, string cpf)
         {
             if (endereco == null) return NotFound();
 
-            var _endereco = _enderecoRepositorio.FindByEnd(endereco.idCliente);
+            int idCliente = _enderecoRepositorio.FindByIdCliente(cpf);
+            var _endereco = _enderecoRepositorio.FindByEnd(idCliente);
 
             _endereco.logradouro = endereco.logradouro;
             _endereco.numero = endereco.numero;

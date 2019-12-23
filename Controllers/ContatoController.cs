@@ -10,9 +10,11 @@ namespace InternetBanking.Controllers
     public class ContatoController : Controller
     {
         private readonly IContatoRepositorio _contatoRep;
-        public ContatoController(IContatoRepositorio contatoRepo)
+        private readonly IClienteLoginRepositorio _clienteRepositorio;
+        public ContatoController(IContatoRepositorio contatoRepo, IClienteLoginRepositorio clienteRepositorio)
         {
             _contatoRep = contatoRepo;
+            _clienteRepositorio = clienteRepositorio;
         }
 
         [HttpGet]
@@ -39,16 +41,17 @@ namespace InternetBanking.Controllers
             return new ObjectResult(_contatoRep.FindByContato(contatos.idCliente));
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Update( [FromBody] Contato contato)
+        [HttpPut("{cpf}")]
+        public IActionResult Update([FromBody] Contato contato, string cpf)
         {
             if (contato == null) return NotFound();
 
-            var _contato = _contatoRep.FindByContato(contato.idCliente);
-
-            _contato.email = contato.email;
-            _contato.telResid = contato.telResid;
-            _contato.telCel = contato.telCel;
+            int idCliente = _contatoRep.FindByIdCliente(cpf);
+            var _contato = _contatoRep.FindByContato(idCliente);
+            
+           _contato.email = contato.email;
+           _contato.telCel = contato.telCel;
+           _contato.telResid = contato.telResid;
 
             _contatoRep.Update(_contato);
             return new NoContentResult();

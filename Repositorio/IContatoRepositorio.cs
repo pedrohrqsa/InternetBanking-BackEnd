@@ -7,6 +7,7 @@ namespace InternetBanking.Repositorio
     {
         void AddContato(Contato contato);
         IEnumerable<Contato> GetAll();
+        int FindByIdCliente(string cpf);
         Contato FindByContato(int contato);
         void Update(Contato contato);
 
