@@ -47,18 +47,23 @@ namespace InternetBanking.Controllers
             if (cliente == null) return NotFound();
 
             var _cliente = _clienteRepositorio.FindByCpf(cpf);
-            if(cliente.nome!=""){_cliente.nome = cliente.nome;}
+            if (cliente.nome != "") { _cliente.nome = cliente.nome; }
 
-            if(cliente.sobrenome!=""){_cliente.sobrenome = cliente.sobrenome;}
+            if (cliente.sobrenome != "") { _cliente.sobrenome = cliente.sobrenome; }
             // _cliente.cpf = cliente.cpf;
-            if(cliente.rg!=""){ _cliente.rg = cliente.rg;}
+            if (cliente.rg != "") { _cliente.rg = cliente.rg; }
 
-            if(cliente.orgaoEmissor!= ""){_cliente.orgaoEmissor = cliente.orgaoEmissor;}
-            
-            if(cliente.dtNascimento!= null){_cliente.dtNascimento = cliente.dtNascimento;}
+            if (cliente.orgaoEmissor != "") { _cliente.orgaoEmissor = cliente.orgaoEmissor; }
 
-            if(cliente.nacionalidade!=""){_cliente.nacionalidade = cliente.nacionalidade;}
+            if (cliente.dtNascimento != null) { _cliente.dtNascimento = cliente.dtNascimento; }
 
-            if(cliente.naturalidade!=""){_cliente.naturalidade = cliente.naturalidade;}
+            if (cliente.nacionalidade != "") { _cliente.nacionalidade = cliente.nacionalidade; }
+
+            if (cliente.naturalidade != "") { _cliente.naturalidade = cliente.naturalidade; }
+
+            _clienteRepositorio.Update(_cliente);
+
+            return new NoContentResult();
+        }
     }
 }
