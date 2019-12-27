@@ -12,6 +12,8 @@ namespace InternetBanking.Models
         public int idCliente { get; set; }
         public string cpf { get; set; }
         public string senha { get; set; }
+        public string antigaSenha { get; set; }
+        public string novaSenha { get; set; }
         
         [ForeignKey("idCliente")]
         public Cliente Cliente {get; set;}

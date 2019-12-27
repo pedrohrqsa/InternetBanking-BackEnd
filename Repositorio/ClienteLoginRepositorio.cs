@@ -21,6 +21,7 @@ namespace InternetBanking.Repositorio
         {
             return _contexto.ClienteLogin.FirstOrDefault(c => c.cpf == cpf);
         }
+        
         public IEnumerable<ClienteLogin> GetAll()
         {
             return _contexto.ClienteLogin.ToList();
