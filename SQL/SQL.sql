@@ -173,6 +173,5 @@ DELETE FROM Endereco;
 DELETE FROM Contato;
 DELETE FROM Transacao;
 DELETE FROM Conta;
-DELETE FROM Agencia;
 DELETE FROM Cliente;
 */
