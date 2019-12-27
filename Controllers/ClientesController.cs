@@ -36,9 +36,15 @@ namespace InternetBanking.Controllers
         {
             if (cliente == null) return BadRequest();
 
-            _clienteRepositorio.AddCliente(cliente);
-
-            return new ObjectResult(new ClienteLogin());
+            if (cliente != null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                _clienteRepositorio.AddCliente(cliente);
+                return new ObjectResult(new ClienteLogin());
+            }
         }
 
         [HttpPut("{cpf}")]
@@ -47,18 +53,13 @@ namespace InternetBanking.Controllers
             if (cliente == null) return NotFound();
 
             var _cliente = _clienteRepositorio.FindByCpf(cpf);
+
             if (cliente.nome != "") { _cliente.nome = cliente.nome; }
-
             if (cliente.sobrenome != "") { _cliente.sobrenome = cliente.sobrenome; }
-            // _cliente.cpf = cliente.cpf;
             if (cliente.rg != "") { _cliente.rg = cliente.rg; }
-
             if (cliente.orgaoEmissor != "") { _cliente.orgaoEmissor = cliente.orgaoEmissor; }
-
             if (cliente.dtNascimento != null) { _cliente.dtNascimento = cliente.dtNascimento; }
-
             if (cliente.nacionalidade != "") { _cliente.nacionalidade = cliente.nacionalidade; }
-
             if (cliente.naturalidade != "") { _cliente.naturalidade = cliente.naturalidade; }
 
             _clienteRepositorio.Update(_cliente);
