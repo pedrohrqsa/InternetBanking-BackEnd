@@ -22,7 +22,7 @@ CREATE TABLE Cliente(
 	idLogin								    INT										NOT NULL	IDENTITY(1, 1)				PRIMARY KEY,
 	idCliente							    INT										NOT NULL,
 	cpf									    VARCHAR(11)								NOT NULL,
-	senha								    VARCHAR(15)								NOT NULL,
+	senhaAcesso								VARCHAR(15)								NOT NULL,
 	novaSenha								VARCHAR(15)									NULL,
 	antigaSenha								VARCHAR(15)									NULL
 	CONSTRAINT FKClienteLogin			    FOREIGN KEY (idCliente)					REFERENCES Cliente (idCliente)

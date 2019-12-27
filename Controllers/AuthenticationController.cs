@@ -30,7 +30,7 @@ namespace InternetBanking.Controllers
         public IActionResult Token([FromBody] ClienteLogin request)
         {
             var cli = _clienteLoginRepositorio.FindByCpf(request.cpf);
-            if (cli != null && cli.senha == request.senha)
+            if (cli != null && cli.senhaAcesso == request.senhaAcesso)
             {
                 var claims = new[]
                 {

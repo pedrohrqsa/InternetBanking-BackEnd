@@ -11,7 +11,7 @@ namespace InternetBanking.Models
         public int idLogin { get; set; }
         public int idCliente { get; set; }
         public string cpf { get; set; }
-        public string senha { get; set; }
+        public string senhaAcesso { get; set; }
         public string antigaSenha { get; set; }
         public string novaSenha { get; set; }
         

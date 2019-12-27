@@ -43,9 +43,11 @@ namespace InternetBanking.Controllers
             return new ObjectResult(new Conta());
         }
 
-        [HttpPut("{numeroConta}")]
-        public IActionResult Update(int numeroConta, [FromBody] Conta conta)
+        [HttpPut("{cpf}")]
+        public IActionResult Update(string cpf, [FromBody] Conta conta)
         {
+            int numeroConta = _contaRepositorio.FindByNumC(cpf);
+            
             if (conta == null || conta.numeroConta != numeroConta || numeroConta == 0)
                 return BadRequest();
                 

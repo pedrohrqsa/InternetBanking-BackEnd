@@ -44,11 +44,11 @@ namespace InternetBanking.Controllers
 
             var _clienteLogin = _clienteLoginRepositorio.FindByCpf(cpf);
             
-            if(clienteLogin.antigaSenha == _clienteLogin.senha)
+            if(clienteLogin.antigaSenha == _clienteLogin.senhaAcesso)
             {
-                if(_clienteLogin.senha != clienteLogin.novaSenha)
+                if(_clienteLogin.senhaAcesso != clienteLogin.novaSenha)
                 {
-                    _clienteLogin.senha = clienteLogin.novaSenha;
+                    _clienteLogin.senhaAcesso = clienteLogin.novaSenha;
 
                     _clienteLoginRepositorio.Update(_clienteLogin);
                     return new NoContentResult();
