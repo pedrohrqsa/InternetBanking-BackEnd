@@ -36,7 +36,9 @@ namespace InternetBanking.Controllers
         {
             if (cliente == null) return BadRequest();
 
-            if (cliente != null)
+             var clientes = _clienteRepositorio.FindByCpf(cliente.cpf);
+
+            if (clientes.cpf == cliente.cpf)
             {
                 return BadRequest();
             }
