@@ -36,17 +36,16 @@ namespace InternetBanking.Controllers
         {
             if (cliente == null) return BadRequest();
 
-             var clientes = _clienteRepositorio.FindByCpf(cliente.cpf);
+            var clientes = _clienteRepositorio.FindByCpf(cliente.cpf);
 
-            if (clientes.cpf == cliente.cpf)
-            {
-                return BadRequest();
-            }
-            else
+            if (clientes == null)
             {
                 _clienteRepositorio.AddCliente(cliente);
                 return new ObjectResult(new ClienteLogin());
             }
+
+            return BadRequest();
+
         }
 
         [HttpPut("{cpf}")]
