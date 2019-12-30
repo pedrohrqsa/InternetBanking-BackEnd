@@ -47,19 +47,14 @@ namespace InternetBanking.Controllers
         public IActionResult Update(string cpf, [FromBody] Conta conta)
         {
             int numeroConta = _contaRepositorio.FindByNumC(cpf);
-            
-            if (conta == null || conta.numeroConta != numeroConta || numeroConta == 0)
-                return BadRequest();
-                
             var _conta = _contaRepositorio.FindByConta(numeroConta);
-
             bool contaVerificada = _contaRepositorio.VerifyAccount(_conta);
 
             try
             {
                 if(contaVerificada)
                 {
-                    _conta.flagAtivo = conta.flagAtivo;
+                    _conta.flagAtivo = -1;
                     _contaRepositorio.Update(_conta);
                 }
                 else
