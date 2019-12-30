@@ -18,42 +18,54 @@ namespace InternetBanking.Controllers
         private readonly IConfiguration _configuration;
         private readonly IClienteLoginRepositorio _clienteLoginRepositorio;
 
+        private readonly IContaRepositorio _contaRep;
+
         public TokenController(IConfiguration configuration,
-         IClienteLoginRepositorio clienteRepo)
+         IClienteLoginRepositorio clienteRepo, IContaRepositorio contaRep)
         {
             _configuration = configuration;
             _clienteLoginRepositorio = clienteRepo;
+            _contaRep = contaRep;
         }
 
         [AllowAnonymous]
         [HttpPost]
         public IActionResult Token([FromBody] ClienteLogin request)
         {
-            var cli = _clienteLoginRepositorio.FindByCpf(request.cpf);
-            if (cli != null && cli.senhaAcesso == request.senhaAcesso)
+            var findConta = _contaRep.FindByNumC(request.cpf);
+            var findNumConta = _contaRep.FindByConta(findConta);
+            if (findNumConta.flagAtivo == -1)
+            { 
+                return BadRequest();
+            }
+            else
             {
-                var claims = new[]
+                var cli = _clienteLoginRepositorio.FindByCpf(request.cpf);
+                if (cli != null && cli.senhaAcesso == request.senhaAcesso)
                 {
+                    var claims = new[]
+                    {
                     new Claim (ClaimTypes.Name, request.cpf)
                 };
 
-                IdentityModelEventSource.ShowPII = true;
+                    IdentityModelEventSource.ShowPII = true;
 
-                var key = new SymmetricSecurityKey(
-                    Encoding.UTF8.GetBytes(_configuration["SecurityKey"]));
+                    var key = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(_configuration["SecurityKey"]));
 
-                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+                    var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-                var token = new JwtSecurityToken(
-                    issuer: "InternetBanking.net",
-                    audience: "InternetBanking.net",
-                    claims: claims,
-                    expires: DateTime.Now.AddMinutes(30),
-                    signingCredentials: creds);
-                return Ok(new
-                {
-                     token = new JwtSecurityTokenHandler().WriteToken(token)
-                });
+                    var token = new JwtSecurityToken(
+                        issuer: "InternetBanking.net",
+                        audience: "InternetBanking.net",
+                        claims: claims,
+                        expires: DateTime.Now.AddMinutes(30),
+                        signingCredentials: creds);
+                    return Ok(new
+                    {
+                        token = new JwtSecurityTokenHandler().WriteToken(token)
+                    });
+                }
             }
             return BadRequest("Credenciais Inválidas...");
         }
