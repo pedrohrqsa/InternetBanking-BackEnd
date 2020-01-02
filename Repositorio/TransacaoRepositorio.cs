@@ -43,6 +43,7 @@ namespace InternetBanking.Repositorio
 
         public bool Deposito(Transacao deposito)
         {
+            
             try
             {
                 _contextoTransacao.Add(deposito);
