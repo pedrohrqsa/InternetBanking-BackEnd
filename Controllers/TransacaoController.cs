@@ -30,22 +30,24 @@ namespace InternetBanking.Controllers
         public IActionResult Create([FromBody] Transacao transacao)
         {
             var _conta = _contaRepositorio.FindByConta(transacao.numeroConta);
+            bool validador = false;
+            if(_contaRepositorio.FindByConta(transacao.numeroContaDestino) != null){ validador = true;}
 
             if ((transacao.senhaTransacoes == _conta.senhaTransacoes))
             {
-                if (transacao.idTipoTransacao == 1)
+                if (transacao.idTipoTransacao == 1 && 0 <transacao.valor )
                 {
                     transacao.dtTransacao = DateTime.Now.ToString("dd/MM/yyyy");
                     _contaRepositorio.Deposito(transacao.numeroConta, transacao.numeroContaDestino, transacao.valor);
                     _transacaoRepositorio.Deposito(transacao);
                 }
-                else if (transacao.idTipoTransacao == 2)
+                else if (transacao.idTipoTransacao == 2 && _conta.saldoAtual >= transacao.valor)
                 {
                     transacao.dtTransacao = DateTime.Now.ToString("dd/MM/yyyy");
                     _contaRepositorio.Saque(transacao.numeroConta, transacao.numeroContaOrigem, transacao.valor);
                     _transacaoRepositorio.Saque(transacao);
                 }
-                else if (transacao.idTipoTransacao == 3)
+                else if (transacao.idTipoTransacao == 3 && _conta.saldoAtual >= transacao.valor && validador == true  )
                 {
                     transacao.dtTransacao = DateTime.Now.ToString("dd/MM/yyyy");
                     _contaRepositorio.Transferencia(transacao.numeroConta, transacao.numeroContaOrigem, transacao.numeroContaDestino, transacao.valor);
