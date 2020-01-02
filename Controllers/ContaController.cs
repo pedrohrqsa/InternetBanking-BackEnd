@@ -12,10 +12,12 @@ namespace InternetBanking.Controllers
     {
         private readonly IContaRepositorio _contaRepositorio;
         private readonly ITransacaoRepositorio _transacaoRepositorio;
+        private readonly IClienteLoginRepositorio _login;
 
-        public ContaController(IContaRepositorio ContaRepositorio)
+        public ContaController(IContaRepositorio ContaRepositorio, IClienteLoginRepositorio login)
         {
             _contaRepositorio = ContaRepositorio;
+            _login = login;
         }
 
         [HttpGet]
@@ -44,29 +46,38 @@ namespace InternetBanking.Controllers
         }
 
         [HttpPut("{cpf}")]
-        public IActionResult Update(string cpf, [FromBody] Conta conta)
+        public IActionResult Update(string cpf, [FromBody] ClienteLogin conta)
         {
             int numeroConta = _contaRepositorio.FindByNumC(cpf);
             var _conta = _contaRepositorio.FindByConta(numeroConta);
             bool contaVerificada = _contaRepositorio.VerifyAccount(_conta);
+            var senha = _login.FindByCpf(cpf);
 
-            try
+            if (conta.senhaAcesso == senha.senhaAcesso)
             {
-                if(contaVerificada)
+                try
                 {
-                    _conta.flagAtivo = -1;
-                    _contaRepositorio.Update(_conta);
+                    if (contaVerificada)
+                    {
+                        _conta.flagAtivo = -1;
+                        _contaRepositorio.Update(_conta);
+                    }
+                    else
+                    {
+                        return new ObjectResult("Sua conta não poderá ser inativada.");
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    return new ObjectResult("Sua conta não poderá ser inativada.");
+                    return new ObjectResult(e);
                 }
+
+                return new NoContentResult();
             }
-            catch (Exception e)
+            else
             {
-                return new ObjectResult(e);
+                return BadRequest();
             }
-            return new NoContentResult();
         }
 
         [HttpPost]
