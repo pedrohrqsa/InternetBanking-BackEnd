@@ -31,7 +31,7 @@ namespace InternetBanking.Controllers
         {
             var _conta = _contaRepositorio.FindByConta(transacao.numeroConta);
             bool validador = false;
-            if(_contaRepositorio.FindByConta(transacao.numeroContaDestino) != null){ validador = true;}
+            if(_contaRepositorio.FindByConta(transacao.numeroContaDestino) != null && transacao.numeroContaDestino != transacao.numeroConta){ validador = true;}
 
             if ((transacao.senhaTransacoes == _conta.senhaTransacoes))
             {
