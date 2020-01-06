@@ -90,6 +90,18 @@ CREATE TABLE Conta(
 	CONSTRAINT FKClienteConta			    FOREIGN KEY (idCliente)					REFERENCES Cliente (idCliente),
 	CONSTRAINT FKAgenciaConta			    FOREIGN KEY (idAgencia)					REFERENCES Agencia (idAgencia),
 );
+
+---------------------------------------------------------------------------------------------------------------------------
+-- DROP TABLE Status;
+-- DELETE FROM Status;
+CREATE TABLE Status(
+	IDStatus	INT		IDENTITY(1,1)	PRIMARY KEY,
+	flagAtivo							    INT										NOT NULL,
+	dataAlteracao date NOT NULL	DEFAULT GETDATE(),
+	numeroConta INT NOT NULL,
+	CONSTRAINT FKContaStatus			    FOREIGN KEY (numeroConta)					REFERENCES Conta(numeroConta)
+);
+
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Transacao;
 -- DELETE FROM Transacao;
