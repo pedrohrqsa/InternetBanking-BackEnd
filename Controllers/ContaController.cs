@@ -14,10 +14,13 @@ namespace InternetBanking.Controllers
         private readonly ITransacaoRepositorio _transacaoRepositorio;
         private readonly IClienteLoginRepositorio _login;
 
-        public ContaController(IContaRepositorio ContaRepositorio, IClienteLoginRepositorio login)
+        private readonly IClienteRepositorio _cliente;
+
+        public ContaController(IContaRepositorio ContaRepositorio, IClienteLoginRepositorio login,IClienteRepositorio cliente)
         {
             _contaRepositorio = ContaRepositorio;
             _login = login;
+            _cliente = cliente;
         }
 
         [HttpGet]
@@ -85,6 +88,58 @@ namespace InternetBanking.Controllers
                 return BadRequest();
             }
         }
+
+[Route("ativar")]
+ [HttpPut]
+        public IActionResult Update([FromBody] StatusConta st)
+        {
+
+
+             var cliente = _cliente.FindByCpf(st.cpf);
+            if(cliente!=null && cliente.cpf == st.cpf && cliente.rg == st.rg){
+
+            int numeroConta = _contaRepositorio.FindByNumC(st.cpf);
+            var _conta = _contaRepositorio.FindByConta(numeroConta);
+            bool contaVerificada = _contaRepositorio.VerifyAccount(_conta);
+            var clienteLogin = _login.FindByCpf(st.cpf);
+
+            DateTime alteracaoStatus;
+            
+          
+                try
+                {
+                    if (!contaVerificada)
+                    {
+
+                        _conta.flagAtivo = 1;
+                        _conta.senhaTransacoes = st.senhaTransacoes;
+                        _contaRepositorio.Update(_conta);
+                        clienteLogin.senhaAcesso = st.senhaAcesso;
+                        _login.Update(clienteLogin);
+
+                        alteracaoStatus = DateTime.Now;
+
+                        _contaRepositorio.Status(alteracaoStatus, _conta.flagAtivo, numeroConta);
+                    }
+                    else
+                    {
+                        return new ObjectResult("Sua conta não poderá ser inativada.");
+                    }
+                }
+                catch (Exception e)
+                {
+                    return new ObjectResult(e);
+                }
+
+                return new NoContentResult();
+           
+               
+            }
+
+            return BadRequest();
+            }
+        
+
 
         [HttpPost]
         public IActionResult Deposito(Transacao deposito)
