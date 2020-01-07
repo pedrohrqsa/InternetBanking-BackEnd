@@ -108,7 +108,7 @@ namespace InternetBanking.Controllers
           
                 try
                 {
-                    if (!contaVerificada)
+                    if (contaVerificada)
                     {
 
                         _conta.flagAtivo = 1;
