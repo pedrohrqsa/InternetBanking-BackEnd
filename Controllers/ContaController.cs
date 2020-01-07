@@ -16,7 +16,10 @@ namespace InternetBanking.Controllers
 
         private readonly IClienteRepositorio _cliente;
 
-        public ContaController(IContaRepositorio ContaRepositorio, IClienteLoginRepositorio login, IClienteRepositorio cliente)
+        public ContaController(
+            IContaRepositorio ContaRepositorio,
+         IClienteLoginRepositorio login,
+         IClienteRepositorio cliente)
         {
             _contaRepositorio = ContaRepositorio;
             _login = login;
@@ -125,7 +128,7 @@ namespace InternetBanking.Controllers
                     return new ObjectResult(e);
                 }
 
-                return new NoContentResult();
+                return new ObjectResult("Sua conta foi reativada.");
             }
 
             return BadRequest();

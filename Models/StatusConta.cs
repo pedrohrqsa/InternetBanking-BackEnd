@@ -8,12 +8,10 @@ namespace InternetBanking.Models
 {    
     public class StatusConta
     {
-        
         public string cpf { get; set; }
         public string rg { get; set; }
         public DateTime dtNascimento { get; set; }
         public string senhaTransacoes { get; set; }
         public string senhaAcesso { get; set; }
-
     }
 }
