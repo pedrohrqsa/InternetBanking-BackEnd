@@ -53,6 +53,8 @@ namespace InternetBanking.Controllers
             bool contaVerificada = _contaRepositorio.VerifyAccount(_conta);
             var senha = _login.FindByCpf(cpf);
 
+            DateTime alteracaoStatus;
+
             if (conta.senhaAcesso == senha.senhaAcesso)
             {
                 try
@@ -61,6 +63,10 @@ namespace InternetBanking.Controllers
                     {
                         _conta.flagAtivo = -1;
                         _contaRepositorio.Update(_conta);
+
+                        alteracaoStatus = DateTime.Now;
+
+                        _contaRepositorio.Status(alteracaoStatus, _conta.flagAtivo, numeroConta);
                     }
                     else
                     {

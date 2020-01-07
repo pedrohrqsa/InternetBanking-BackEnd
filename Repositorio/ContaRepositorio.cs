@@ -2,15 +2,18 @@ using System.Collections.Generic;
 using InternetBanking.Models;
 using System.Linq;
 using System;
+using InternetBanking_BackEnd.Models;
 
 namespace InternetBanking.Repositorio
 {
     public class ContaRepositorio : IContaRepositorio
     {
         private readonly ClienteDB _contexto;
-        public ContaRepositorio(ClienteDB ctx)
+        private readonly ContaDB _contextoConta;
+        public ContaRepositorio(ClienteDB ctx, ContaDB ctxConta)
         {
             _contexto = ctx;
+            _contextoConta = ctxConta;
         }
         public void AddConta(Conta conta)
         {
@@ -120,6 +123,18 @@ namespace InternetBanking.Repositorio
                 contaDestino.saldoAtual += valor;
                 _contexto.SaveChanges();
             }
+        }
+
+        public void Status(DateTime dataAlteracao, int flagAtivo, int numeroConta)
+        {
+            Status s = new Status();
+
+            s.dataAlteracao = dataAlteracao;
+            s.flagAtivo = flagAtivo;
+            s.numeroConta = numeroConta;
+
+            _contextoConta.Add(s);
+            _contextoConta.SaveChanges();
         }
     }
 }

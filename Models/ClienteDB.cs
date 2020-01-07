@@ -1,4 +1,5 @@
 using InternetBanking.Models;
+using InternetBanking_BackEnd.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace InternetBanking.Models
@@ -58,6 +59,7 @@ namespace InternetBanking.Models
             modelBuilder.Entity<Foto>()
                 .HasOne(p => p.Cliente)
                 .WithMany(b => b.Foto);
+
         }
     }
 }

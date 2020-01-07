@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using InternetBanking.Models;
 
@@ -6,6 +7,7 @@ namespace InternetBanking_BackEnd.Models
 {
     public class Status
     {
+        [Key]
         public int IDStatus { get; set; }
         public DateTime dataAlteracao { get; set; }
         public int flagAtivo { get; set; }
@@ -13,5 +15,7 @@ namespace InternetBanking_BackEnd.Models
 
         [ForeignKey("numeroConta")]
         public Conta Conta { get; set; }
+
+
     }
 }

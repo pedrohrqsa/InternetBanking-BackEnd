@@ -1,4 +1,6 @@
 using InternetBanking.Models;
+using InternetBanking_BackEnd.Models;
+using System;
 using System.Collections.Generic;
 
 namespace InternetBanking.Repositorio
@@ -11,6 +13,7 @@ namespace InternetBanking.Repositorio
         Conta FindByContaDestino(int numeroContaDestino);
         Conta FindByConta(int numeroConta);
         bool VerifyAccount(Conta conta);
+        void Status(DateTime dataAlteracao, int flag, int numeroConta);
         int FindByNumC(string cpf);
         void Update(Conta conta);
         void Deposito(int idContaCorrente, int numeroConta, decimal valor);

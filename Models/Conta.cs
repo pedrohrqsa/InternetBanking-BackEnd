@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using InternetBanking_BackEnd.Models;
 
 namespace InternetBanking.Models
 {
@@ -29,5 +30,6 @@ namespace InternetBanking.Models
         public Agencia Agencia { get; set; }
 
         public ICollection <Transacao> Transacao { get; set; }
+        public ICollection <Status> Status { get; set; }
     }
 }
