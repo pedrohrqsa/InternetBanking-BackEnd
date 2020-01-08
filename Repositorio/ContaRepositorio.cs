@@ -49,7 +49,7 @@ namespace InternetBanking.Repositorio
 
         public bool VerifyAccount(Conta conta)
         {
-            if(conta.saldoAtual == 0 && conta.flagAtivo != (conta.flagAtivo * -1))
+            if(conta.saldoAtual == 0 && conta.flagAtivo == 1)
             {
                 return true;
             }

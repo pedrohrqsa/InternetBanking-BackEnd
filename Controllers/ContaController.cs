@@ -13,7 +13,6 @@ namespace InternetBanking.Controllers
         private readonly IContaRepositorio _contaRepositorio;
         private readonly ITransacaoRepositorio _transacaoRepositorio;
         private readonly IClienteLoginRepositorio _login;
-
         private readonly IClienteRepositorio _cliente;
 
         public ContaController(
@@ -76,7 +75,7 @@ namespace InternetBanking.Controllers
                     }
                     else
                     {
-                        return new ObjectResult("Sua conta não poderá ser inativada.");
+                        return BadRequest();
                     }
                 }
                 catch (Exception e)
@@ -97,7 +96,10 @@ namespace InternetBanking.Controllers
         public IActionResult Update([FromBody] StatusConta st)
         {
             var cliente = _cliente.FindByCpf(st.cpf);
-            if (cliente != null && cliente.cpf == st.cpf && cliente.rg == st.rg)
+            
+            if (cliente != null && cliente.cpf == st.cpf &&
+             cliente.rg == st.rg &&
+              cliente.dtNascimento == st.dtNascimento)
             {
                 int numeroConta = _contaRepositorio.FindByNumC(st.cpf);
                 var _conta = _contaRepositorio.FindByConta(numeroConta);
@@ -106,29 +108,26 @@ namespace InternetBanking.Controllers
                 DateTime alteracaoStatus;
                 try
                 {
-                    if (contaVerificada)
+                    if (contaVerificada==false)
                     {
                         _conta.flagAtivo = 1;
                         _conta.senhaTransacoes = st.senhaTransacoes;
                         _contaRepositorio.Update(_conta);
                         clienteLogin.senhaAcesso = st.senhaAcesso;
                         _login.Update(clienteLogin);
-
                         alteracaoStatus = DateTime.Now;
-
                         _contaRepositorio.Status(alteracaoStatus, _conta.flagAtivo, numeroConta);
+                        return Ok();
                     }
                     else
                     {
-                        return new ObjectResult("Sua conta não poderá ser inativada.");
+                        return BadRequest();
                     }
                 }
                 catch (Exception e)
                 {
                     return new ObjectResult(e);
                 }
-
-                return new ObjectResult("Sua conta foi reativada.");
             }
 
             return BadRequest();
