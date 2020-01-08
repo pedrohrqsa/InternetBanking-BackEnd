@@ -10,5 +10,6 @@ namespace InternetBanking.Repositorio
         Cliente FindByCpf(string cpf);
         int FindByIdCliente(string cpf);
         void Update(Cliente cliente);
+        void Update(Cliente cliente, Cliente _cliente);
     }
 }

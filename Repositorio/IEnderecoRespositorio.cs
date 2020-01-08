@@ -10,5 +10,6 @@ namespace InternetBanking.Repositorio
         Endereco FindByEnd(int endereco);
         int FindByIdCliente(string cpf);
         void Update(Endereco endereco);
+        void Update(Endereco endereco, Endereco _endereco);
     }
 }

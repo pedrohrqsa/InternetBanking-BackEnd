@@ -47,13 +47,10 @@ namespace InternetBanking.Controllers
             if (contato == null) return NotFound();
 
             int idCliente = _contatoRep.FindByIdCliente(cpf);
-            var _contato = _contatoRep.FindByContato(idCliente);
-            
-           _contato.email = contato.email;
-           _contato.telCel = contato.telCel;
-           _contato.telResid = contato.telResid;
+            var _contato = _contatoRep.FindByContato(idCliente);            
+           
 
-            _contatoRep.Update(_contato);
+            _contatoRep.Update(contato,_contato);
             return new NoContentResult();
         }
     }

@@ -39,5 +39,25 @@ namespace InternetBanking.Repositorio
             _contexto.Cliente.Update(cliente);
             _contexto.SaveChanges();
         }
+
+        public void Update(Cliente cliente, Cliente _cliente)
+        {
+
+            if (cliente.nome != "") { _cliente.nome = cliente.nome; }
+            if (cliente.sobrenome != "") { _cliente.sobrenome = cliente.sobrenome; }
+            if (cliente.rg != "") { _cliente.rg = cliente.rg; }
+            if (cliente.orgaoEmissor != "") { _cliente.orgaoEmissor = cliente.orgaoEmissor; }
+            if (cliente.dtNascimento != null) { _cliente.dtNascimento = cliente.dtNascimento; }
+            if (cliente.nacionalidade != "") { _cliente.nacionalidade = cliente.nacionalidade; }
+            if (cliente.naturalidade != "") { _cliente.naturalidade = cliente.naturalidade; }
+            
+            _contexto.Cliente.Update(_cliente);
+            _contexto.SaveChanges();
+        }
+
+        
+
+
+        
     }
 }

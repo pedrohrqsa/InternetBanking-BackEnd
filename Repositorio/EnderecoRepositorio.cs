@@ -36,5 +36,25 @@ namespace InternetBanking.Repositorio
             _contexto.Endereco.Update(endereco);
             _contexto.SaveChanges();
         }
+
+         public void Update(Endereco endereco, Endereco _endereco)
+        {
+
+            if(endereco.logradouro!=""){_endereco.logradouro = endereco.logradouro;}
+           if(endereco.numero!=0){ _endereco.numero = endereco.numero;}
+           if(endereco.complemento!=""){ _endereco.complemento = endereco.complemento;}
+           if(endereco.bairro!=""){ _endereco.bairro = endereco.bairro;}
+           if(endereco.cidade!=""){ _endereco.cidade = endereco.cidade;}
+           if(endereco.siglaEstado!=""){ _endereco.siglaEstado = endereco.siglaEstado;}
+           if(endereco.cep!=""){ _endereco.cep = endereco.cep;}
+
+            _contexto.Endereco.Update(_endereco);
+            _contexto.SaveChanges();
+        }
+
+
+
+        
+   
     }
 }

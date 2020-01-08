@@ -44,16 +44,8 @@ namespace InternetBanking.Controllers
 
             int idCliente = _enderecoRepositorio.FindByIdCliente(cpf);
             var _endereco = _enderecoRepositorio.FindByEnd(idCliente);
-
-            _endereco.logradouro = endereco.logradouro;
-            _endereco.numero = endereco.numero;
-            _endereco.complemento = endereco.complemento;
-            _endereco.bairro = endereco.bairro;
-            _endereco.cidade = endereco.cidade;
-            _endereco.siglaEstado = endereco.siglaEstado;
-            _endereco.cep = endereco.cep;
-   
-            _enderecoRepositorio.Update(_endereco);
+          
+            _enderecoRepositorio.Update(endereco,_endereco);
             return new NoContentResult();
         }
     }

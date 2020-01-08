@@ -45,12 +45,7 @@ namespace InternetBanking.Controllers
             int idCliente = _FamiliaresRepositorio.FindByIdCliente(cpf);
             var _familiares = _FamiliaresRepositorio.FindByFam(idCliente);
 
-            _familiares.nomeMae = familiares.nomeMae;
-            _familiares.sobrenomeMae = familiares.sobrenomeMae;
-            _familiares.nomePai = familiares.nomePai;
-            _familiares.sobrenomePai = familiares.sobrenomePai;
-
-            _FamiliaresRepositorio.Update(_familiares);
+            _FamiliaresRepositorio.Update(familiares,_familiares);
             return new NoContentResult();
         }
     }
