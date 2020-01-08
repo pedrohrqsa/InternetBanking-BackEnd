@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------------------------------
 -- CREATE DATABASE InternetBanking;
-USE InternetBanking;
+--USE InternetBanking;
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Cliente;
 -- DELETE FROM Cliente;
@@ -15,6 +15,7 @@ CREATE TABLE Cliente(
 	nacionalidade						    VARCHAR(20)								NOT NULL,
 	naturalidade						    VARCHAR(20)								NOT NULL
 );
+
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Login;
 -- DELETE FROM Login;
@@ -27,6 +28,7 @@ CREATE TABLE Cliente(
 	antigaSenha								VARCHAR(15)									NULL
 	CONSTRAINT FKClienteLogin			    FOREIGN KEY (idCliente)					REFERENCES Cliente (idCliente)
 );
+
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Familiares;
 -- DELETE FROM Familiares;
@@ -39,6 +41,7 @@ CREATE TABLE Familiares(
 	sobrenomePai						    VARCHAR(30)								NULL,
 	CONSTRAINT FKClienteFamiliares		    FOREIGN KEY (idCliente)					REFERENCES Cliente (idCliente)
 );
+
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Endereco;
 -- DELETE FROM Endereco;
@@ -55,6 +58,7 @@ CREATE TABLE Endereco(
 	flagStatus							    CHAR(1)	DEFAULT(1)						NOT NULL,
 	CONSTRAINT FKClienteEndereco		    FOREIGN KEY (idCliente)					REFERENCES Cliente (idCliente)
 );
+
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Contato;
 -- DELETE FROM Contato;
@@ -67,6 +71,7 @@ CREATE TABLE Contato(
 	flagStatus							    CHAR(1)			DEFAULT(1)				NOT NULL,
 	CONSTRAINT FKClienteContato			    FOREIGN KEY (idCliente)					REFERENCES Cliente (idCliente)
 );
+
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Agencia;
 -- DELETE FROM Agencia;
@@ -86,7 +91,7 @@ CREATE TABLE Conta(
 	senhaTransacoes						    VARCHAR(4)								NOT NULL,
 	dtCriacao							    DATE									NOT NULL	DEFAULT GETDATE(),
 	flagAtivo							    INT										NOT NULL,
-	saldoAtual								NUMERIC(10,2)									NOT NULL	DEFAULT (0),
+	saldoAtual								NUMERIC(10,2)							NOT NULL	DEFAULT (0),
 	CONSTRAINT FKClienteConta			    FOREIGN KEY (idCliente)					REFERENCES Cliente (idCliente),
 	CONSTRAINT FKAgenciaConta			    FOREIGN KEY (idAgencia)					REFERENCES Agencia (idAgencia),
 );
@@ -95,11 +100,11 @@ CREATE TABLE Conta(
 -- DROP TABLE Status;
 -- DELETE FROM Status;
 CREATE TABLE Status(
-	IDStatus	INT		IDENTITY(1,1)	PRIMARY KEY,
-	flagAtivo							    INT										NOT NULL,
-	dataAlteracao date NOT NULL	DEFAULT GETDATE(),
-	numeroConta INT NOT NULL,
-	CONSTRAINT FKContaStatus			    FOREIGN KEY (numeroConta)					REFERENCES Conta(numeroConta)
+	IDStatus						INT												IDENTITY(1,1)	PRIMARY KEY,
+	flagAtivo						INT												NOT NULL,
+	dataAlteracao					date											NOT NULL	DEFAULT GETDATE(),
+	numeroConta						INT												NOT NULL,
+	CONSTRAINT FKContaStatus		FOREIGN KEY (numeroConta)						REFERENCES Conta(numeroConta)
 );
 
 ---------------------------------------------------------------------------------------------------------------------------
@@ -112,13 +117,14 @@ CREATE TABLE Transacao(
 	idTransacao							    INT										NOT NULL					IDENTITY(1, 1) PRIMARY KEY,
 	numeroConta								INT										NOT NULL,
 	idTipoTransacao							INT										NOT NULL,
-	dtTransacao							    VARCHAR(MAX)									NOT NULL,
+	dtTransacao							    VARCHAR(MAX)							NOT NULL,
 	numeroContaOrigem						INT										NULL,
 	numeroContaDestino						INT										NULL,
-	valor									NUMERIC									NOT NULL,
+	valor									NUMERIC(10,2)							NOT NULL,
 	senhaTransacoes						    VARCHAR(4)								NOT NULL,
 	CONSTRAINT FKContaTransacao			    FOREIGN KEY (numeroConta)					REFERENCES Conta(numeroConta)
 );
+
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Foto;
 -- DELETE FROM Foto;
@@ -126,9 +132,9 @@ CREATE TABLE Foto (
     idFoto									INT IDENTITY (1, 1)						 NULL,
 	idCliente							    INT										 NULL,
     Binario									VARCHAR(max)							 NULL,
-
 	CONSTRAINT FKClienteFoto			    FOREIGN KEY (idCliente)					REFERENCES Cliente (idCliente)
 );
+
 ---------------------------------------------------------------------------------------------------------------------------
 -- COMANDOS INSERT
 
@@ -147,6 +153,7 @@ SELECT 1, * from openrowset (bulk 'C:\Users\Public\Pictures\Foto\teste.jpg', sin
 
 -- COMANDOS SELECT
 /*
+
 SELECT * FROM Login;
 SELECT * FROM Familiares;
 SELECT * FROM Endereco;
@@ -155,14 +162,18 @@ SELECT * FROM Contato;
 SELECT * FROM Cliente;
 SELECT * FROM Agencia;
 SELECT * FROM Conta;
+select * from Status;
 
 SELECT * FROM Transacao;
+
 SELECT * FROM Foto;
+
 */
 
 
 -- COMANDOS DROP
 /*
+
 DROP TABLE Login;
 DROP TABLE Familiares;
 DROP TABLE Endereco;
@@ -173,11 +184,13 @@ DROP TABLE Conta;
 DROP TABLE Foto;
 DROP TABLE Agencia
 DROP TABLE Cliente;
+
 */
 
 
 -- COMANDOS DELETE
 /*
+
 DELETE FROM Foto;
 DELETE FROM Login;
 DELETE FROM Familiares;
@@ -186,4 +199,15 @@ DELETE FROM Contato;
 DELETE FROM Transacao;
 DELETE FROM Conta;
 DELETE FROM Cliente;
+DELETE FROM status;
+
 */
+
+
+UPDATE login
+SET senhaAcesso = '12345678'
+WHERE idCliente = 1
+
+UPDATE conta
+SET flagAtivo = -1
+WHERE idCliente = 1
