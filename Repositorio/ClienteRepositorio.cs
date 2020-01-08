@@ -47,9 +47,9 @@ namespace InternetBanking.Repositorio
             if (cliente.sobrenome != "") { _cliente.sobrenome = cliente.sobrenome; }
             if (cliente.rg != "") { _cliente.rg = cliente.rg; }
             if (cliente.orgaoEmissor != "") { _cliente.orgaoEmissor = cliente.orgaoEmissor; }
-            if (cliente.dtNascimento != null) { _cliente.dtNascimento = cliente.dtNascimento; }
-            if (cliente.nacionalidade != "") { _cliente.nacionalidade = cliente.nacionalidade; }
+            if (cliente.dtNascimento != null) { _cliente.dtNascimento = cliente.dtNascimento; }            
             if (cliente.naturalidade != "") { _cliente.naturalidade = cliente.naturalidade; }
+            if (cliente.nacionalidade != "") { _cliente.nacionalidade = cliente.nacionalidade; }
             
             _contexto.Cliente.Update(_cliente);
             _contexto.SaveChanges();

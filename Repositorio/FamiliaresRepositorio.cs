@@ -43,9 +43,9 @@ namespace InternetBanking.Repositorio
         {
 
             if(familiares.nomeMae!=""){_familiares.nomeMae = familiares.nomeMae;}
-            if(familiares.sobrenomeMae!=""){_familiares.sobrenomeMae = familiares.sobrenomeMae;}
-            if(familiares.nomePai!=""){ _familiares.nomePai = familiares.nomePai;}
+            if(familiares.sobrenomeMae!=""){_familiares.sobrenomeMae = familiares.sobrenomeMae;}           
             if(familiares.sobrenomePai!=""){ _familiares.sobrenomePai = familiares.sobrenomePai;}
+            if(familiares.nomePai!=""){ _familiares.nomePai = familiares.nomePai;}
     
             _contexto.Familiares.Update(_familiares);
             _contexto.SaveChanges();

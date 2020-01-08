@@ -40,8 +40,9 @@ namespace InternetBanking.Repositorio
          public void Update(Endereco endereco, Endereco _endereco)
         {
 
-            if(endereco.logradouro!=""){_endereco.logradouro = endereco.logradouro;}
+            
            if(endereco.numero!=0){ _endereco.numero = endereco.numero;}
+           if(endereco.logradouro!=""){_endereco.logradouro = endereco.logradouro;}
            if(endereco.complemento!=""){ _endereco.complemento = endereco.complemento;}
            if(endereco.bairro!=""){ _endereco.bairro = endereco.bairro;}
            if(endereco.cidade!=""){ _endereco.cidade = endereco.cidade;}
