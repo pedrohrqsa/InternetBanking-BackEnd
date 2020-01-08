@@ -38,5 +38,21 @@ namespace InternetBanking.Repositorio
             _contexto.Familiares.Update(familiares);
             _contexto.SaveChanges();
         }
-    }
+
+        public void Update(Familiares familiares, Familiares _familiares) 
+        {
+
+            if(familiares.nomeMae!=""){_familiares.nomeMae = familiares.nomeMae;}
+            if(familiares.sobrenomeMae!=""){_familiares.sobrenomeMae = familiares.sobrenomeMae;}
+            if(familiares.nomePai!=""){ _familiares.nomePai = familiares.nomePai;}
+            if(familiares.sobrenomePai!=""){ _familiares.sobrenomePai = familiares.sobrenomePai;}
+    
+            _contexto.Familiares.Update(_familiares);
+            _contexto.SaveChanges();
+        }
+
+
+                   
+}
+
 }

@@ -10,6 +10,7 @@ namespace InternetBanking.Repositorio
         int FindByIdCliente(string cpf);
         Contato FindByContato(int contato);
         void Update(Contato contato);
+        void Update(Contato contato,Contato _contato);
 
     }
 }

@@ -10,5 +10,6 @@ namespace InternetBanking.Repositorio
         Familiares FindByFam(int Fam);
         int FindByIdCliente(string cpf);
         void Update(Familiares familiares);
+        void Update(Familiares familiares, Familiares _familiares);
     }
 }

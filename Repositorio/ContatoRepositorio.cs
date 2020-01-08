@@ -35,5 +35,16 @@ namespace InternetBanking.Repositorio
             _contexto.Contato.Update(contato);
             _contexto.SaveChanges();
         }
+
+        public void Update(Contato contato, Contato _contato)
+        {
+
+        if(contato.email!= ""){_contato.email = contato.email;}
+        if(contato.telCel!= ""){_contato.telCel = contato.telCel;}
+        if(contato.telResid!= ""){_contato.telResid = contato.telResid;}
+
+            _contexto.Contato.Update(_contato);
+            _contexto.SaveChanges();
+        }
     }
 }
