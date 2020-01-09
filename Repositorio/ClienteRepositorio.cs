@@ -42,7 +42,6 @@ namespace InternetBanking.Repositorio
 
         public void Update(Cliente cliente, Cliente _cliente)
         {
-
             if (cliente.nome != "") { _cliente.nome = cliente.nome; }
             if (cliente.sobrenome != "") { _cliente.sobrenome = cliente.sobrenome; }
             if (cliente.rg != "") { _cliente.rg = cliente.rg; }
@@ -54,10 +53,5 @@ namespace InternetBanking.Repositorio
             _contexto.Cliente.Update(_cliente);
             _contexto.SaveChanges();
         }
-
-        
-
-
-        
     }
 }

@@ -43,9 +43,7 @@ namespace InternetBanking.Controllers
                 _clienteRepositorio.AddCliente(cliente);
                 return new ObjectResult(new ClienteLogin());
             }
-
             return BadRequest();
-
         }
 
         [HttpPut("{cpf}")]
