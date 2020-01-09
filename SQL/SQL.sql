@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------------------------------
 -- CREATE DATABASE InternetBanking;
---USE InternetBanking;
+USE InternetBanking;
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Cliente;
 -- DELETE FROM Cliente;
@@ -122,21 +122,21 @@ CREATE TABLE Transacao(
 	numeroContaDestino						INT										NULL,
 	valor									NUMERIC(10,2)							NOT NULL,
 	senhaTransacoes						    VARCHAR(4)								NOT NULL,
-	CONSTRAINT FKContaTransacao			    FOREIGN KEY (numeroConta)					REFERENCES Conta(numeroConta)
+	CONSTRAINT FKContaTransacao			    FOREIGN KEY (numeroConta)				REFERENCES Conta(numeroConta)
 );
 
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Foto;
 -- DELETE FROM Foto;
 CREATE TABLE Foto (
-    idFoto									INT IDENTITY (1, 1)						 NULL,
-	idCliente							    INT										 NULL,
-    Binario									VARCHAR(max)							 NULL,
+    idFoto									INT										NOT NULL					IDENTITY (1, 1) PRIMARY KEY,
+	idCliente							    INT										NULL,
+    Binario									VARCHAR(max)							NULL,
 	CONSTRAINT FKClienteFoto			    FOREIGN KEY (idCliente)					REFERENCES Cliente (idCliente)
 );
 
 ---------------------------------------------------------------------------------------------------------------------------
--- COMANDOS INSERT
+-- COMANDOS
 
 /*
 INSERT INTO Cliente (cpf, rg, orgaoEmissor, dtNascimento, nome, sobrenome, nacionalidade, naturalidade) 
@@ -147,13 +147,20 @@ VALUES (1, '1234', 1);
 
 INSERT INTO Foto (idCliente,binario) 
 SELECT 1, * from openrowset (bulk 'C:\Users\Public\Pictures\Foto\teste.jpg', single_blob) imagem
+
+UPDATE login
+SET senhaAcesso = '12345678'
+WHERE idCliente = 1
+
+UPDATE conta
+SET flagAtivo = -1
+WHERE idCliente = 1
 */
 
 ---------------------------------------------------------------------------------------------------------------------------
 
 -- COMANDOS SELECT
 /*
-
 SELECT * FROM Login;
 SELECT * FROM Familiares;
 SELECT * FROM Endereco;
@@ -162,18 +169,16 @@ SELECT * FROM Contato;
 SELECT * FROM Cliente;
 SELECT * FROM Agencia;
 SELECT * FROM Conta;
-select * from Status;
+SELECT * FROM Status;
 
 SELECT * FROM Transacao;
 
 SELECT * FROM Foto;
-
 */
 
 
 -- COMANDOS DROP
 /*
-
 DROP TABLE Login;
 DROP TABLE Familiares;
 DROP TABLE Endereco;
@@ -184,13 +189,11 @@ DROP TABLE Conta;
 DROP TABLE Foto;
 DROP TABLE Agencia
 DROP TABLE Cliente;
-
 */
 
 
 -- COMANDOS DELETE
 /*
-
 DELETE FROM Foto;
 DELETE FROM Login;
 DELETE FROM Familiares;
@@ -200,14 +203,4 @@ DELETE FROM Transacao;
 DELETE FROM Conta;
 DELETE FROM Cliente;
 DELETE FROM status;
-
 */
-
-
-UPDATE login
-SET senhaAcesso = '12345678'
-WHERE idCliente = 1
-
-UPDATE conta
-SET flagAtivo = -1
-WHERE idCliente = 1

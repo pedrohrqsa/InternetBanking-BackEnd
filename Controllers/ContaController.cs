@@ -96,10 +96,14 @@ namespace InternetBanking.Controllers
         public IActionResult Update([FromBody] StatusConta st)
         {
             var cliente = _cliente.FindByCpf(st.cpf);
+
+            var clienteDtNascimento = cliente.dtNascimento.ToString("dd/MM/yyyy");
+            var stDtNascimento = st.dtNascimento.ToString("dd/MM/yyyy");
             
-            if (cliente != null && cliente.cpf == st.cpf &&
-             cliente.rg == st.rg &&
-              cliente.dtNascimento == st.dtNascimento)
+            if (cliente != null &&
+                cliente.cpf == st.cpf &&
+                cliente.rg == st.rg &&
+                clienteDtNascimento == stDtNascimento)
             {
                 int numeroConta = _contaRepositorio.FindByNumC(st.cpf);
                 var _conta = _contaRepositorio.FindByConta(numeroConta);
