@@ -49,7 +49,7 @@ CREATE TABLE Endereco(
 	idEndereco							    INT										NOT NULL	IDENTITY(1, 1)				 PRIMARY KEY,
 	idCliente							    INT										NOT NULL,
 	logradouro							    VARCHAR(50)								NOT NULL,
-	numero								    INT										NOT NULL,
+	numero								    VARCHAR(6)								NOT NULL,
 	complemento							    VARCHAR(30)								NOT NULL,
 	bairro								    VARCHAR(20)								NOT NULL,
 	cidade								    VARCHAR(30)								NOT NULL,
@@ -139,12 +139,6 @@ CREATE TABLE Foto (
 -- COMANDOS
 
 /*
-INSERT INTO Cliente (cpf, rg, orgaoEmissor, dtNascimento, nome, sobrenome, nacionalidade, naturalidade) 
-VALUES ('12345678901', '123456789', 'SSPSP', '1998-06-12', 'José', 'da Silva', 'Brasileira', 'São Paulo');
-   
-INSERT INTO Conta (idCliente, senhaTransacoes, flagAtivo) 
-VALUES (1, '1234', 1);
-
 INSERT INTO Foto (idCliente,binario) 
 SELECT 1, * from openrowset (bulk 'C:\Users\Public\Pictures\Foto\teste.jpg', single_blob) imagem
 
@@ -185,6 +179,7 @@ DROP TABLE Endereco;
 DROP TABLE Contato;
 
 DROP TABLE Transacao;
+DROP TABLE Status;
 DROP TABLE Conta;
 DROP TABLE Foto;
 DROP TABLE Agencia
@@ -200,7 +195,7 @@ DELETE FROM Familiares;
 DELETE FROM Endereco;
 DELETE FROM Contato;
 DELETE FROM Transacao;
+DELETE FROM Status;
 DELETE FROM Conta;
 DELETE FROM Cliente;
-DELETE FROM status;
 */
