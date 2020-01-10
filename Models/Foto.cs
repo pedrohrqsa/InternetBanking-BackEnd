@@ -10,7 +10,7 @@ namespace InternetBanking.Models
         [Key]
         public int idFoto { get; set; }
         public int idCliente { get; set; }
-        public string Binario { get; set; }
+        public string caminhoFoto { get; set; }
         
         [ForeignKey("idCliente")]
         public Cliente Cliente { get; set; }
