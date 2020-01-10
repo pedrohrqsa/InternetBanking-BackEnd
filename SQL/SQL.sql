@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------------------------------
 -- CREATE DATABASE InternetBanking;
-USE InternetBanking;
+--USE InternetBanking;
 ---------------------------------------------------------------------------------------------------------------------------
 -- DROP TABLE Cliente;
 -- DELETE FROM Cliente;
@@ -131,7 +131,7 @@ CREATE TABLE Transacao(
 CREATE TABLE Foto (
     idFoto									INT										NOT NULL					IDENTITY (1, 1) PRIMARY KEY,
 	idCliente							    INT										NULL,
-    Binario									VARCHAR(max)							NULL,
+    caminhoFoto								VARCHAR(max)							NULL,
 	CONSTRAINT FKClienteFoto			    FOREIGN KEY (idCliente)					REFERENCES Cliente (idCliente)
 );
 
