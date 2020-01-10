@@ -22,7 +22,7 @@ namespace InternetBanking.Controllers
             _foto = foto;
         }
 
-        [HttpPost, DisableRequestSizeLimit]
+        [HttpPost("{cpf}", Name = "Foto"), DisableRequestSizeLimit]
         public IActionResult Upload(string cpf, Cliente cliente, Foto photo)
         {
             try
