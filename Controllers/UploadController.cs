@@ -42,16 +42,12 @@ namespace InternetBanking.Controllers
                         file.CopyTo(stream);
                     }
 
-                    // cpf = "47958664818";
-                    // cliente.cpf = cpf;
-
                     var clientes = _clienteRepositorio.FindByCpf(cliente.cpf);
                     if (clientes != null)
                     {   
                         photo.idCliente = clientes.idCliente;
                         _foto.AddFoto(photo);
                     }
-
                      return Ok(new { photo.caminhoFoto });
                 }
                 else
