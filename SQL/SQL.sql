@@ -163,11 +163,11 @@ SELECT * FROM Contato;
 SELECT * FROM Cliente;
 SELECT * FROM Agencia;
 SELECT * FROM Conta;
-SELECT * FROM Status;
+SELECT * FROM Foto;
 
+SELECT * FROM Status;
 SELECT * FROM Transacao;
 
-SELECT * FROM Foto;
 */
 
 

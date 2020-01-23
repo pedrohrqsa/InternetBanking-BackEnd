@@ -32,6 +32,7 @@ namespace InternetBanking.Controllers
         }
 
         [HttpPost]
+        // [ValidateAntiForgeryToken]
         public IActionResult Create([FromBody] Cliente cliente)
         {
             if (cliente == null) return BadRequest();
