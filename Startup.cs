@@ -11,15 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Microsoft.Extensions.FileProviders;
-using System.IO;
-using Microsoft.AspNetCore.Http;
+
 namespace InternetBanking
 {
     public class Startup
@@ -34,8 +26,8 @@ namespace InternetBanking
             services.AddDbContext<ClienteDB>(options =>
            options.UseSqlServer(Configuration.GetConnectionString("ConnectionBD")));
 
-           services.AddDbContext<ContaDB>(options =>
-           options.UseSqlServer(Configuration.GetConnectionString("ConnectionBD")));
+            services.AddDbContext<ContaDB>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("ConnectionBD")));
 
             services.AddDbContext<TransacaoDB>(options =>
            options.UseSqlServer(Configuration.GetConnectionString("ConnectionBD")));
@@ -49,8 +41,6 @@ namespace InternetBanking
             services.AddTransient<ITransacaoRepositorio, TransacaoRepositorio>();
             services.AddTransient<IAgenciaRepositorio, AgenciaRepositorio>();
             services.AddTransient<IFotoRepositorio, FotoRepositorio>();
-
-            
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
@@ -99,7 +89,5 @@ namespace InternetBanking
                 endpoints.MapControllers();
             });
         }
-
-        
     }
 }
