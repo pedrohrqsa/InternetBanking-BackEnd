@@ -23,7 +23,7 @@ namespace InternetBanking.Repositorio
         {
             return _contexto.Contato.ToList();
         }
-        
+
         public int FindByIdCliente(string cpf)
         {
             Cliente cli = _contexto.Cliente.FirstOrDefault(cli => cli.cpf == cpf);
@@ -38,11 +38,9 @@ namespace InternetBanking.Repositorio
 
         public void Update(Contato contato, Contato _contato)
         {
-
-        
-        if(contato.telCel!= ""){_contato.telCel = contato.telCel;}
-        if(contato.email!= ""){_contato.email = contato.email;}
-        if(contato.telResid!= ""){_contato.telResid = contato.telResid;}
+            if (contato.telCel != "") { _contato.telCel = contato.telCel; }
+            if (contato.email != "") { _contato.email = contato.email; }
+            if (contato.telResid != "") { _contato.telResid = contato.telResid; }
 
             _contexto.Contato.Update(_contato);
             _contexto.SaveChanges();
