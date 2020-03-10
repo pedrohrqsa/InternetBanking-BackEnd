@@ -11,7 +11,8 @@ namespace InternetBanking.Controllers
         private readonly IDepositoRepositorio _depositoRepositorio;
         private readonly IContaRepositorio _contaRepositorio;
 
-        public DepositoController(IDepositoRepositorio depositoRepositorio, IContaRepositorio contaRepositorio)
+        public DepositoController(IDepositoRepositorio depositoRepositorio,
+         IContaRepositorio contaRepositorio)
         {
             _depositoRepositorio = depositoRepositorio;
             _contaRepositorio = contaRepositorio;

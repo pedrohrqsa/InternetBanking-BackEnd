@@ -13,7 +13,9 @@ namespace InternetBanking.Controllers
         private readonly IFotoRepositorio _fotoRepositorio;
         private readonly IClienteRepositorio _clienteRepositorio;
         private readonly IFotoRepositorio _foto;
-        public UploadController(IFotoRepositorio fotoRepositorio,
+
+        public UploadController(
+            IFotoRepositorio fotoRepositorio,
          IClienteRepositorio clientes,
          IFotoRepositorio foto)
         {
@@ -44,11 +46,11 @@ namespace InternetBanking.Controllers
 
                     var clientes = _clienteRepositorio.FindByCpf(cliente.cpf);
                     if (clientes != null)
-                    {   
+                    {
                         photo.idCliente = clientes.idCliente;
                         _foto.AddFoto(photo);
                     }
-                     return Ok(new { photo.caminhoFoto });
+                    return Ok(new { photo.caminhoFoto });
                 }
                 else
                 {

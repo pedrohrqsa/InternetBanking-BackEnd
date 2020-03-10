@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using InternetBanking.Models;
 
-namespace InternetBanking_BackEnd.Models
+namespace InternetBankingBackEnd.Models
 {
     public class Status
     {

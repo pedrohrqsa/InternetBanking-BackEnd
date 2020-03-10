@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using InternetBanking.Models;
 using System.Linq;
 using System;
-using InternetBanking_BackEnd.Models;
+using InternetBankingBackEnd.Models;
 
 namespace InternetBanking.Repositorio
 {

@@ -1,5 +1,5 @@
 using InternetBanking.Models;
-using InternetBanking_BackEnd.Models;
+using InternetBankingBackEnd.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace InternetBanking.Models

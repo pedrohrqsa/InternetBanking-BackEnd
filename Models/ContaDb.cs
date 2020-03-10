@@ -1,4 +1,4 @@
-using InternetBanking_BackEnd.Models;
+using InternetBankingBackEnd.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace InternetBanking.Models
@@ -25,12 +25,6 @@ namespace InternetBanking.Models
             modelBuilder.Entity<Status>()
                 .HasOne(c => c.Conta)
                 .WithMany(cc => cc.Status);
-
-            // modelBuilder.Entity<Agencia>().HasKey(con => con.numeroAgencia);
-            // modelBuilder.Entity<Conta>().HasKey(con => con.numeroConta);
-            // modelBuilder.Entity<Conta>()
-            //     .HasOne(c => c.Agencia)
-            //     .WithMany(cc => cc.Conta);
         }
     }
 }

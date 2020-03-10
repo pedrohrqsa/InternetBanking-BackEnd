@@ -85,7 +85,7 @@ INSERT INTO Agencia (idAgencia) VALUES (1);
 -- DROP TABLE Conta;
 -- DELETE FROM Conta;
 CREATE TABLE Conta(
-	numeroConta								INT										NOT NULL	IDENTITY(1000, 1)					PRIMARY KEY,
+	numeroConta								INT										NOT NULL	IDENTITY(1010, 7)					PRIMARY KEY,
 	idCliente							    INT										NOT NULL,
 	idAgencia								INT										NOT NULL	DEFAULT (1),
 	senhaTransacoes						    VARCHAR(4)								NOT NULL,

@@ -9,6 +9,7 @@ namespace InternetBanking.Controllers
     public class ClienteLoginController : Controller
     {
         private readonly IClienteLoginRepositorio _clienteLoginRepositorio;
+        
         public ClienteLoginController(IClienteLoginRepositorio clienteRepo)
         {
             _clienteLoginRepositorio = clienteRepo;

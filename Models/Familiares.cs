@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InternetBanking.Models
 {
-
     [Table("Familiares")]
     public class Familiares
     {

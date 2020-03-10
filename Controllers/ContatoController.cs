@@ -11,7 +11,8 @@ namespace InternetBanking.Controllers
     {
         private readonly IContatoRepositorio _contatoRep;
         private readonly IClienteLoginRepositorio _clienteRepositorio;
-        public ContatoController(IContatoRepositorio contatoRepo, IClienteLoginRepositorio clienteRepositorio)
+        public ContatoController(IContatoRepositorio contatoRepo,
+         IClienteLoginRepositorio clienteRepositorio)
         {
             _contatoRep = contatoRepo;
             _clienteRepositorio = clienteRepositorio;
@@ -49,7 +50,6 @@ namespace InternetBanking.Controllers
             int idCliente = _contatoRep.FindByIdCliente(cpf);
             var _contato = _contatoRep.FindByContato(idCliente);            
            
-
             _contatoRep.Update(contato,_contato);
             return new NoContentResult();
         }
